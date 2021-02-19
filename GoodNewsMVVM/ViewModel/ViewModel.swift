@@ -7,3 +7,16 @@
 //
 
 import Foundation
+
+class ViewModel {
+    private var service:Networking!
+    var models = [Model]() {
+        didSet {
+            
+        }
+    }
+    
+    init(services: Networking = NetworkService()) {
+        self.service = services
+    }
+}
