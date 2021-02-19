@@ -15,19 +15,28 @@ enum NetworkErrors: Error {
 }
 
 protocol Networking {
-    func getURL(host:String?, path:String?) -> URL?
+    func getURL(host:String?, path:String?, params:[String:String]?) -> URL?
     func fetch(url:URL?, completion:@escaping(Result<[Model], NetworkErrors>)->Void)
 }
 
 class NetworkService: Networking {
 
-    func getURL(host: String?, path: String?) -> URL? {
+    func getURL(host: String?, path: String?, params:[String:String]?) -> URL? {
         var components = URLComponents()
         components.scheme = Const.urlScheme
         guard let hostUnwraped = host else {return nil}
         guard let pathUnwrapped = path else { return nil }
+        if let paramsUnwraped = params {
+            var queryItems:[URLQueryItem]=[]
+            for (k, v) in paramsUnwraped {
+                let qi = URLQueryItem(name: k, value: v)
+                queryItems.append(qi)
+            }
+            components.queryItems = queryItems
+        }
         components.host = hostUnwraped
         components.path = pathUnwrapped
+        print("URL is >> \(components.url)")
         return components.url
     }
         

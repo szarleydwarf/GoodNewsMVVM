@@ -21,7 +21,11 @@ class ViewModel {
     }
     
     func requestModel() {
-        guard let url = self.service.getURL(host: Const.urlHost, path: Const.urlPath) else {return}
-        
+        let params:[String:String] = [ Const.urlMethod:Const.urlParamMethod,
+            Const.urlFormat:Const.urlParamFormat,
+            Const.urlLang:Const.urlParamLang
+        ]
+        guard let url = self.service.getURL(host: Const.urlHost, path: Const.urlPath, params: params) else {return}
+        print("VMURL>> \(url) \(Const.quotesAPI)")
     }
 }

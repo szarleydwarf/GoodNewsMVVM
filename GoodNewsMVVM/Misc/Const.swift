@@ -11,7 +11,7 @@ import Foundation
 struct Const {
     static let urlScheme:String = "https"
     static let urlHost:String = "api.forismatic.com"
-    static let urlPath:String = "api/1.0/"
+    static let urlPath:String = "/api/1.0/"
     
     static let urlMethod:String = "method"
     static let urlParamMethod:String = "getQuote"
