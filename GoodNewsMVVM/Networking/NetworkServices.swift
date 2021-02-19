@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+protocol Networking {
+    func getURL(scheme:String, host:String, path:String, query:[String]) -> URL
+    func fetch(url:URL, completion:@escaping(Result<Model, Error>)->Void)
+}
