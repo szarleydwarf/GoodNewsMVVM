@@ -21,6 +21,7 @@ class ViewModel {
     }
     
     func requestModel() {
+        guard let url = self.service.getURL(host: Const.urlHost, path: Const.urlPath) else {return}
         
     }
 }

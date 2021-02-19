@@ -22,7 +22,7 @@ protocol Networking {
 class NetworkService: Networking {
     func getURL(host: String?, path: String?) -> URL? {
         var components = URLComponents()
-        components.scheme = Const().urlScheme
+        components.scheme = Const.urlScheme
         components.host = host ?? ""
         components.path = path ?? ""
         if let url = components.url {

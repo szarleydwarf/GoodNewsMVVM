@@ -92,10 +92,7 @@
 				D7749FF725DFC57D0038B6F4 /* View */,
 				D7749FF625DFC5740038B6F4 /* Model */,
 				D7749FFA25DFC5BA0038B6F4 /* Misc */,
-				D7749FD425DFC11A0038B6F4 /* AppDelegate.swift */,
-				D7749FD625DFC11A0038B6F4 /* SceneDelegate.swift */,
-				D7749FDD25DFC11F0038B6F4 /* Assets.xcassets */,
-				D7749FDF25DFC11F0038B6F4 /* LaunchScreen.storyboard */,
+				D7749FDA25DFC11A0038B6F4 /* Main.storyboard */,
 				D7749FE225DFC11F0038B6F4 /* Info.plist */,
 			);
 			path = GoodNewsMVVM;
@@ -121,7 +118,6 @@
 		D7749FF725DFC57D0038B6F4 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D7749FDA25DFC11A0038B6F4 /* Main.storyboard */,
 				D7749FD825DFC11A0038B6F4 /* ViewController.swift */,
 			);
 			path = View;
@@ -147,6 +143,10 @@
 			isa = PBXGroup;
 			children = (
 				D774A00125DFCBA60038B6F4 /* Const.swift */,
+				D7749FD425DFC11A0038B6F4 /* AppDelegate.swift */,
+				D7749FD625DFC11A0038B6F4 /* SceneDelegate.swift */,
+				D7749FDD25DFC11F0038B6F4 /* Assets.xcassets */,
+				D7749FDF25DFC11F0038B6F4 /* LaunchScreen.storyboard */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
