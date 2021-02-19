@@ -8,9 +8,15 @@
 
 import Foundation
 
+enum NetworkErrors: Error {
+    case badURL
+    case noData
+    case couldNotDecode
+}
+
 protocol Networking {
     func getURL(host:String?, path:String?) -> URL?
-    func fetch(url:URL, completion:@escaping(Result<Model, Error>)->Void)
+    func fetch(url:URL?, completion:@escaping(Result<[Model], NetworkErrors>)->Void)
 }
 
 class NetworkService: Networking {
@@ -25,8 +31,24 @@ class NetworkService: Networking {
         return nil
     }
         
-    func fetch(url: URL, completion: @escaping (Result<Model, Error>) -> Void) {
-        <#code#>
+    func fetch(url: URL?, completion: @escaping (Result<[Model], NetworkErrors>) -> Void) {
+        guard let url = url else {
+            completion(.failure(.badURL))
+            return
+        }
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let fetchedData = data else {
+                completion(.failure(.noData))
+                return
+            }
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            guard let models = try? decoder.decode([Model].self, from: fetchedData) else {
+                completion(.failure(.couldNotDecode))
+                return
+            }
+            completion(.success(models))
+        }
     }
     
     
