@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+struct Model: Codable {
+    let author:String?
+    let quote:String?
+}
