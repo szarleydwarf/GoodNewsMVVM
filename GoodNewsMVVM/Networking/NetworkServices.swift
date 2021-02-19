@@ -20,15 +20,15 @@ protocol Networking {
 }
 
 class NetworkService: Networking {
+
     func getURL(host: String?, path: String?) -> URL? {
         var components = URLComponents()
         components.scheme = Const.urlScheme
-        components.host = host ?? ""
-        components.path = path ?? ""
-        if let url = components.url {
-            return url
-        }
-        return nil
+        guard let hostUnwraped = host else {return nil}
+        guard let pathUnwrapped = path else { return nil }
+        components.host = hostUnwraped
+        components.path = pathUnwrapped
+        return components.url
     }
         
     func fetch(url: URL?, completion: @escaping (Result<[Model], NetworkErrors>) -> Void) {
