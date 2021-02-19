@@ -9,6 +9,25 @@
 import Foundation
 
 protocol Networking {
-    func getURL(scheme:String, host:String, path:String, query:[String]) -> URL
+    func getURL(host:String?, path:String?) -> URL?
     func fetch(url:URL, completion:@escaping(Result<Model, Error>)->Void)
+}
+
+class NetworkService: Networking {
+    func getURL(host: String?, path: String?) -> URL? {
+        var components = URLComponents()
+        components.scheme = Const().urlScheme
+        components.host = host ?? ""
+        components.path = path ?? ""
+        if let url = components.url {
+            return url
+        }
+        return nil
+    }
+        
+    func fetch(url: URL, completion: @escaping (Result<Model, Error>) -> Void) {
+        <#code#>
+    }
+    
+    
 }
