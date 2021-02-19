@@ -9,5 +9,9 @@
 import Foundation
 
 struct Const {
-    let urlScheme:String = "https"
+    static let urlScheme:String = "https"
+    static let urlHost:String = "api.forismatic.com"
+    static let urlPathc:String = "api/1.0/"
+    
+    static let quotesAPI = "https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en"
 }

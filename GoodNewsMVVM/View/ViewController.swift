@@ -9,10 +9,12 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    private var vm:ViewModel!
+  
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        self.vm = ViewModel()
     }
 
 

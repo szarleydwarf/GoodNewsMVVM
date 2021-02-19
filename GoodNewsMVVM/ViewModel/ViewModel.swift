@@ -19,4 +19,8 @@ class ViewModel {
     init(services: Networking = NetworkService()) {
         self.service = services
     }
+    
+    func requestModel() {
+        
+    }
 }
