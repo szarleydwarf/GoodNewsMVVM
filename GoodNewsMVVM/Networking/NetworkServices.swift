@@ -36,7 +36,6 @@ class NetworkService: Networking {
         }
         components.host = hostUnwraped
         components.path = pathUnwrapped
-        print("URL is >> \(components.url)")
         return components.url
     }
         
