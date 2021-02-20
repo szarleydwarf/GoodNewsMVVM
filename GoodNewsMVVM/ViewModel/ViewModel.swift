@@ -9,16 +9,17 @@
 import Foundation
 
 class ViewModel {
-    private var service:Networking!
-    var models = [Model]() {
+    private var service = NetworkService()
+    
+    var models: [Model]? {
         didSet {
             
         }
     }
     
-    init(services: Networking = NetworkService()) {
-        self.service = services
-    }
+//    init(services: Networking = NetworkService()) {
+//        self.service = services
+//    }
     
     func requestModel() {
         let params:[String:String] = [ Const.urlMethod:Const.urlParamMethod,
@@ -27,5 +28,14 @@ class ViewModel {
         ]
         guard let url = self.service.getURL(host: Const.urlHost, path: Const.urlPath, params: params) else {return}
         print("VMURL>> \(url) \(Const.quotesAPI)")
+        self.service.fetch(url: url) { (result) in
+            switch result {
+            case .success(let models):
+                self.models = models
+                
+            case .failure(let e):
+                print("ERROR \(e)")
+            }
+        }
     }
 }
