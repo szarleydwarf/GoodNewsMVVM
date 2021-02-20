@@ -15,9 +15,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.vm = ViewModel()
+        self.vm.delegate = self
         self.vm.requestModel()
     }
 
 
 }
 
+extension ViewController: ViewModelProtocol {
+    func refreshUI() {
+        print("REFRESHING")
+    }
+}

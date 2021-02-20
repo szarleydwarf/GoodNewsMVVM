@@ -8,8 +8,13 @@
 
 import Foundation
 
+protocol ViewModelProtocol {
+    func refreshUI()
+}
+
 class ViewModel {
     private var service = NetworkService()
+    var delegate:ViewModelProtocol?
     
     var models: [Model]? {
         didSet {
