@@ -8,17 +8,17 @@
 
 import Foundation
 
-protocol ViewModelProtocol {
+protocol ViewModelProtocol: class {
     func refreshUI()
 }
 
 class ViewModel {
     private var service = NetworkService()
-    var delegate:ViewModelProtocol?
+    weak var delegate:ViewModelProtocol?
     
     var models: [Model]? {
         didSet {
-            
+            delegate?.refreshUI()
         }
     }
     
@@ -33,10 +33,10 @@ class ViewModel {
         ]
         guard let url = self.service.getURL(host: Const.urlHost, path: Const.urlPath, params: params) else {return}
         print("VMURL>> \(url) \(Const.quotesAPI)")
-        self.service.fetch(url: url) { (result) in
+        self.service.fetch(url: url) { [weak self] result in
             switch result {
             case .success(let models):
-                self.models = models
+                self?.models = models
                 
             case .failure(let e):
                 print("ERROR \(e)")
