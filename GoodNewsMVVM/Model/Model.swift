@@ -11,4 +11,9 @@ import Foundation
 struct Model: Codable {
     let author:String?
     let quote:String?
+    
+    enum CodingKeys:String, CodingKey {
+        case author = "quoteAuthor"
+        case quote = "quoteText"
+    }
 }

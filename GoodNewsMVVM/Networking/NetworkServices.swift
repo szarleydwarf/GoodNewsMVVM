@@ -56,7 +56,7 @@ class NetworkService: Networking {
                 return
             }
             completion(.success(models))
-        }
+        }.resume()
     }
     
     

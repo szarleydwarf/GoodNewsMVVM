@@ -13,7 +13,7 @@ protocol ViewModelProtocol: class {
 }
 
 class ViewModel {
-    private var service = NetworkService()
+    private var service: Networking
     weak var delegate:ViewModelProtocol?
     
     var models: [Model]? {
@@ -22,9 +22,9 @@ class ViewModel {
         }
     }
     
-//    init(services: Networking = NetworkService()) {
-//        self.service = services
-//    }
+    init(services: Networking = NetworkService()) {
+        self.service = services
+    }
     
     func requestModel() {
         let params:[String:String] = [ Const.urlMethod:Const.urlParamMethod,
