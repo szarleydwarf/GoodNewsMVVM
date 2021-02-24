@@ -16,7 +16,7 @@ enum NetworkErrors: Error {
 
 protocol Networking {
     func getURL(host:String?, path:String?, params:[String:String]?) -> URL?
-    func fetch(url:URL?, completion:@escaping(Result<[Model], NetworkErrors>)->Void)
+    func fetch(url:URL?, completion:@escaping(Result<Model, NetworkErrors>)->Void)
 }
 
 class NetworkService: Networking {
@@ -39,7 +39,7 @@ class NetworkService: Networking {
         return components.url
     }
         
-    func fetch(url: URL?, completion: @escaping (Result<[Model], NetworkErrors>) -> Void) {
+    func fetch(url: URL?, completion: @escaping (Result<Model, NetworkErrors>) -> Void) {
         guard let url = url else {
             completion(.failure(.badURL))
             return
@@ -51,11 +51,11 @@ class NetworkService: Networking {
             }
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
-            guard let models = try? decoder.decode([Model].self, from: fetchedData) else {
+            guard let model = try? decoder.decode(Model.self, from: fetchedData) else {
                 completion(.failure(.couldNotDecode))
                 return
             }
-            completion(.success(models))
+            completion(.success(model))
         }.resume()
     }
     

@@ -16,7 +16,7 @@ class ViewModel {
     private var service: Networking
     weak var delegate:ViewModelProtocol?
     
-    var models: [Model]? {
+    var model: Model? {
         didSet {
             delegate?.refreshUI()
         }
@@ -36,7 +36,7 @@ class ViewModel {
         self.service.fetch(url: url) { [weak self] result in
             switch result {
             case .success(let models):
-                self?.models = models
+                self?.model = models
                 
             case .failure(let e):
                 print("ERROR \(e)")

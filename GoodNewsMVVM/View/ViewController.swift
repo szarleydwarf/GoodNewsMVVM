@@ -24,6 +24,7 @@ class ViewController: UIViewController {
 
 extension ViewController: ViewModelProtocol {
     func refreshUI() {
-        print("REFRESHING")
+        print("REFRESHING \(self.vm.model?.quote)")
+        
     }
 }
