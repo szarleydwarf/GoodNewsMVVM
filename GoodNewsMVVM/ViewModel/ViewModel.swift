@@ -36,7 +36,10 @@ class ViewModel {
         self.service.fetch(url: url) { [weak self] result in
             switch result {
             case .success(let models):
-                self?.model = models
+                DispatchQueue.main.async {
+                    self?.model = models
+
+                }
                 
             case .failure(let e):
                 print("ERROR \(e)")
