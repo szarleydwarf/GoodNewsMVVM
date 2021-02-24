@@ -11,7 +11,9 @@ import UIKit
 class ViewController: UIViewController {
     
     private var vm:ViewModel!
-  
+    @IBOutlet weak var author: UILabel!
+    @IBOutlet weak var quote: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.vm = ViewModel()
