@@ -22,6 +22,9 @@ class ViewController: UIViewController {
     }
 
 
+    @IBAction func refreshQuote(_ sender: Any) {
+        self.vm.requestModel()
+    }
 }
 
 extension ViewController: ViewModelProtocol {
@@ -38,4 +41,5 @@ extension ViewController: ViewModelProtocol {
         anim.autoreverses = true
         self.quote.layer.add(anim, forKey: CATransitionType.fade.rawValue)
     }
+    
 }
