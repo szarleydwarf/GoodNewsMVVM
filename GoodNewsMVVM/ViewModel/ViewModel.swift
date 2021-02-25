@@ -32,7 +32,7 @@ class ViewModel {
             Const.urlLang:Const.urlParamLang
         ]
         guard let url = self.service.getURL(host: Const.urlHost, path: Const.urlPath, params: params) else {return}
-        print("VMURL>> \(url) \(Const.quotesAPI)")
+        
         self.service.fetch(url: url) { [weak self] result in
             switch result {
             case .success(let models):
