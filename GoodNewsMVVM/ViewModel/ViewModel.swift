@@ -10,6 +10,8 @@ import Foundation
 
 protocol ViewModelProtocol: class {
     func refreshUI()
+    func animate(_ duration:CFTimeInterval)
+    func refreshQuote()
 }
 
 class ViewModel {
@@ -19,6 +21,8 @@ class ViewModel {
     var model: Model? {
         didSet {
             delegate?.refreshUI()
+            delegate?.animate(0.75)
+            delegate?.refreshQuote()
         }
     }
     

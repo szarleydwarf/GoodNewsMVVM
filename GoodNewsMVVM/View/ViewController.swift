@@ -27,12 +27,15 @@ class ViewController: UIViewController {
 extension ViewController: ViewModelProtocol {
     func refreshUI() {
         self.author.text = self.vm.model?.author
-        let anim = CATransition()
-        anim.timingFunction = CAMediaTimingFunction(name: .easeIn)
-        anim.type = .fade
-        anim.duration = 1.0
-        anim.autoreverses = true
-        self.quote.layer.animation(forKey: "fade")
         self.quote.text = self.vm.model?.quote
+    }
+    
+    func animate(_ duration:CFTimeInterval) {
+        let anim = CATransition()
+        anim.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        anim.type = .fade
+        anim.duration = duration
+        anim.autoreverses = true
+        self.quote.layer.add(anim, forKey: CATransitionType.fade.rawValue)
     }
 }
