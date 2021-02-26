@@ -11,6 +11,11 @@ import UIKit
 class ViewController: UIViewController {
     
     private var vm:ViewModel!
+    @IBOutlet weak var theme: UIImageView! {
+        didSet {
+            theme.image = UIImage(named: "ducks")
+        }
+    }
     @IBOutlet weak var author: UILabel! {
         didSet {
             author.isUserInteractionEnabled = true
