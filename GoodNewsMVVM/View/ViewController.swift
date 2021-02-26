@@ -39,7 +39,6 @@ class ViewController: UIViewController {
     }
     
     @objc func didTap(_ sender: UITapGestureRecognizer) {
-        print("AUTHOR LABEL TAPPED")
         self.vm.requestModel()
     }
     
@@ -48,7 +47,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func labelTapped (_ sender: UITapGestureRecognizer) {
-        print("Label tapped")
         self.vm.requestModel()
     }
 }
@@ -59,26 +57,14 @@ extension ViewController: ViewModelProtocol {
         self.quote.text = self.vm.model?.quote
     }
     
-    func fadeAnimation(_ duration:CFTimeInterval) {
-        let anim = CATransition()
-        anim.timingFunction = CAMediaTimingFunction(name: .easeIn)
-        anim.type = .fade
-        anim.duration = duration
-        //        anim.autoreverses = true
+    func fadeAnimation() {
+         let anim = self.vm.fadeAnimation
         self.quote.layer.add(anim, forKey: CATransitionType.fade.rawValue)
     }
     
-    func scaleAnimation (_ duration: CFTimeInterval) {
-        let scaleLayout = CASpringAnimation(keyPath: "transform.scale")
-        scaleLayout.damping = 10
-        scaleLayout.mass = 0.6
-        scaleLayout.initialVelocity = 25
-        scaleLayout.stiffness = 150.0
-        
-        scaleLayout.fromValue = 2.0
-        scaleLayout.toValue = 1.0
-        scaleLayout.duration = duration
-        self.quote.layer.add(scaleLayout, forKey: nil)
+    func scaleAnimation () {
+         let anim = self.vm.scaleAnimation 
+        self.quote.layer.add(anim, forKey: nil)
         
     }
 }

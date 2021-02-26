@@ -7,11 +7,12 @@
 //
 
 import Foundation
+import UIKit
 
 protocol ViewModelProtocol: class {
     func refreshUI()
-    func fadeAnimation(_ duration:CFTimeInterval)
-    func scaleAnimation(_ duration: CFTimeInterval)
+    func fadeAnimation()
+    func scaleAnimation()
 }
 
 class ViewModel {
@@ -20,14 +21,40 @@ class ViewModel {
     
     var model: Model? {
         didSet {
-            delegate?.fadeAnimation(0.75)
-            delegate?.scaleAnimation(0.75)
+            delegate?.fadeAnimation()
+            delegate?.scaleAnimation()
             delegate?.refreshUI()
+        }
+    }
+    
+    var fadeAnimation:CATransition {
+        didSet {
+            let anim = CATransition()
+            anim.timingFunction = CAMediaTimingFunction(name: .easeIn)
+            anim.type = .fade
+            anim.duration = 2.75
+            //        anim.autoreverses = true
+        }
+    }
+    
+    var scaleAnimation: CASpringAnimation {
+        didSet {
+            let scaleLayout = CASpringAnimation(keyPath: "transform.scale")
+            scaleLayout.damping = 10
+            scaleLayout.mass = 0.6
+            scaleLayout.initialVelocity = 25
+            scaleLayout.stiffness = 150.0
+            
+            scaleLayout.fromValue = 2.0
+            scaleLayout.toValue = 1.0
+            scaleLayout.duration = 0.75
         }
     }
     
     init(services: Networking = NetworkService()) {
         self.service = services
+        self.fadeAnimation = CATransition()
+        self.scaleAnimation = CASpringAnimation(keyPath: "transform.scale")
     }
     
     func requestModel() {
