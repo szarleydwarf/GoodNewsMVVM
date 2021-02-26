@@ -11,7 +11,12 @@ import UIKit
 class ViewController: UIViewController {
     
     private var vm:ViewModel!
-    @IBOutlet weak var author: UILabel!
+    @IBOutlet weak var author: UILabel! {
+        didSet {
+            author.isUserInteractionEnabled = true
+        }
+    }
+    
     @IBOutlet weak var quote: UILabel! {
         didSet {
             quote.isUserInteractionEnabled = true
@@ -23,8 +28,15 @@ class ViewController: UIViewController {
         self.vm = ViewModel()
         self.vm.delegate = self
         self.vm.requestModel()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTap(_:)))
+        self.author.addGestureRecognizer(tap)
     }
-
+    
+    @objc func didTap(_ sender: UITapGestureRecognizer) {
+        print("AUTHOR LABEL TAPPED")
+        self.vm.requestModel()
+    }
 
     @IBAction func refreshQuote(_ sender: UIButton) {
         self.vm.requestModel()

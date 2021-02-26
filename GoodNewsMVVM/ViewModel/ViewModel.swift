@@ -19,8 +19,8 @@ class ViewModel {
     
     var model: Model? {
         didSet {
-            delegate?.refreshUI()
             delegate?.animate(0.75)
+            delegate?.refreshUI()
         }
     }
     
