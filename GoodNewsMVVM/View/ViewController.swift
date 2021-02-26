@@ -56,10 +56,10 @@ extension ViewController: ViewModelProtocol {
     
     func animate(_ duration:CFTimeInterval) {
         let anim = CATransition()
-        anim.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        anim.timingFunction = CAMediaTimingFunction(name: .easeIn)
         anim.type = .fade
         anim.duration = duration
-        anim.autoreverses = true
+//        anim.autoreverses = true
         self.quote.layer.add(anim, forKey: CATransitionType.fade.rawValue)
     }
     
