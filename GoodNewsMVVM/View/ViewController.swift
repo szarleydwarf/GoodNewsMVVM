@@ -12,7 +12,11 @@ class ViewController: UIViewController {
     
     private var vm:ViewModel!
     @IBOutlet weak var author: UILabel!
-    @IBOutlet weak var quote: UILabel!
+    @IBOutlet weak var quote: UILabel! {
+        didSet {
+            quote.isUserInteractionEnabled = true
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +26,12 @@ class ViewController: UIViewController {
     }
 
 
-    @IBAction func refreshQuote(_ sender: Any) {
+    @IBAction func refreshQuote(_ sender: UIButton) {
+        self.vm.requestModel()
+    }
+    
+    @IBAction func labelTapped (_ sender: UITapGestureRecognizer) {
+        print("Label tapped")
         self.vm.requestModel()
     }
 }
