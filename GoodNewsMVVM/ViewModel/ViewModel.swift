@@ -39,10 +39,12 @@ class ViewModel {
         
         self.service.fetch(url: url) { [weak self] result in
             switch result {
-            case .success(let models):
+            case .success(let model):
                 DispatchQueue.main.async {
-                    self?.model = models
-
+                    self?.model = model
+                    if self?.model?.author == nil {
+                        self?.model?.author = Const.unknown
+                    }
                 }
                 
             case .failure(let e):

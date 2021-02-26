@@ -9,6 +9,8 @@
 import Foundation
 
 struct Const {
+    static let quotesAPI = "https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en"
+
     static let urlScheme:String = "https"
     static let urlHost:String = "api.forismatic.com"
     static let urlPath:String = "/api/1.0/"
@@ -20,6 +22,7 @@ struct Const {
     static let urlLang:String = "lang"
     static let urlParamLang:String = "en"
     
+    static let unknown = "UNKNOWN"
+    
 
-    static let quotesAPI = "https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en"
 }

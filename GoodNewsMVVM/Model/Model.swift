@@ -9,8 +9,8 @@
 import Foundation
 
 struct Model: Codable {
-    let author:String?
-    let quote:String?
+    var author:String?
+    var quote:String?
     
     enum CodingKeys:String, CodingKey {
         case author = "quoteAuthor"
