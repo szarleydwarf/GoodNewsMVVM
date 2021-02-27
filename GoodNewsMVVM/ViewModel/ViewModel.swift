@@ -66,13 +66,11 @@ class ViewModel {
     }
     
     func scale(_ duration:CFTimeInterval = 0.75) -> CASpringAnimation {
-        
         let scaleLayout = CASpringAnimation(keyPath: "transform.scale")
         scaleLayout.damping = 10
         scaleLayout.mass = 0.6
         scaleLayout.initialVelocity = 25
         scaleLayout.stiffness = 150.0
-        
         scaleLayout.fromValue = 2.0
         scaleLayout.toValue = 1.0
         scaleLayout.duration = duration

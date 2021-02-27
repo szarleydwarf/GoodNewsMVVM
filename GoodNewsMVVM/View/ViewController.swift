@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var theme: UIImageView! {
         didSet {
             theme.image = UIImage(named: "ducks")
+            theme.isUserInteractionEnabled = true
         }
     }
     @IBOutlet weak var author: UILabel! {
@@ -36,16 +37,25 @@ class ViewController: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTap(_:)))
         self.author.addGestureRecognizer(tap)
+        
+        let imageTap = UITapGestureRecognizer(target: self, action: #selector(imageTapped(_:)))
+        self.theme.addGestureRecognizer(imageTap)
     }
     
+    // selector version of tap recognision
     @objc func didTap(_ sender: UITapGestureRecognizer) {
         self.vm.requestModel()
+    }
+    
+    @objc func imageTapped(_ sender: UITapGestureRecognizer) {
+        print("image tapped")
     }
     
     @IBAction func refreshQuote(_ sender: UIButton) {
         self.vm.requestModel()
     }
     
+    // storyboard(interface builder) version of tap recognision
     @IBAction func labelTapped (_ sender: UITapGestureRecognizer) {
         self.vm.requestModel()
     }
