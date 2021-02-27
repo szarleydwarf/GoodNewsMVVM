@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
     private var vm:ViewModel!
+    private var tapCount:Int!
     @IBOutlet weak var theme: UIImageView! {
         didSet {
             theme.image = UIImage(named: "ducks")
@@ -31,6 +32,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tapCount = 0
         self.vm = ViewModel()
         self.vm.delegate = self
         self.vm.requestModel()
@@ -48,7 +50,14 @@ class ViewController: UIViewController {
     }
     
     @objc func imageTapped(_ sender: UITapGestureRecognizer) {
-        print("image tapped")
+        guard let image = self.theme.image else {
+            print("image not unwrapped")
+            return
+        }
+        print("1.tc > \(self.tapCount)")
+        self.tapCount = self.tapCount < 4 ? self.tapCount + 1 : 0
+        print("2.tc > \(self.tapCount)")
+        self.theme.image = self.vm.applyFilter(on: image, filterNumber: self.tapCount)
     }
     
     @IBAction func refreshQuote(_ sender: UIButton) {
@@ -80,6 +89,7 @@ extension ViewController: ViewModelProtocol {
             print("image not unwrapped")
             return
         }
+        
         self.theme.image = self.vm.applyFilter(on: image)
     }
 }

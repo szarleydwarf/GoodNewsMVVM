@@ -82,9 +82,9 @@ class ViewModel {
     }
     
     func applyFilter (on image: UIImage) -> UIImage{
-
+        let beginImage = CIImage(image: image)
+        
         if let currentFilter = CIFilter(name: "CISepiaTone") {
-            let beginImage = CIImage(image: image)
             currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
             currentFilter.setValue(0.5, forKey: kCIInputIntensityKey)
 
@@ -96,5 +96,34 @@ class ViewModel {
             }
         }
         return UIImage()
+    }
+    
+    func applyFilter (on image: UIImage, filterNumber: Int) -> UIImage{
+        let beginImage = CIImage(image: image)
+        var imageToReturn: UIImage = UIImage()
+        var filter: CIFilter = CIFilter()
+        
+        switch filterNumber {
+        case 0:
+            guard let currentFilter = CIFilter(name: "CISepiaTone") else {return UIImage()}
+            currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
+            currentFilter.setValue(0.75, forKey: kCIInputIntensityKey)
+            filter = currentFilter
+        case 1:
+            guard let currentFilter = CIFilter(name: "CISepiaTone") else {return UIImage()}
+            
+        default:
+            guard let currentFilter = CIFilter(name: "CISepiaTone") else {return UIImage()}
+            currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
+            currentFilter.setValue(0.75, forKey: kCIInputIntensityKey)
+            filter = currentFilter
+        }
+        
+        if let output = filter.outputImage {
+            if let cgimg = context.createCGImage(output, from: output.extent) {
+                imageToReturn = UIImage(cgImage: cgimg)
+            }
+        }
+        return imageToReturn
     }
 }
