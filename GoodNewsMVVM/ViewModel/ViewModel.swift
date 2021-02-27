@@ -18,6 +18,8 @@ protocol ViewModelProtocol: class {
 
 class ViewModel {
     private var service: Networking
+    private let context: CIContext
+
     weak var delegate:ViewModelProtocol?
     
     var model: Model? {
@@ -31,6 +33,8 @@ class ViewModel {
     
    init(services: Networking = NetworkService()) {
         self.service = services
+        self.context = CIContext(options: nil)
+
     }
     
     func requestModel() {
@@ -78,7 +82,6 @@ class ViewModel {
     }
     
     func applyFilter (on image: UIImage) -> UIImage{
-        let context = CIContext(options: nil)
 
         if let currentFilter = CIFilter(name: "CISepiaTone") {
             let beginImage = CIImage(image: image)
