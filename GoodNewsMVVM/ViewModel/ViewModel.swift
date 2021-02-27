@@ -13,6 +13,7 @@ protocol ViewModelProtocol: class {
     func refreshUI()
     func fadeAnimation()
     func scaleAnimation()
+    func addFilter()
 }
 
 class ViewModel {
@@ -23,6 +24,7 @@ class ViewModel {
         didSet {
             delegate?.fadeAnimation()
             delegate?.scaleAnimation()
+            delegate?.addFilter()
             delegate?.refreshUI()
         }
     }
@@ -54,7 +56,7 @@ class ViewModel {
         }
     }
     
-    func fadeAnimation(_ duration: CFTimeInterval = 0.75,_ reverse:Bool = false) -> CATransition {
+    func fade(_ duration: CFTimeInterval = 0.75,_ reverse:Bool = false) -> CATransition {
         let anim = CATransition()
         anim.timingFunction = CAMediaTimingFunction(name: .easeIn)
         anim.type = .fade
@@ -63,7 +65,7 @@ class ViewModel {
         return anim
     }
     
-    func scaleAnimation(_ duration:CFTimeInterval = 0.75) -> CASpringAnimation {
+    func scale(_ duration:CFTimeInterval = 0.75) -> CASpringAnimation {
         
         let scaleLayout = CASpringAnimation(keyPath: "transform.scale")
         scaleLayout.damping = 10
