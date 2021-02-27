@@ -66,6 +66,10 @@ extension ViewController: ViewModelProtocol {
     }
     
     func addFilter() {
-        
+        guard let image = self.theme.image else {
+            print("image not unwrapped")
+            return
+        }
+        self.theme.image = self.vm.applyFilter(on: image)
     }
 }

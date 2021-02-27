@@ -77,6 +77,23 @@ class ViewModel {
         scaleLayout.toValue = 1.0
         scaleLayout.duration = duration
         return scaleLayout
-        
+    }
+    
+    func applyFilter (on image: UIImage) -> UIImage{
+        let context = CIContext(options: nil)
+
+        if let currentFilter = CIFilter(name: "CISepiaTone") {
+            let beginImage = CIImage(image: image)
+            currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
+            currentFilter.setValue(0.5, forKey: kCIInputIntensityKey)
+
+            if let output = currentFilter.outputImage {
+                if let cgimg = context.createCGImage(output, from: output.extent) {
+                    let processedImage = UIImage(cgImage: cgimg)
+                    return processedImage
+                }
+            }
+        }
+        return UIImage()
     }
 }
