@@ -118,6 +118,12 @@ class ViewModel {
             lightenFilter.setValue(1 - intensity, forKey:"inputBrightness")
             lightenFilter.setValue(0, forKey:"inputSaturation")
             filter = lightenFilter
+        case 3:
+             guard let compositeFilter = CIFilter(name:"CIHardLightBlendMode")  else {return UIImage()}
+            compositeFilter.setValue(beginImage, forKey:kCIInputImageKey)
+            compositeFilter.setValue(beginImage, forKey:kCIInputBackgroundImageKey)
+            filter = compositeFilter
+
         default:
             guard let currentFilter = CIFilter(name: "CISepiaTone") else {return UIImage()}
             currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
@@ -128,6 +134,8 @@ class ViewModel {
         if let output = filter.outputImage {
             if let cgimg = context.createCGImage(output, from: output.extent) {
                 imageToReturn = UIImage(cgImage: cgimg)
+            } else {
+                print("cgimg not created")
             }
         }
         return imageToReturn
