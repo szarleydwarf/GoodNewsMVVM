@@ -123,7 +123,12 @@ class ViewModel {
             compositeFilter.setValue(beginImage, forKey:kCIInputImageKey)
             compositeFilter.setValue(beginImage, forKey:kCIInputBackgroundImageKey)
             filter = compositeFilter
-
+        case 4:
+            guard let vignetteFilter = CIFilter(name:"CIVignette")  else {return UIImage()}
+            vignetteFilter.setValue(beginImage, forKey:kCIInputImageKey)
+            vignetteFilter.setValue(intensity * 2, forKey:"inputIntensity")
+            vignetteFilter.setValue(intensity * 30, forKey:"inputRadius")
+            filter = vignetteFilter
         default:
             guard let currentFilter = CIFilter(name: "CISepiaTone") else {return UIImage()}
             currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
