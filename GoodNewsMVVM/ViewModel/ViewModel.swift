@@ -19,7 +19,7 @@ protocol ViewModelProtocol: class {
 class ViewModel {
     private var service: Networking
     private let context: CIContext
-
+    
     weak var delegate:ViewModelProtocol?
     
     var model: Model? {
@@ -31,10 +31,10 @@ class ViewModel {
         }
     }
     
-   init(services: Networking = NetworkService()) {
+    init(services: Networking = NetworkService()) {
         self.service = services
         self.context = CIContext(options: nil)
-
+        
     }
     
     func requestModel() {
@@ -87,7 +87,7 @@ class ViewModel {
         if let currentFilter = CIFilter(name: "CISepiaTone") {
             currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
             currentFilter.setValue(0.5, forKey: kCIInputIntensityKey)
-
+            
             if let output = currentFilter.outputImage {
                 if let cgimg = context.createCGImage(output, from: output.extent) {
                     let processedImage = UIImage(cgImage: cgimg)
@@ -98,7 +98,7 @@ class ViewModel {
         return UIImage()
     }
     
-    func applyFilter (on image: UIImage, filterNumber: Int) -> UIImage{
+    func applyFilter (on image: UIImage, filterNumber: Int, intensity: Float = 0.66) -> UIImage{
         let beginImage = CIImage(image: image)
         var imageToReturn: UIImage = UIImage()
         var filter: CIFilter = CIFilter()
@@ -110,8 +110,9 @@ class ViewModel {
             currentFilter.setValue(0.75, forKey: kCIInputIntensityKey)
             filter = currentFilter
         case 1:
-            guard let currentFilter = CIFilter(name: "CISepiaTone") else {return UIImage()}
-            
+            guard let randomFilter = CIFilter(name: "CIRandomGenerator") else {return UIImage()}
+            filter = randomFilter
+        
         default:
             guard let currentFilter = CIFilter(name: "CISepiaTone") else {return UIImage()}
             currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
