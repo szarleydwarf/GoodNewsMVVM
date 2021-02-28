@@ -50,14 +50,15 @@ class ViewController: UIViewController {
     }
     
     @objc func imageTapped(_ sender: UITapGestureRecognizer) {
-        guard let image = self.theme.image else {
+        guard let image = UIImage(named: "ducks") else {
             print("image not unwrapped")
             return
         }
-        print("1.tc > \(self.tapCount)")
+        guard let tap = self.tapCount else {return}
+        print("1.tc > \(self.tapCount)>>\(tap)")
         self.tapCount = self.tapCount < 4 ? self.tapCount + 1 : 0
-        print("2.tc > \(self.tapCount)")
-        self.theme.image = self.vm.applyFilter(on: image, filterNumber: self.tapCount)
+        print("2.tc > \(self.tapCount)>>\(tap)")
+        self.theme.image = self.vm.applyFilter(on: image, filterNumber: tap)
     }
     
     @IBAction func refreshQuote(_ sender: UIButton) {

@@ -112,7 +112,12 @@ class ViewModel {
         case 1:
             guard let randomFilter = CIFilter(name: "CIRandomGenerator") else {return UIImage()}
             filter = randomFilter
-        
+        case 2:
+            guard let lightenFilter = CIFilter(name:"CIColorControls") else {return UIImage()}
+            lightenFilter.setValue(beginImage, forKey:kCIInputImageKey)
+            lightenFilter.setValue(1 - intensity, forKey:"inputBrightness")
+            lightenFilter.setValue(0, forKey:"inputSaturation")
+            filter = lightenFilter
         default:
             guard let currentFilter = CIFilter(name: "CISepiaTone") else {return UIImage()}
             currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
