@@ -110,8 +110,9 @@ class ViewModel {
             currentFilter.setValue(0.75, forKey: kCIInputIntensityKey)
             filter = currentFilter
         case 1:
-            guard let randomFilter = CIFilter(name: "CIRandomGenerator") else {return UIImage()}
-            filter = randomFilter
+            guard let blurFilter = CIFilter(name: "CIGaussianBlur") else {return UIImage()}
+            blurFilter.setValue(beginImage, forKey: kCIInputImageKey)
+            filter = blurFilter
         case 2:
             guard let lightenFilter = CIFilter(name:"CIColorControls") else {return UIImage()}
             lightenFilter.setValue(beginImage, forKey:kCIInputImageKey)
