@@ -32,10 +32,15 @@ class ViewModel {
         }
     }
     
+    var fade:(CFTimeInterval, Bool) -> CATransition
+    var scale:(CFTimeInterval) ->CASpringAnimation
+    
     init(services: Networking = NetworkService(), animations: Animations = Animations()) {
         self.service = services
         self.context = CIContext(options: nil)
         self.animations = animations
+        self.fade = self.animations.fade(_:_:)
+        self.scale = self.animations.scale(_:)
     }
     
     func requestModel() {

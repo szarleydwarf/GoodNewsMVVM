@@ -78,11 +78,11 @@ extension ViewController: ViewModelProtocol {
     }
     
     func fadeAnimation() {
-        self.quote.layer.add(self.vm.fade(1.5), forKey: CATransitionType.fade.rawValue)
+        self.quote.layer.add(self.vm.fade(1.5, false), forKey: CATransitionType.fade.rawValue)
     }
     
     func scaleAnimation () {
-        self.quote.layer.add(self.vm.scale(), forKey: nil)
+        self.quote.layer.add(self.vm.scale(0.75), forKey: nil)
     }
     
     func addFilter() {
