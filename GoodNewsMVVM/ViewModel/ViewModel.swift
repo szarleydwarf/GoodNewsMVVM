@@ -81,24 +81,7 @@ class ViewModel {
         return scaleLayout
     }
     
-    func applyFilter (on image: UIImage) -> UIImage{
-        let beginImage = CIImage(image: image)
-        
-        if let currentFilter = CIFilter(name: "CISepiaTone") {
-            currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
-            currentFilter.setValue(0.5, forKey: kCIInputIntensityKey)
-            
-            if let output = currentFilter.outputImage {
-                if let cgimg = context.createCGImage(output, from: output.extent) {
-                    let processedImage = UIImage(cgImage: cgimg)
-                    return processedImage
-                }
-            }
-        }
-        return UIImage()
-    }
-    
-    func applyFilter (on image: UIImage, filterNumber: Int, intensity: Float = 0.66) -> UIImage{
+    func applyFilter (on image: UIImage, filterNumber: Int = 0, intensity: Float = 0.66) -> UIImage{
         let beginImage = CIImage(image: image)
         var imageToReturn: UIImage = UIImage()
         var filter: CIFilter = CIFilter()
