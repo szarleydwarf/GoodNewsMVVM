@@ -18,6 +18,7 @@ protocol ViewModelProtocol: class {
 
 class ViewModel {
     private var service: Networking
+    private var animations: Animation
     private let context: CIContext
     
     weak var delegate:ViewModelProtocol?
@@ -31,10 +32,10 @@ class ViewModel {
         }
     }
     
-    init(services: Networking = NetworkService()) {
+    init(services: Networking = NetworkService(), animations: Animations = Animations()) {
         self.service = services
         self.context = CIContext(options: nil)
-        
+        self.animations = animations
     }
     
     func requestModel() {
@@ -60,26 +61,6 @@ class ViewModel {
         }
     }
     
-    func fade(_ duration: CFTimeInterval = 0.75,_ reverse:Bool = false) -> CATransition {
-        let anim = CATransition()
-        anim.timingFunction = CAMediaTimingFunction(name: .easeIn)
-        anim.type = .fade
-        anim.duration = duration
-        anim.autoreverses = reverse
-        return anim
-    }
-    
-    func scale(_ duration:CFTimeInterval = 0.75) -> CASpringAnimation {
-        let scaleLayout = CASpringAnimation(keyPath: "transform.scale")
-        scaleLayout.damping = 10
-        scaleLayout.mass = 0.6
-        scaleLayout.initialVelocity = 25
-        scaleLayout.stiffness = 150.0
-        scaleLayout.fromValue = 2.0
-        scaleLayout.toValue = 1.0
-        scaleLayout.duration = duration
-        return scaleLayout
-    }
     
     func applyFilter (on image: UIImage, filterNumber: Int = 0, intensity: Float = 0.66) -> UIImage{
         let beginImage = CIImage(image: image)
