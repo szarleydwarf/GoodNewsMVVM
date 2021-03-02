@@ -58,7 +58,7 @@ class ViewController: UIViewController {
         print("1.tc > \(self.tapCount)>>\(tap)")
         self.tapCount = self.tapCount < 4 ? self.tapCount + 1 : 0
         print("2.tc > \(self.tapCount)>>\(tap)")
-        self.theme.image = self.vm.applyFilter(on: image, filterNumber: tap)
+        self.theme.image = self.vm.randomFilter(image, tap, 0.5)
     }
     
     @IBAction func refreshQuote(_ sender: UIButton) {
@@ -91,6 +91,6 @@ extension ViewController: ViewModelProtocol {
             return
         }
         
-        self.theme.image = self.vm.applyFilter(on: image)
+        self.theme.image = self.vm.randomFilter(image, 0, 0.5)
     }
 }
