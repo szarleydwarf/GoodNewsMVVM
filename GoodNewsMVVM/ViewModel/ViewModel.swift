@@ -13,7 +13,7 @@ protocol ViewModelProtocol: class {
     func refreshUI()
     func fadeAnimation()
     func scaleAnimation()
-    func addFilter()
+//    func addFilter()
 }
 
 class ViewModel {
@@ -27,7 +27,7 @@ class ViewModel {
         didSet {
             delegate?.fadeAnimation()
             delegate?.scaleAnimation()
-            delegate?.addFilter()
+//            delegate?.addFilter()
             delegate?.refreshUI()
         }
     }
@@ -41,9 +41,13 @@ class ViewModel {
         self.animations = animations
         self.filters = filters
         
+        self.setVariable()
+    }
+    
+    func setVariable() {
         self.fade = self.animations.fade(_:_:)
         self.scale = self.animations.scale(_:)
-        self.randomFilter = self.filters.applyFilter(on:filterNumber:intensity:) 
+        self.randomFilter = self.filters.applyFilter(on:filterNumber:intensity:)
     }
     
     func requestModel() {

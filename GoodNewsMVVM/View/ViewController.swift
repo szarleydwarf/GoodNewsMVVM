@@ -85,12 +85,12 @@ extension ViewController: ViewModelProtocol {
         self.quote.layer.add(self.vm.scale(0.75), forKey: nil)
     }
     
-    func addFilter() {
-        guard let image = self.theme.image else {
-            print("image not unwrapped")
-            return
-        }
-        
-        self.theme.image = self.vm.randomFilter(image, 0, 0.5)
-    }
+//    func addFilter() {
+//        guard let image = self.theme.image else {
+//            print("image not unwrapped")
+//            return
+//        }
+//        
+//        self.theme.image = self.vm.randomFilter(image, 0, 0.5)
+//    }
 }
