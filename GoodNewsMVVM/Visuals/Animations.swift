@@ -14,6 +14,15 @@ protocol Animation {
     func scale(_ duration:CFTimeInterval) -> CASpringAnimation
 }
 
+extension Animation {
+    func fade(_ duration: CFTimeInterval = 0.75,_ reverse:Bool = false) -> CATransition {
+        return fade(duration, reverse)
+    }
+    func scale(_ duration:CFTimeInterval = 0.75) -> CASpringAnimation {
+        return scale(duration)
+    }
+}
+
 class Animations: Animation {
     func fade(_ duration: CFTimeInterval = 0.75,_ reverse:Bool = false) -> CATransition {
         let anim = CATransition()
