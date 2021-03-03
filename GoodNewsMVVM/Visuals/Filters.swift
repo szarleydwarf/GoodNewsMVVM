@@ -12,6 +12,11 @@ import UIKit
 protocol Filter {
     func applyFilter (on image: UIImage, filterNumber: Int, intensity: Float) -> UIImage
 }
+extension Filter {
+    func applyFilter (on image: UIImage, filterNumber: Int = 0, intensity: Float = 0.66) -> UIImage {
+        return applyFilter(on: image, filterNumber: filterNumber, intensity: intensity)
+    }
+}
 
 class Filters: Filter {
     private var context:CIContext = CIContext(options: nil)
