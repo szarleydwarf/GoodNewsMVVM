@@ -9,16 +9,16 @@
 import Foundation
 import UIKit
 
-protocol Filter {
+protocol FilterProtocol {
     func applyFilter (on image: UIImage, filterNumber: Int, intensity: Float) -> UIImage
 }
-extension Filter {
+extension FilterProtocol {
     func applyFilter (on image: UIImage, filterNumber: Int = 0, intensity: Float = 0.66) -> UIImage {
         return applyFilter(on: image, filterNumber: filterNumber, intensity: intensity)
     }
 }
 
-class Filters: Filter {
+class Filters: FilterProtocol {
     private var context:CIContext = CIContext(options: nil)
 
     

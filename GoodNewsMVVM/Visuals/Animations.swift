@@ -9,12 +9,12 @@
 import Foundation
 import UIKit
 
-protocol Animation {
+protocol AnimationProtocol {
     func fade(_ duration: CFTimeInterval,_ reverse:Bool) -> CATransition
     func scale(_ duration:CFTimeInterval) -> CASpringAnimation
 }
 
-extension Animation {
+extension AnimationProtocol {
     func fade(_ duration: CFTimeInterval = 0.75,_ reverse:Bool = false) -> CATransition {
         return fade(duration, reverse)
     }
@@ -23,7 +23,7 @@ extension Animation {
     }
 }
 
-class Animations: Animation {
+class Animations: AnimationProtocol {
     func fade(_ duration: CFTimeInterval = 0.75,_ reverse:Bool = false) -> CATransition {
         let anim = CATransition()
         anim.timingFunction = CAMediaTimingFunction(name: .easeIn)
