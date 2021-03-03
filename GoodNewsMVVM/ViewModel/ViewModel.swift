@@ -7,47 +7,25 @@
 //
 
 import Foundation
-import UIKit
 
 protocol ViewModelProtocol: class {
     func refreshUI()
-    func fadeAnimation()
-    func scaleAnimation()
-//    func addFilter()
 }
 
 class ViewModel {
     private var service: Networking
-    private var animations: Animation
-    private var filters:Filter
     
     weak var delegate:ViewModelProtocol?
     
     var model: Model? {
         didSet {
-            delegate?.fadeAnimation()
-            delegate?.scaleAnimation()
-//            delegate?.addFilter()
             delegate?.refreshUI()
         }
     }
     
-    var fade:(CFTimeInterval, Bool) -> CATransition
-    var scale:(CFTimeInterval) ->CASpringAnimation
-    var randomFilter: (UIImage,Int, Float) -> UIImage
     
-    init(services: Networking = NetworkService(), animations: Animations = Animations(), filters:Filters = Filters()) {
+    init(services: Networking = NetworkService()) {
         self.service = services
-        self.animations = animations
-        self.filters = filters
-        
-        self.setVariable()
-    }
-    
-    func setVariable() {
-        self.fade = self.animations.fade(_:_:)
-        self.scale = self.animations.scale(_:)
-        self.randomFilter = self.filters.applyFilter(on:filterNumber:intensity:)
     }
     
     func requestModel() {
