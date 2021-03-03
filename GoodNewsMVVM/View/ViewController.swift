@@ -11,6 +11,8 @@ import UIKit
 class ViewController: UIViewController {
     
     private var vm:ViewModel!
+    private var animations: Animation!
+    private var filters: Filter!
     private var tapCount:Int!
     @IBOutlet weak var theme: UIImageView! {
         didSet {
@@ -33,7 +35,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tapCount = 0
+        self.animations = Animations()
+        self.filters = Filters()
         self.vm = ViewModel()
+        
         self.vm.delegate = self
         self.vm.requestModel()
         
@@ -58,7 +63,7 @@ class ViewController: UIViewController {
         print("1.tc > \(self.tapCount)>>\(tap)")
         self.tapCount = self.tapCount < 4 ? self.tapCount + 1 : 0
         print("2.tc > \(self.tapCount)>>\(tap)")
-        self.theme.image = self.vm.randomFilter(image, tap, 0.5)
+        self.theme.image = self.filters.applyFilter(on: image, filterNumber: tap)
     }
     
     @IBAction func refreshQuote(_ sender: UIButton) {
@@ -78,11 +83,11 @@ extension ViewController: ViewModelProtocol {
     }
     
     func fadeAnimation() {
-        self.quote.layer.add(self.vm.fade(1.5, false), forKey: CATransitionType.fade.rawValue)
+        self.quote.layer.add(self.animations.fade(1.5), forKey: CATransitionType.fade.rawValue)
     }
     
     func scaleAnimation () {
-        self.quote.layer.add(self.vm.scale(0.75), forKey: nil)
+        self.quote.layer.add(self.animations.scale(0.75), forKey: nil)
     }
     
 //    func addFilter() {
