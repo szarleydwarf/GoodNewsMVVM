@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     private var tapCount:Int!
     @IBOutlet weak var theme: UIImageView! {
         didSet {
-            theme.image = UIImage(named: "ducks")
+            theme.image = UIImage(named: Const.imageName)
             theme.isUserInteractionEnabled = true
         }
     }
@@ -55,8 +55,7 @@ class ViewController: UIViewController {
     }
     
     @objc func imageTapped(_ sender: UITapGestureRecognizer) {
-        guard let image = UIImage(named: "ducks") else {
-            print("image not unwrapped")
+        guard let image = UIImage(named: Const.imageName) else {
             return
         }
         guard let tap = self.tapCount else {return}
@@ -65,6 +64,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func bookmrkQuote(_ sender: UIButton) {
+        print("tapped bookmark")
     }
     
     @IBAction func refreshQuote(_ sender: UIButton) {

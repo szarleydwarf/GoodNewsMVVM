@@ -24,5 +24,5 @@ struct Const {
     
     static let unknown = "UNKNOWN"
     
-
+    static let imageName = "ducks"
 }
