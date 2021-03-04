@@ -95,6 +95,7 @@
                     </view>
                     <connections>
                         <outlet property="author" destination="WIl-RZ-GeE" id="NLH-Zz-QsQ"/>
+                        <outlet property="greetingLabel" destination="mYH-1U-czw" id="XSB-N9-QUh"/>
                         <outlet property="quote" destination="el7-qV-GBu" id="gTr-tZ-m8N"/>
                         <outlet property="theme" destination="pbN-uc-Hde" id="C3g-77-66o"/>
                     </connections>

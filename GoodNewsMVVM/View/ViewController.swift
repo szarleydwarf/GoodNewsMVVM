@@ -15,6 +15,12 @@ class ViewController: UIViewController {
     private var filters: FilterProtocol!
     private var tapCount:Int!
     
+    @IBOutlet weak var greetingLabel: UILabel! {
+        didSet {
+            greetingLabel.text = Const.greetingLabel
+        }
+    }
+    
     @IBOutlet weak var theme: UIImageView! {
         didSet {
             theme.image = UIImage(named: Const.imageName)
@@ -48,6 +54,8 @@ class ViewController: UIViewController {
         
         let imageTap = UITapGestureRecognizer(target: self, action: #selector(imageTapped(_:)))
         self.theme.addGestureRecognizer(imageTap)
+        
+        promptForAnswer()
     }
     
     // selector version of tap recognision
@@ -77,6 +85,21 @@ class ViewController: UIViewController {
     // storyboard(interface builder) version of tap recognision
     @IBAction func labelTapped (_ sender: UITapGestureRecognizer) {
         self.vm.requestModel()
+    }
+    
+    func promptForAnswer() {
+        let ac = UIAlertController(title: "Enter your name", message: nil, preferredStyle: .alert)
+        ac.addTextField()
+
+        let submitAction = UIAlertAction(title: "Submit", style: .default) { [unowned ac] _ in
+            let answer = ac.textFields![0]
+            // do something interesting with "answer" here
+            print(answer)
+        }
+
+        ac.addAction(submitAction)
+
+        //(ac, animated: true)
     }
 }
 
