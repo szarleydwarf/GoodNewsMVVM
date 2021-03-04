@@ -64,6 +64,9 @@ class ViewController: UIViewController {
         self.theme.image = self.filters.applyFilter(on: image, filterNumber: tap)
     }
     
+    @IBAction func bookmrkQuote(_ sender: UIButton) {
+    }
+    
     @IBAction func refreshQuote(_ sender: UIButton) {
         self.vm.requestModel()
     }
