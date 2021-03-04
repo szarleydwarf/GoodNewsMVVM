@@ -51,5 +51,8 @@ class ViewModel {
         }
     }
     
-
+    func isLoggedUser () -> String{
+        // check for username in userdefaults return if exist
+        return Const.stranger
+    }
 }

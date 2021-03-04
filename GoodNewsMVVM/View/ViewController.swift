@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     private var animations: AnimationProtocol!
     private var filters: FilterProtocol!
     private var tapCount:Int!
+    
     @IBOutlet weak var theme: UIImageView! {
         didSet {
             theme.image = UIImage(named: Const.imageName)
@@ -65,6 +66,8 @@ class ViewController: UIViewController {
     
     @IBAction func bookmrkQuote(_ sender: UIButton) {
         print("tapped bookmark")
+        //add scaling if possible
+        //save in core data
     }
     
     @IBAction func refreshQuote(_ sender: UIButton) {
