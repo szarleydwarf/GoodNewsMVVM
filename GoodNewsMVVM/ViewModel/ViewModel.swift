@@ -10,6 +10,7 @@ import Foundation
 
 protocol ViewModelProtocol: class {
     func refreshUI()
+    func setLabel()
 }
 
 class ViewModel {
@@ -22,7 +23,11 @@ class ViewModel {
             delegate?.refreshUI()
         }
     }
-    
+    var user: User? {
+        didSet {
+            delegate?.setLabel()
+        }
+    }
     
     init(services: NetworkingProtocol = NetworkService(), userDefaults: UserDefaultsStoreProtocol = UserDefaultsStore()) {
         self.service = services
@@ -51,20 +56,19 @@ class ViewModel {
             }
         }
     }
-    
-    func isLoggedUser () -> String{
-        // check for username in userdefaults return if exist
-        return Const.stranger
-    }
 }
 
 extension ViewModel: UserDefaultsStoreProtocol {
+    func saveUser(user: User) {
+        self.defaults.saveUser(user: user)
+    }
+    
     func checkIfEntryExist() -> Bool {
         return false
     }
     
-    func retriveData() -> (String, Int) {
-        let user = self.defaults.retriveData()
+    func fetchUser() -> (String, Int) {
+        let user = self.defaults.fetchUser()
         return user
     }
     

@@ -22,6 +22,7 @@
 		D7A8381E25EE896E00DD39AE /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A8381D25EE896E00DD39AE /* Filters.swift */; };
 		D7AFB3A425F2A2BC004FD354 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AFB3A325F2A2BC004FD354 /* Alerts.swift */; };
 		D7AFB3A925F2A3A7004FD354 /* UserDefaultsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AFB3A825F2A3A7004FD354 /* UserDefaultsStore.swift */; };
+		D7AFB3B325F2AED6004FD354 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AFB3B225F2AED6004FD354 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		D7A8381D25EE896E00DD39AE /* Filters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filters.swift; sourceTree = "<group>"; };
 		D7AFB3A325F2A2BC004FD354 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		D7AFB3A825F2A3A7004FD354 /* UserDefaultsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStore.swift; sourceTree = "<group>"; };
+		D7AFB3B225F2AED6004FD354 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				D7749FFB25DFC6C60038B6F4 /* Model.swift */,
+				D7AFB3B225F2AED6004FD354 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				D7749FD725DFC11A0038B6F4 /* SceneDelegate.swift in Sources */,
 				D7749FFC25DFC6C60038B6F4 /* Model.swift in Sources */,
 				D7AFB3A425F2A2BC004FD354 /* Alerts.swift in Sources */,
+				D7AFB3B325F2AED6004FD354 /* User.swift in Sources */,
 				D7A8381E25EE896E00DD39AE /* Filters.swift in Sources */,
 				D7A8380A25EE829D00DD39AE /* Animations.swift in Sources */,
 				D774A00225DFCBA60038B6F4 /* Const.swift in Sources */,

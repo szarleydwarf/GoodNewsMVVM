@@ -59,7 +59,7 @@ class ViewController: UIViewController {
         super.viewWillAppear(animated)
   
         // check for userdefaults and set the label
-        self.vm.retriveData()
+        self.vm.fetchUser()
     }
     
     // selector version of tap recognision
@@ -99,6 +99,14 @@ extension ViewController: ViewModelProtocol {
         
         self.author.text = self.vm.model?.author
         self.quote.text = self.vm.model?.quote
+    }
+    
+    func setLabel() {
+        var text = Const.greetingLabel
+        if let name = self.vm.user?.name {
+            text += name
+        }
+        self.greetingLabel.text = text
     }
 }
 
