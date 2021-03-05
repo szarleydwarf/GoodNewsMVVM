@@ -9,6 +9,6 @@
 import Foundation
 
 struct User {
-    let name:String?
-    let bookmarkCounts: Int?
+    var name:String?
+    var bookmarkCounts: Int?
 }

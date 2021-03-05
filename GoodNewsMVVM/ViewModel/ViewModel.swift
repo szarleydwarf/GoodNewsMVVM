@@ -58,7 +58,7 @@ class ViewModel {
     }
 }
 
-extension ViewModel: UserDefaultsStoreProtocol {
+extension ViewModel{ //}: UserDefaultsStoreProtocol {
     func saveUser(user: User) {
         self.defaults.saveUser(user: user)
     }
@@ -67,9 +67,8 @@ extension ViewModel: UserDefaultsStoreProtocol {
         return false
     }
     
-    func fetchUser() -> (String, Int) {
-        let user = self.defaults.fetchUser()
-        return user
+    func fetchUser() {
+        self.user = self.defaults.fetchUser()
     }
     
     

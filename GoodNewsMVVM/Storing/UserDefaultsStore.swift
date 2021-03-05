@@ -10,7 +10,7 @@ import Foundation
 
 protocol UserDefaultsStoreProtocol {
     func checkIfEntryExist() -> Bool
-    func fetchUser() -> (String, Int)
+    func fetchUser() -> User
     func saveUser(user:User)
 }
 
@@ -22,12 +22,12 @@ class UserDefaultsStore: UserDefaultsStoreProtocol {
         return false
     }
     
-    func fetchUser() -> (String, Int) {
-        let name = self.userDefaults.string(forKey: Const.name)
-        
-        let count = self.userDefaults.integer(forKey: Const.bookmarksCount)
-        print("NAME \(name) >> \(count) << ")
-        return ("", 0)
+    func fetchUser() -> User {
+        var user: User = User()
+        user.name = self.userDefaults.string(forKey: Const.name)
+        user.bookmarkCounts = self.userDefaults.integer(forKey: Const.bookmarksCount)
+        print("NAME \(user.name) >> \(user.bookmarkCounts) << ")
+        return user
     }
     
     func saveUser (user: User) {
