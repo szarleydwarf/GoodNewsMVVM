@@ -54,8 +54,18 @@ class ViewController: UIViewController {
         
         let imageTap = UITapGestureRecognizer(target: self, action: #selector(imageTapped(_:)))
         self.theme.addGestureRecognizer(imageTap)
-        
-        promptForAnswer()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //check if label name
+        if let hasName = self.greetingLabel.text?.contains(Const.stranger) {
+            if hasName {
+                promptForAnswer()
+            }
+        } else {
+            print("hello")
+        }
     }
     
     // selector version of tap recognision
@@ -99,7 +109,7 @@ class ViewController: UIViewController {
 
         ac.addAction(submitAction)
 
-        //(ac, animated: true)
+        self.present(ac, animated: true)
     }
 }
 
