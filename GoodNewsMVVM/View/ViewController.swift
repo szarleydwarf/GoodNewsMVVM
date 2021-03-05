@@ -45,7 +45,6 @@ class ViewController: UIViewController {
         self.animations = Animations()
         self.filters = Filters()
         self.vm = ViewModel()
-        
         self.vm.delegate = self
         self.vm.requestModel()
         
@@ -58,8 +57,9 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //check if label name
-        
+  
+        // check for userdefaults and set the label
+        self.vm.retriveData()
     }
     
     // selector version of tap recognision
@@ -76,10 +76,10 @@ class ViewController: UIViewController {
         self.theme.image = self.filters.applyFilter(on: image, filterNumber: tap)
     }
     
-    @IBAction func bookmrkQuote(_ sender: UIButton) {
+    @IBAction func bookmarkQuote(_ sender: UIButton) {
         print("tapped bookmark")
         //add scaling if possible
-        //save in core data
+        //save in core data & in userdefaults, no of bookmarks
     }
     
     @IBAction func refreshQuote(_ sender: UIButton) {
@@ -89,10 +89,6 @@ class ViewController: UIViewController {
     // storyboard(interface builder) version of tap recognision
     @IBAction func labelTapped (_ sender: UITapGestureRecognizer) {
         self.vm.requestModel()
-    }
-    
-    func promptForAnswer() {
-
     }
 }
 

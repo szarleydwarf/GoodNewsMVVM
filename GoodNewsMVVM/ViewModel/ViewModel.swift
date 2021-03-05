@@ -13,8 +13,8 @@ protocol ViewModelProtocol: class {
 }
 
 class ViewModel {
-    private var service: Networking
-    
+    private var service: NetworkingProtocol
+    private var defaults: UserDefaultsStoreProtocol
     weak var delegate:ViewModelProtocol?
     
     var model: Model? {
@@ -24,8 +24,9 @@ class ViewModel {
     }
     
     
-    init(services: Networking = NetworkService()) {
+    init(services: NetworkingProtocol = NetworkService(), userDefaults: UserDefaultsStoreProtocol = UserDefaultsStore()) {
         self.service = services
+        self.defaults = userDefaults
     }
     
     func requestModel() {
@@ -55,4 +56,17 @@ class ViewModel {
         // check for username in userdefaults return if exist
         return Const.stranger
     }
+}
+
+extension ViewModel: UserDefaultsStoreProtocol {
+    func checkIfEntryExist() -> Bool {
+        return false
+    }
+    
+    func retriveData() -> (String, Int) {
+        let user = self.defaults.retriveData()
+        return user
+    }
+    
+    
 }

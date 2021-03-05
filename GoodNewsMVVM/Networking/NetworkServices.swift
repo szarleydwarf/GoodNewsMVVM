@@ -14,12 +14,12 @@ enum NetworkErrors: Error {
     case couldNotDecode
 }
 
-protocol Networking {
+protocol NetworkingProtocol {
     func getURL(host:String?, path:String?, params:[String:String]?) -> URL?
     func fetch(url:URL?, completion:@escaping(Result<Model, NetworkErrors>)->Void)
 }
 
-class NetworkService: Networking {
+class NetworkService: NetworkingProtocol {
 
     func getURL(host: String?, path: String?, params:[String:String]?) -> URL? {
         var components = URLComponents()

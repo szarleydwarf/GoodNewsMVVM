@@ -9,17 +9,23 @@
 import Foundation
 
 protocol UserDefaultsStoreProtocol {
-    func checkIfEntryExist(name: String)
+    func checkIfEntryExist() -> Bool
     func retriveData() -> (String, Int)
 }
 
 class UserDefaultsStore: UserDefaultsStoreProtocol {
-    func checkIfEntryExist(name: String) {
+    private let userDefaults = UserDefaults.standard
+    
+    func checkIfEntryExist() -> Bool {
         
+        return false
     }
     
     func retriveData() -> (String, Int) {
+        let name = self.userDefaults.string(forKey: Const.name)
         
+        let count = self.userDefaults.integer(forKey: Const.bookmarksCount)
+        print("NAME \(name) >> \(count) << ")
         return ("", 0)
     }
 }
