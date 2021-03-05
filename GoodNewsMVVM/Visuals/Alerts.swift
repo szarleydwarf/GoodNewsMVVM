@@ -14,6 +14,18 @@ protocol AlertsProtocol {
 class Alerts: AlertsProtocol {
     func displayAlert(in view: UIViewController, getsInput: Bool = false) {
         print(getsInput)
+        let ac = UIAlertController(title: "Enter your name", message: nil, preferredStyle: .alert)
+        ac.addTextField()
+
+        let submitAction = UIAlertAction(title: "Submit", style: .default) { [unowned ac] _ in
+            let answer = ac.textFields![0]
+            // do something interesting with "answer" here
+            print(answer)
+        }
+
+        ac.addAction(submitAction)
+
+        view.present(ac, animated: true)
     }
     
     

@@ -27,4 +27,7 @@ struct Const {
     static let greetingLabel = "Hello "
     static let imageName = "ducks"
     static let stranger = "stranger"
+    
+    static let name = "username"
+    static let bookmarksCount = "bookmarksCount"
 }

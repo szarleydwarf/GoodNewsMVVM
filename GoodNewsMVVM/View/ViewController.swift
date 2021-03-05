@@ -59,13 +59,7 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //check if label name
-        if let hasName = self.greetingLabel.text?.contains(Const.stranger) {
-            if hasName {
-                promptForAnswer()
-            }
-        } else {
-            print("hello")
-        }
+        
     }
     
     // selector version of tap recognision
@@ -98,18 +92,7 @@ class ViewController: UIViewController {
     }
     
     func promptForAnswer() {
-        let ac = UIAlertController(title: "Enter your name", message: nil, preferredStyle: .alert)
-        ac.addTextField()
 
-        let submitAction = UIAlertAction(title: "Submit", style: .default) { [unowned ac] _ in
-            let answer = ac.textFields![0]
-            // do something interesting with "answer" here
-            print(answer)
-        }
-
-        ac.addAction(submitAction)
-
-        self.present(ac, animated: true)
     }
 }
 
