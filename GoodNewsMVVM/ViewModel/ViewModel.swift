@@ -65,6 +65,7 @@ class ViewModel {
 extension ViewModel{ //}: UserDefaultsStoreProtocol {
     func saveUser(user: User) {
         self.defaults.saveUser(user: user)
+        self.user = user
     }
     
     func checkIfEntryExist() -> Bool {

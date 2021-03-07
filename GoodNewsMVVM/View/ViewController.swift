@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     private var alerts: AlertsProtocol!
     private var tapCount:Int!
     
+    @IBOutlet weak var bookmarkButton: UIButton!
     
     
     @IBOutlet weak var greetingLabel: UILabel! {
@@ -90,11 +91,15 @@ class ViewController: UIViewController {
         // check if user name exist
         if self.vm.user == nil  || self.vm.user?.name == nil{
             print("USER VC no user")
-            self.alerts.displayAlert(in: self, getsInput: true)
+            self.alerts.displayAlert(in: self, getsInput: true) {answer in
+                self.vm.saveUser(user: User(name: answer, bookmarkCounts: 0))
+            }
+        } else {
+            // save in core data & in userdefaults, no of bookmarks
+            
+            // udef no of bookmarks
+
         }
-        
-        // save in core data & in userdefaults, no of bookmarks
-        // udef no of bookmarks
     }
     
     @IBAction func refreshQuote(_ sender: UIButton) {
@@ -125,7 +130,7 @@ extension ViewController: ViewModelProtocol {
     }
     
     func setBookmarkButton () {
-        
+        self.bookmarkButton.alpha = 1
     }
 }
 
