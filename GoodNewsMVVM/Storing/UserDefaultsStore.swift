@@ -26,7 +26,7 @@ class UserDefaultsStore: UserDefaultsStoreProtocol {
         var user: User = User()
         user.name = self.userDefaults.string(forKey: Const.name)
         user.bookmarkCounts = self.userDefaults.integer(forKey: Const.bookmarksCount)
-        print("NAME \(user.name) >> \(user.bookmarkCounts) << ")
+        print("FETCHING USER >> \(user.name) >> \(user.bookmarkCounts) << ")
         return user
     }
     

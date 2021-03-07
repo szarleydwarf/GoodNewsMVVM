@@ -51,7 +51,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pbN-uc-Hde">
                                 <rect key="frame" x="4" y="101" width="406" height="255"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L5J-oI-QOQ" userLabel="Bookmark_Button">
+                            <button opaque="NO" alpha="0.25" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L5J-oI-QOQ" userLabel="Bookmark_Button">
                                 <rect key="frame" x="8" y="370.5" width="44" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="KdN-jQ-qfp"/>
@@ -60,7 +60,7 @@
                                 <color key="tintColor" systemColor="systemYellowColor"/>
                                 <state key="normal" backgroundImage="bookmark.circle" catalog="system"/>
                                 <connections>
-                                    <action selector="bookmrkQuote:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Dzq-me-bEM"/>
+                                    <action selector="bookmarkQuote:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bx6-Fd-svv"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello, username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYH-1U-czw">

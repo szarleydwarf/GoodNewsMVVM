@@ -9,8 +9,9 @@
 import Foundation
 
 protocol ViewModelProtocol: class {
-    func refreshUI()
-    func setLabel()
+    func refreshUI ()
+    func setLabel ()
+    func setBookmarkButton ()
 }
 
 class ViewModel {
@@ -26,6 +27,9 @@ class ViewModel {
     var user: User? {
         didSet {
             delegate?.setLabel()
+            if self.user?.name != nil {
+                delegate?.setBookmarkButton()
+            }
         }
     }
     
@@ -69,6 +73,7 @@ extension ViewModel{ //}: UserDefaultsStoreProtocol {
     
     func fetchUser() {
         self.user = self.defaults.fetchUser()
+        
     }
     
     

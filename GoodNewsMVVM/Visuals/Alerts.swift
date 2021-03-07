@@ -20,7 +20,7 @@ class Alerts: AlertsProtocol {
         let submitAction = UIAlertAction(title: "Submit", style: .default) { [unowned ac] _ in
             let answer = ac.textFields![0]
             // do something interesting with "answer" here
-            print(answer)
+            print("ANSWER >> \(answer.text)")
         }
 
         ac.addAction(submitAction)

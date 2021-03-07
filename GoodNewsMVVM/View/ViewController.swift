@@ -13,7 +13,10 @@ class ViewController: UIViewController {
     private var vm:ViewModel!
     private var animations: AnimationProtocol!
     private var filters: FilterProtocol!
+    private var alerts: AlertsProtocol!
     private var tapCount:Int!
+    
+    
     
     @IBOutlet weak var greetingLabel: UILabel! {
         didSet {
@@ -44,7 +47,9 @@ class ViewController: UIViewController {
         self.tapCount = 0
         self.animations = Animations()
         self.filters = Filters()
+        self.alerts = Alerts()
         self.vm = ViewModel()
+        
         self.vm.delegate = self
         self.vm.requestModel()
         
@@ -78,8 +83,18 @@ class ViewController: UIViewController {
     
     @IBAction func bookmarkQuote(_ sender: UIButton) {
         print("tapped bookmark")
-        //add scaling if possible
-        //save in core data & in userdefaults, no of bookmarks
+        
+        // add scaling if possible
+        sender.layer.add(self.animations.scale(1.75), forKey: "button")
+        
+        // check if user name exist
+        if self.vm.user == nil  || self.vm.user?.name == nil{
+            print("USER VC no user")
+            self.alerts.displayAlert(in: self, getsInput: true)
+        }
+        
+        // save in core data & in userdefaults, no of bookmarks
+        // udef no of bookmarks
     }
     
     @IBAction func refreshQuote(_ sender: UIButton) {
@@ -107,6 +122,10 @@ extension ViewController: ViewModelProtocol {
             text += name
         }
         self.greetingLabel.text = text
+    }
+    
+    func setBookmarkButton () {
+        
     }
 }
 
