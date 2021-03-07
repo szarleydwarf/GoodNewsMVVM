@@ -69,6 +69,8 @@ extension ViewModel{ //}: UserDefaultsStoreProtocol {
     }
     
     func checkIfEntryExist() -> Bool {
+        // test if user name already in, display alert if yes
+        // ask if this is the user
         return false
     }
     

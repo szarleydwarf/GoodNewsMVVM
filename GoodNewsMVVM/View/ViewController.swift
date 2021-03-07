@@ -83,9 +83,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func bookmarkQuote(_ sender: UIButton) {
-        print("tapped bookmark")
-        
-        // add scaling if possible
         sender.layer.add(self.animations.scale(1.75), forKey: "button")
         
         // check if user name exist
@@ -98,7 +95,11 @@ class ViewController: UIViewController {
             // save in core data & in userdefaults, no of bookmarks
             
             // udef no of bookmarks
-
+            if var user = self.vm.user, var bookmarkCount = user.bookmarkCounts {
+                bookmarkCount += 1
+                user.bookmarkCounts = bookmarkCount
+                self.vm.saveUser(user: user)
+            }
         }
     }
     
