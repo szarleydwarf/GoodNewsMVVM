@@ -54,11 +54,7 @@ class ViewController: UIViewController {
         self.vm.delegate = self
         self.vm.requestModel()
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(didTap(_:)))
-        self.author.addGestureRecognizer(tap)
-        
-        let imageTap = UITapGestureRecognizer(target: self, action: #selector(imageTapped(_:)))
-        self.theme.addGestureRecognizer(imageTap)
+        self.implementTapping()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,6 +64,16 @@ class ViewController: UIViewController {
         self.vm.fetchUser()
     }
     
+    func implementTapping () {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTap(_:)))
+        self.author.addGestureRecognizer(tap)
+        
+        let imageTap = UITapGestureRecognizer(target: self, action: #selector(imageTapped(_:)))
+        self.theme.addGestureRecognizer(imageTap)
+        
+        let greetingsLabelTap = UITapGestureRecognizer(target: self, action: #selector(greetingLabelTapped(_:)))
+    }
+
     // selector version of tap recognision
     @objc func didTap(_ sender: UITapGestureRecognizer) {
         self.vm.requestModel()
@@ -82,15 +88,19 @@ class ViewController: UIViewController {
         self.theme.image = self.filters.applyFilter(on: image, filterNumber: tap)
     }
     
+    @objc func greetingLabelTapped(_ sender: UITapGestureRecognizer) {
+        print("Greeting tapped")
+    }
+    
     @IBAction func bookmarkQuote(_ sender: UIButton) {
         sender.layer.add(self.animations.scale(1.75), forKey: "button")
         
         if self.vm.checkIfEntryExist() {
             // save in core data & in userdefaults, no of bookmarks
             
-            // udef no of bookmarks
+            // udef no letbookmarks
             if var user = self.vm.user {
-                var bookmarkCount = user.bookmarkCounts + 1
+                let bookmarkCount = user.bookmarkCounts + 1
                 user.bookmarkCounts = bookmarkCount
                 self.vm.saveUser(user: user)
             }
