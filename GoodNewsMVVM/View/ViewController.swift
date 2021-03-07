@@ -85,20 +85,19 @@ class ViewController: UIViewController {
     @IBAction func bookmarkQuote(_ sender: UIButton) {
         sender.layer.add(self.animations.scale(1.75), forKey: "button")
         
-        // check if user name exist
-        if self.vm.user == nil  || self.vm.user?.name == nil{
-            print("USER VC no user")
-            self.alerts.displayAlert(in: self, getsInput: true) {answer in
-                self.vm.saveUser(user: User(name: answer, bookmarkCounts: 0))
-            }
-        } else {
+        if self.vm.checkIfEntryExist() {
             // save in core data & in userdefaults, no of bookmarks
             
             // udef no of bookmarks
-            if var user = self.vm.user, var bookmarkCount = user.bookmarkCounts {
-                bookmarkCount += 1
+            if var user = self.vm.user {
+                var bookmarkCount = user.bookmarkCounts + 1
                 user.bookmarkCounts = bookmarkCount
                 self.vm.saveUser(user: user)
+            }
+        }
+        else {
+            self.alerts.displayAlert(in: self, getsInput: true) {answer in
+                self.vm.saveUser(user: User(name: answer, bookmarkCounts: 0))
             }
         }
     }

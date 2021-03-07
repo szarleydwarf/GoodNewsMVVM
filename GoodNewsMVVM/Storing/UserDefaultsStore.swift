@@ -12,6 +12,7 @@ protocol UserDefaultsStoreProtocol {
     func checkIfEntryExist() -> Bool
     func fetchUser() -> User
     func saveUser(user:User)
+    func updateUser(bookmarkCount: Int)
 }
 
 class UserDefaultsStore: UserDefaultsStoreProtocol {
@@ -23,8 +24,10 @@ class UserDefaultsStore: UserDefaultsStoreProtocol {
     }
     
     func fetchUser() -> User {
-        var user: User = User()
-        user.name = self.userDefaults.string(forKey: Const.name)
+        var user: User = User(name: "", bookmarkCounts: 0)
+        if let userName = self.userDefaults.string(forKey: Const.name) {
+            user.name = userName
+        }
         user.bookmarkCounts = self.userDefaults.integer(forKey: Const.bookmarksCount)
         print("FETCHING USER >> \(user.name) >> \(user.bookmarkCounts) << ")
         return user
@@ -34,4 +37,9 @@ class UserDefaultsStore: UserDefaultsStoreProtocol {
         self.userDefaults.setValue(user.name, forKey: Const.name)
         self.userDefaults.set(user.bookmarkCounts, forKey: Const.bookmarksCount)
     }
+    
+    func updateUser(bookmarkCount: Int) {
+        self.userDefaults.set(bookmarkCount, forKey: Const.bookmarksCount)
+    }
+
 }

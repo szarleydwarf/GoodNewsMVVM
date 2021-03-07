@@ -62,21 +62,21 @@ class ViewModel {
     }
 }
 
-extension ViewModel{ //}: UserDefaultsStoreProtocol {
+extension ViewModel { //}: UserDefaultsStoreProtocol {
     func saveUser(user: User) {
         self.defaults.saveUser(user: user)
         self.user = user
     }
     
     func checkIfEntryExist() -> Bool {
-        // test if user name already in, display alert if yes
-        // ask if this is the user
-        return false
+        if self.user == nil  || self.user?.name == nil{
+            return false
+        }
+        return true
     }
     
     func fetchUser() {
-        self.user = self.defaults.fetchUser()
-        
+        self.user = self.defaults.fetchUser()        
     }
     
     
