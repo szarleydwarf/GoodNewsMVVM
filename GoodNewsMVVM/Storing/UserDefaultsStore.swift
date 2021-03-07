@@ -9,7 +9,6 @@
 import Foundation
 
 protocol UserDefaultsStoreProtocol {
-    func checkIfEntryExist() -> Bool
     func fetchUser() -> User
     func saveUser(user:User)
     func updateUser(bookmarkCount: Int)
@@ -17,11 +16,6 @@ protocol UserDefaultsStoreProtocol {
 
 class UserDefaultsStore: UserDefaultsStoreProtocol {
     private let userDefaults = UserDefaults.standard
-    
-    func checkIfEntryExist() -> Bool {
-        
-        return false
-    }
     
     func fetchUser() -> User {
         var user: User = User(name: "", bookmarkCounts: 0)

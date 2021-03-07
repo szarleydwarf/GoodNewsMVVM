@@ -62,7 +62,7 @@ class ViewModel {
     }
 }
 
-extension ViewModel { //}: UserDefaultsStoreProtocol {
+extension ViewModel {
     func saveUser(user: User) {
         self.defaults.saveUser(user: user)
         self.user = user
