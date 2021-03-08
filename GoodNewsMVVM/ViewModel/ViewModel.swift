@@ -17,6 +17,7 @@ protocol ViewModelProtocol: class {
 class ViewModel {
     private var service: NetworkingProtocol
     private var defaults: UserDefaultsStoreProtocol
+    private var coreDataManager: CoreDataManagerProtocol
     weak var delegate:ViewModelProtocol?
     
     var model: Model? {
@@ -36,6 +37,8 @@ class ViewModel {
     init(services: NetworkingProtocol = NetworkService(), userDefaults: UserDefaultsStoreProtocol = UserDefaultsStore()) {
         self.service = services
         self.defaults = userDefaults
+        
+        self.coreDataManager = CoreDataManager.shared
     }
     
     func requestModel() {
@@ -78,6 +81,4 @@ extension ViewModel {
     func fetchUser() {
         self.user = self.defaults.fetchUser()        
     }
-    
-    
 }

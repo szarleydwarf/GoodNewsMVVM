@@ -10,18 +10,48 @@ import Foundation
 import CoreData
 
 protocol CoreDataManagerProtocol {
-    func save ()
+    func save () -> Bool
     func fetch ()
 }
 
 class CoreDataManager:  CoreDataManagerProtocol {
-    func save() {
-        print("do save")
+    private init() {    }
+    
+    static let shared = CoreDataManager ()
+    
+    var mainCtx: NSManagedObjectContext {
+        return persistentContainer.viewContext
     }
     
-    func fetch() {
-        print("do fetch")
+    lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: Const.persistentContainarName)
+        container.loadPersistentStores(completionHandler: {(storeDescription, error) in
+            if let error = error as NSError? {
+                fatalError("\(Const.persistentContainer) \(error)")
+            }
+        })
+        return container
+    }()
+    
+    func save() -> Bool {
+        let context = persistentContainer.viewContext
+        if context.hasChanges {
+            do{
+                try context.save()
+                return true
+            } catch{
+                let nserror = error as NSError
+                fatalError("\(Const.errorSaving) \(nserror)")
+            }
+        }
+        
+        return false
     }
     
-    
+     func fetch() {
+         print("do fetch")
+     }
+     
+
+
 }
