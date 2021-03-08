@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var greetingLabel: UILabel! {
         didSet {
             greetingLabel.text = Const.greetingLabel
+            greetingLabel.isUserInteractionEnabled = true
         }
     }
     
@@ -53,17 +54,11 @@ class ViewController: UIViewController {
         
         self.vm.delegate = self
         self.vm.requestModel()
+        self.vm.fetchUser()
         
         self.implementTapping()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-  
-        // check for userdefaults and set the label
-        self.vm.fetchUser()
-    }
-    
+        
     func implementTapping () {
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTap(_:)))
         self.author.addGestureRecognizer(tap)
@@ -72,6 +67,7 @@ class ViewController: UIViewController {
         self.theme.addGestureRecognizer(imageTap)
         
         let greetingsLabelTap = UITapGestureRecognizer(target: self, action: #selector(greetingLabelTapped(_:)))
+        self.greetingLabel.addGestureRecognizer(greetingsLabelTap)
     }
 
     // selector version of tap recognision
