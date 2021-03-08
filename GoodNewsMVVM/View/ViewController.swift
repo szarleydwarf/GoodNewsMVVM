@@ -38,9 +38,9 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var quote: UILabel! {
+    @IBOutlet weak var quoteLabel: UILabel! {
         didSet {
-            quote.isUserInteractionEnabled = true
+            quoteLabel.isUserInteractionEnabled = true
         }
     }
     
@@ -93,7 +93,10 @@ class ViewController: UIViewController {
         
         if self.vm.checkIfEntryExist() {
             // save in core data & in userdefaults, no of bookmarks
-            
+            let quote = Quote(
+            quote.id = 1
+            quote.text = quoteLabel.text
+            self.vm.saveQuote(quote: quote)
             // udef no letbookmarks
             if var user = self.vm.user {
                 let bookmarkCount = user.bookmarkCounts + 1
@@ -124,7 +127,7 @@ extension ViewController: ViewModelProtocol {
         self.scaleAnimation()
         
         self.author.text = self.vm.model?.author
-        self.quote.text = self.vm.model?.quote
+        self.quoteLabel.text = self.vm.model?.quote
     }
     
     func setLabel() {
@@ -142,10 +145,10 @@ extension ViewController: ViewModelProtocol {
 
 extension ViewController: AnimationProtocol {
     func fadeAnimation() {
-        self.quote.layer.add(self.animations.fade(1.5), forKey: CATransitionType.fade.rawValue)
+        self.quoteLabel.layer.add(self.animations.fade(1.5), forKey: CATransitionType.fade.rawValue)
     }
     
     func scaleAnimation () {
-        self.quote.layer.add(self.animations.scale(1.25), forKey: nil)
+        self.quoteLabel.layer.add(self.animations.scale(1.25), forKey: nil)
     }
 }

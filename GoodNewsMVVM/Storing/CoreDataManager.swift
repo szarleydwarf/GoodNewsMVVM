@@ -9,12 +9,8 @@
 import Foundation
 import CoreData
 
-protocol CoreDataManagerProtocol {
-    func save () -> Bool
-    func fetch ()
-}
 
-class CoreDataManager:  CoreDataManagerProtocol {
+class CoreDataManager {
     private init() {    }
     
     static let shared = CoreDataManager ()

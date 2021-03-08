@@ -17,7 +17,7 @@ protocol ViewModelProtocol: class {
 class ViewModel {
     private var service: NetworkingProtocol
     private var defaults: UserDefaultsStoreProtocol
-    private var coreDataManager: CoreDataManagerProtocol
+    private var coreDataManager: CoreDataManager
     weak var delegate:ViewModelProtocol?
     
     var model: Model? {
@@ -84,8 +84,12 @@ extension ViewModel {
 }
 
 extension ViewModel {
-    func saveQuote (quote: Qoute) {
+    func saveQuote (quote: Qoute) -> Bool{
         let ctx = self.coreDataManager.mainContext
-        let q = Qoute(context: ctx)
+        var q = Qoute(context: ctx)
+        q = quote
+        print("Q -> \(q)")
+        print("Quote -> \(quote)")
+        return self.coreDataManager.save()
     }
 }

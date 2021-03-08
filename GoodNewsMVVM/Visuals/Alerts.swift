@@ -20,7 +20,6 @@ class Alerts: AlertsProtocol {
         let submitAction = UIAlertAction(title: "Submit", style: .default) { [unowned ac] _ in
             answer = ac.textFields![0].text
             // do something interesting with "answer" here
-            print("ANSWER >> \(answer)")
             DispatchQueue.main.async {
                 if let answer = answer {
                     completes(answer)
