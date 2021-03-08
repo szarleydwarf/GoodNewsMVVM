@@ -82,3 +82,10 @@ extension ViewModel {
         self.user = self.defaults.fetchUser()        
     }
 }
+
+extension ViewModel {
+    func saveQuote (quote: Qoute) {
+        let ctx = self.coreDataManager.mainContext
+        let q = Qoute(context: ctx)
+    }
+}

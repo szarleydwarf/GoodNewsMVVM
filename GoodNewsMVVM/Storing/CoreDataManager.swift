@@ -19,7 +19,7 @@ class CoreDataManager:  CoreDataManagerProtocol {
     
     static let shared = CoreDataManager ()
     
-    var mainCtx: NSManagedObjectContext {
+    var mainContext: NSManagedObjectContext {
         return persistentContainer.viewContext
     }
     
