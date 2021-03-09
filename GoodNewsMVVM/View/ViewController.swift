@@ -93,7 +93,7 @@ class ViewController: UIViewController {
         
         if self.vm.checkIfEntryExist() {
             // save in core data & in userdefaults, no of bookmarks
-            let quote = Quote(
+            let quote = Quote()
             quote.id = 1
             quote.text = quoteLabel.text
             self.vm.saveQuote(quote: quote)

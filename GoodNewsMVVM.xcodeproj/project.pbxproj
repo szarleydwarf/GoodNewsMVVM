@@ -14,7 +14,7 @@
 		D7749FDE25DFC11F0038B6F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7749FDD25DFC11F0038B6F4 /* Assets.xcassets */; };
 		D7749FE125DFC11F0038B6F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7749FDF25DFC11F0038B6F4 /* LaunchScreen.storyboard */; };
 		D7749FEC25DFC11F0038B6F4 /* GoodNewsMVVMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7749FEB25DFC11F0038B6F4 /* GoodNewsMVVMTests.swift */; };
-		D7749FFC25DFC6C60038B6F4 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7749FFB25DFC6C60038B6F4 /* Model.swift */; };
+		D7749FFC25DFC6C60038B6F4 /* Qoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7749FFB25DFC6C60038B6F4 /* Qoute.swift */; };
 		D7749FFE25DFC6D70038B6F4 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7749FFD25DFC6D70038B6F4 /* ViewModel.swift */; };
 		D774A00025DFC6EC0038B6F4 /* NetworkServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7749FFF25DFC6EC0038B6F4 /* NetworkServices.swift */; };
 		D774A00225DFCBA60038B6F4 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774A00125DFCBA60038B6F4 /* Const.swift */; };
@@ -25,6 +25,8 @@
 		D7AFB3B325F2AED6004FD354 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AFB3B225F2AED6004FD354 /* User.swift */; };
 		D7B01C1125F633A800FDA529 /* Quote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D7B01C0F25F633A800FDA529 /* Quote.xcdatamodeld */; };
 		D7B01C1525F6351C00FDA529 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B01C1425F6351C00FDA529 /* CoreDataManager.swift */; };
+		D7C480DB25F7866900D06EBC /* Qoute+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C480D925F7866900D06EBC /* Qoute+CoreDataClass.swift */; };
+		D7C480DC25F7866900D06EBC /* Qoute+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C480DA25F7866900D06EBC /* Qoute+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +51,7 @@
 		D7749FE725DFC11F0038B6F4 /* GoodNewsMVVMTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoodNewsMVVMTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7749FEB25DFC11F0038B6F4 /* GoodNewsMVVMTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodNewsMVVMTests.swift; sourceTree = "<group>"; };
 		D7749FED25DFC11F0038B6F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D7749FFB25DFC6C60038B6F4 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		D7749FFB25DFC6C60038B6F4 /* Qoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Qoute.swift; sourceTree = "<group>"; };
 		D7749FFD25DFC6D70038B6F4 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		D7749FFF25DFC6EC0038B6F4 /* NetworkServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServices.swift; sourceTree = "<group>"; };
 		D774A00125DFCBA60038B6F4 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
@@ -60,6 +62,8 @@
 		D7AFB3B225F2AED6004FD354 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D7B01C1025F633A800FDA529 /* Quote.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Quote.xcdatamodel; sourceTree = "<group>"; };
 		D7B01C1425F6351C00FDA529 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		D7C480D925F7866900D06EBC /* Qoute+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Qoute+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D7C480DA25F7866900D06EBC /* Qoute+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Qoute+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,7 +130,9 @@
 		D7749FF625DFC5740038B6F4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D7749FFB25DFC6C60038B6F4 /* Model.swift */,
+				D7C480D925F7866900D06EBC /* Qoute+CoreDataClass.swift */,
+				D7C480DA25F7866900D06EBC /* Qoute+CoreDataProperties.swift */,
+				D7749FFB25DFC6C60038B6F4 /* Qoute.swift */,
 				D7AFB3B225F2AED6004FD354 /* User.swift */,
 			);
 			path = Model;
@@ -291,12 +297,14 @@
 			files = (
 				D774A00025DFC6EC0038B6F4 /* NetworkServices.swift in Sources */,
 				D7749FFE25DFC6D70038B6F4 /* ViewModel.swift in Sources */,
+				D7C480DC25F7866900D06EBC /* Qoute+CoreDataProperties.swift in Sources */,
 				D7749FD925DFC11A0038B6F4 /* ViewController.swift in Sources */,
 				D7B01C1125F633A800FDA529 /* Quote.xcdatamodeld in Sources */,
 				D7AFB3A925F2A3A7004FD354 /* UserDefaultsStore.swift in Sources */,
 				D7749FD525DFC11A0038B6F4 /* AppDelegate.swift in Sources */,
 				D7749FD725DFC11A0038B6F4 /* SceneDelegate.swift in Sources */,
-				D7749FFC25DFC6C60038B6F4 /* Model.swift in Sources */,
+				D7C480DB25F7866900D06EBC /* Qoute+CoreDataClass.swift in Sources */,
+				D7749FFC25DFC6C60038B6F4 /* Qoute.swift in Sources */,
 				D7AFB3A425F2A2BC004FD354 /* Alerts.swift in Sources */,
 				D7AFB3B325F2AED6004FD354 /* User.swift in Sources */,
 				D7A8381E25EE896E00DD39AE /* Filters.swift in Sources */,
