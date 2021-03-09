@@ -93,13 +93,13 @@ class ViewController: UIViewController {
         
         if self.vm.checkIfEntryExist() {
             // save in core data & in userdefaults, no of bookmarks
-            let quote = Qoute()
-            quote.id = UUID().uuidString
-            quote.text = quoteLabel.text ?? "NO QOUTE"
-            if self.vm.saveQuote(quote: quote) {
+//            var quote = Model()
+            let author = self.author.text ?? Const.unknown
+            let quote = quoteLabel.text ?? "NO QOUTE"
+            if self.vm.saveQuote(author: author, quote: quote) {
                 print("SAVED!!")
             }
-            // udef no letbookmarks
+//             udef no letbookmarks
             if var user = self.vm.user {
                 let bookmarkCount = user.bookmarkCounts + 1
                 user.bookmarkCounts = bookmarkCount
