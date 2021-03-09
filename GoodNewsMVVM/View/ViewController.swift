@@ -94,7 +94,7 @@ class ViewController: UIViewController {
         if self.vm.checkIfEntryExist() {
             // save in core data & in userdefaults, no of bookmarks
             let quote = Qoute()
-            quote.id = UUID()
+            quote.id = UUID().uuidString
             quote.text = quoteLabel.text ?? "NO QOUTE"
             if self.vm.saveQuote(quote: quote) {
                 print("SAVED!!")

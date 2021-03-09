@@ -18,11 +18,8 @@ extension Qoute {
     }
 
     @NSManaged public var author: String
-    @NSManaged public var id: UUID
+    @NSManaged public var id: String
     @NSManaged public var text: String
 
 }
 
-extension Qoute : Identifiable {
-
-}
