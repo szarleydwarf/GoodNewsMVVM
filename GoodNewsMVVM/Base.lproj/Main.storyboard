@@ -77,6 +77,9 @@
                                 </constraints>
                                 <color key="tintColor" systemColor="systemYellowColor"/>
                                 <state key="normal" image="doc.append" catalog="system"/>
+                                <connections>
+                                    <action selector="goToNextView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FAB-ax-WWQ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -107,6 +110,7 @@
                     <connections>
                         <outlet property="author" destination="WIl-RZ-GeE" id="NLH-Zz-QsQ"/>
                         <outlet property="bookmarkButton" destination="L5J-oI-QOQ" id="Tzl-PO-iax"/>
+                        <outlet property="goToListButton" destination="sk4-64-xe5" id="QEV-le-uvS"/>
                         <outlet property="greetingLabel" destination="mYH-1U-czw" id="XSB-N9-QUh"/>
                         <outlet property="quoteLabel" destination="el7-qV-GBu" id="gTr-tZ-m8N"/>
                         <outlet property="theme" destination="pbN-uc-Hde" id="C3g-77-66o"/>
@@ -174,6 +178,9 @@
                             <constraint firstItem="cav-8X-1kJ" firstAttribute="top" secondItem="Id7-I0-gFS" secondAttribute="top" constant="4" id="dXj-qy-LVt"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="quotesTable" destination="cav-8X-1kJ" id="65f-hm-rDB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZU3-TC-4rb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

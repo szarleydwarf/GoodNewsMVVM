@@ -11,6 +11,8 @@ import UIKit
 class ListViewController: UIViewController {
 //    private var vm:ListViewModel!
    
+    @IBOutlet weak var quotesTable: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     private var tapCount:Int!
     
     @IBOutlet weak var bookmarkButton: UIButton!
+    @IBOutlet weak var goToListButton: UIButton!
     
     
     @IBOutlet weak var greetingLabel: UILabel! {
@@ -88,6 +89,7 @@ class ViewController: UIViewController {
         print("Greeting tapped")
     }
     
+    // buttons
     @IBAction func bookmarkQuote(_ sender: UIButton) {
         sender.layer.add(self.animations.scale(1.75), forKey: "button")
         
@@ -111,6 +113,9 @@ class ViewController: UIViewController {
                 self.vm.saveUser(user: User(name: answer, bookmarkCounts: 0))
             }
         }
+    }
+    
+    @IBAction func goToNextView(_ sender: UIButton) {
     }
     
     @IBAction func refreshQuote(_ sender: UIButton) {
