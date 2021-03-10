@@ -9,11 +9,24 @@
 import UIKit
 
 protocol AlertsProtocol {
-    func displayAlert (in view:UIViewController, getsInput: Bool, completes:@escaping(_ name: String)->Void)
+    func displayAlert (in view:UIViewController, getsInput: Bool, completes:@escaping(_ clearUserData: Bool)->Void)
+    func displayAlert(in view: UIViewController, completes:@escaping(_ name: String)->Void) 
 }
 class Alerts: AlertsProtocol {
-    func displayAlert(in view: UIViewController, getsInput: Bool = false, completes:@escaping(_ name: String)->Void) {
+    func displayAlert(in view: UIViewController, getsInput: Bool, completes: @escaping (Bool) -> Void) {
         print(getsInput)
+        let ac = UIAlertController(title: "WARNING", message: "This action will delete your records. Do you still want to proceed?", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "Cancel", style: .default)
+        let proceed = UIAlertAction(title: "YES", style: .default) { [unowned ac] _ in
+            print("YES ACTION \(ac.actions)")
+            completes(true)
+        }
+        ac.addAction(cancel)
+        ac.addAction(proceed)
+        view.present(ac, animated: true)
+    }
+    
+    func displayAlert(in view: UIViewController, completes:@escaping(_ name: String)->Void) {
         let ac = UIAlertController(title: "Enter your name", message: nil, preferredStyle: .alert)
         ac.addTextField()
         var answer:String?

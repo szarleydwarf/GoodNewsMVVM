@@ -87,6 +87,15 @@ class ViewController: UIViewController {
     
     @objc func greetingLabelTapped(_ sender: UITapGestureRecognizer) {
         print("Greeting tapped")
+        guard let name = self.vm.user?.name else {return}
+        guard let text = self.greetingLabel.text else {return}
+        if text.contains(name) {
+            // display alert
+            self.alerts.displayAlert(in: self, getsInput: false) { (answer) in
+                print("THE ANSWER >> \(answer)")
+                
+            }
+        }
     }
     
     // buttons
@@ -109,7 +118,7 @@ class ViewController: UIViewController {
             }
         }
         else {
-            self.alerts.displayAlert(in: self, getsInput: true) {answer in
+            self.alerts.displayAlert(in: self) {answer in
                 self.vm.saveUser(user: User(name: answer, bookmarkCounts: 0))
             }
         }
