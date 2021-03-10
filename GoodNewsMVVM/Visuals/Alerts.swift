@@ -17,8 +17,7 @@ class Alerts: AlertsProtocol {
         print(getsInput)
         let ac = UIAlertController(title: "WARNING", message: "This action will delete your records. Do you still want to proceed?", preferredStyle: .alert)
         let cancel = UIAlertAction(title: "Cancel", style: .default)
-        let proceed = UIAlertAction(title: "YES", style: .default) { [unowned ac] _ in
-            print("YES ACTION \(ac.actions)")
+        let proceed = UIAlertAction(title: "YES", style: .default) { _ in
             completes(true)
         }
         ac.addAction(cancel)

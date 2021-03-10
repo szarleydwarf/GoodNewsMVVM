@@ -28,9 +28,7 @@ class ViewModel {
     var user: User? {
         didSet {
             delegate?.setLabel()
-            if self.user?.name != nil {
-                delegate?.setBookmarkButton()
-            }
+            delegate?.setBookmarkButton()
         }
     }
     
@@ -72,7 +70,8 @@ extension ViewModel {
     }
     
     func checkIfEntryExist() -> Bool {
-        if self.user == nil  || self.user?.name == nil{
+        guard let noName = self.user?.name.isEmpty else {return false}
+        if self.user == nil  || self.user?.name == nil || noName{
             return false
         }
         return true
@@ -85,7 +84,6 @@ extension ViewModel {
     func clearUserData() {
         self.defaults.deleteData()
         self.fetchUser()
-        print("clear data >> \(self.user)")
     }
 }
 

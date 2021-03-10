@@ -92,10 +92,8 @@ class ViewController: UIViewController {
         if text.contains(name) {
             // display alert
             self.alerts.displayAlert(in: self, getsInput: false) { (answer) in
-                print("THE ANSWER >> \(answer)")
                 if answer {
                     self.vm.clearUserData()
-                    
                 }
             }
         }
@@ -107,7 +105,6 @@ class ViewController: UIViewController {
         
         if self.vm.checkIfEntryExist() {
             // save in core data & in userdefaults, no of bookmarks
-//            var quote = Model()
             let author = self.author.text ?? Const.unknown
             let quote = quoteLabel.text ?? Const.unknown
             if self.vm.saveQuote(author: author, quote: quote) {
@@ -158,7 +155,11 @@ extension ViewController: ViewModelProtocol {
     }
     
     func setBookmarkButton () {
-        self.bookmarkButton.alpha = 1
+        if self.vm.checkIfEntryExist() {
+            self.bookmarkButton.alpha = 1
+        } else{
+            self.bookmarkButton.alpha = 0.5
+        }
     }
 }
 
