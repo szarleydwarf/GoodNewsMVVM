@@ -93,7 +93,10 @@ class ViewController: UIViewController {
             // display alert
             self.alerts.displayAlert(in: self, getsInput: false) { (answer) in
                 print("THE ANSWER >> \(answer)")
-                
+                if answer {
+                    self.vm.clearUserData()
+                    
+                }
             }
         }
     }

@@ -12,6 +12,7 @@ protocol UserDefaultsStoreProtocol {
     func fetchUser() -> User
     func saveUser(user:User)
     func updateUser(bookmarkCount: Int)
+    func deleteData ()
 }
 
 class UserDefaultsStore: UserDefaultsStoreProtocol {
@@ -36,4 +37,8 @@ class UserDefaultsStore: UserDefaultsStoreProtocol {
         self.userDefaults.set(bookmarkCount, forKey: Const.bookmarksCount)
     }
 
+    func deleteData () {
+        self.userDefaults.setValue(nil, forKey: Const.name)
+        self.userDefaults.set(0, forKey: Const.bookmarksCount)
+    }
 }

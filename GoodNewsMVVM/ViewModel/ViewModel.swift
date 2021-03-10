@@ -81,6 +81,12 @@ extension ViewModel {
     func fetchUser() {
         self.user = self.defaults.fetchUser()        
     }
+    
+    func clearUserData() {
+        self.defaults.deleteData()
+        self.fetchUser()
+        print("clear data >> \(self.user)")
+    }
 }
 
 extension ViewModel {
