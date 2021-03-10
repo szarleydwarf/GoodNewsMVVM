@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D74BE56D25F90A2F00B2D006 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74BE56C25F90A2F00B2D006 /* ListViewController.swift */; };
 		D7749FD525DFC11A0038B6F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7749FD425DFC11A0038B6F4 /* AppDelegate.swift */; };
 		D7749FD725DFC11A0038B6F4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7749FD625DFC11A0038B6F4 /* SceneDelegate.swift */; };
-		D7749FD925DFC11A0038B6F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7749FD825DFC11A0038B6F4 /* ViewController.swift */; };
+		D7749FD925DFC11A0038B6F4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7749FD825DFC11A0038B6F4 /* MainViewController.swift */; };
 		D7749FDC25DFC11A0038B6F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7749FDA25DFC11A0038B6F4 /* Main.storyboard */; };
 		D7749FDE25DFC11F0038B6F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7749FDD25DFC11F0038B6F4 /* Assets.xcassets */; };
 		D7749FE125DFC11F0038B6F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7749FDF25DFC11F0038B6F4 /* LaunchScreen.storyboard */; };
@@ -40,10 +41,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D74BE56C25F90A2F00B2D006 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		D7749FD125DFC11A0038B6F4 /* GoodNewsMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodNewsMVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7749FD425DFC11A0038B6F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D7749FD625DFC11A0038B6F4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D7749FD825DFC11A0038B6F4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D7749FD825DFC11A0038B6F4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D7749FDB25DFC11A0038B6F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D7749FDD25DFC11F0038B6F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D7749FE025DFC11F0038B6F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -141,7 +143,8 @@
 		D7749FF725DFC57D0038B6F4 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D7749FD825DFC11A0038B6F4 /* ViewController.swift */,
+				D7749FD825DFC11A0038B6F4 /* MainViewController.swift */,
+				D74BE56C25F90A2F00B2D006 /* ListViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -295,10 +298,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D74BE56D25F90A2F00B2D006 /* ListViewController.swift in Sources */,
 				D774A00025DFC6EC0038B6F4 /* NetworkServices.swift in Sources */,
 				D7749FFE25DFC6D70038B6F4 /* ViewModel.swift in Sources */,
 				D7C480DC25F7866900D06EBC /* Qoute+CoreDataProperties.swift in Sources */,
-				D7749FD925DFC11A0038B6F4 /* ViewController.swift in Sources */,
+				D7749FD925DFC11A0038B6F4 /* MainViewController.swift in Sources */,
 				D7B01C1125F633A800FDA529 /* QuoteModel.xcdatamodeld in Sources */,
 				D7AFB3A925F2A3A7004FD354 /* UserDefaultsStore.swift in Sources */,
 				D7749FD525DFC11A0038B6F4 /* AppDelegate.swift in Sources */,
