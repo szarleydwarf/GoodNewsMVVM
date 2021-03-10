@@ -86,7 +86,7 @@ extension ViewModel {
 extension ViewModel {
     func saveQuote (author: String, quote: String) -> Bool{
         let ctx = self.coreDataManager.mainContext
-        var q = Qoute(context: ctx)
+        let q = Qoute(context: ctx)
         q.author = author
         q.text = quote
         print("Q -> \(q)")

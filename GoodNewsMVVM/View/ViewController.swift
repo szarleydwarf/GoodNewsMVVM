@@ -95,7 +95,7 @@ class ViewController: UIViewController {
             // save in core data & in userdefaults, no of bookmarks
 //            var quote = Model()
             let author = self.author.text ?? Const.unknown
-            let quote = quoteLabel.text ?? "NO QOUTE"
+            let quote = quoteLabel.text ?? Const.unknown
             if self.vm.saveQuote(author: author, quote: quote) {
                 print("SAVED!!")
             }

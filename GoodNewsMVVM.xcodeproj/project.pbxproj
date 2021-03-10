@@ -23,7 +23,7 @@
 		D7AFB3A425F2A2BC004FD354 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AFB3A325F2A2BC004FD354 /* Alerts.swift */; };
 		D7AFB3A925F2A3A7004FD354 /* UserDefaultsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AFB3A825F2A3A7004FD354 /* UserDefaultsStore.swift */; };
 		D7AFB3B325F2AED6004FD354 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AFB3B225F2AED6004FD354 /* User.swift */; };
-		D7B01C1125F633A800FDA529 /* Quote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D7B01C0F25F633A800FDA529 /* Quote.xcdatamodeld */; };
+		D7B01C1125F633A800FDA529 /* QuoteModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D7B01C0F25F633A800FDA529 /* QuoteModel.xcdatamodeld */; };
 		D7B01C1525F6351C00FDA529 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B01C1425F6351C00FDA529 /* CoreDataManager.swift */; };
 		D7C480DB25F7866900D06EBC /* Qoute+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C480D925F7866900D06EBC /* Qoute+CoreDataClass.swift */; };
 		D7C480DC25F7866900D06EBC /* Qoute+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C480DA25F7866900D06EBC /* Qoute+CoreDataProperties.swift */; };
@@ -167,7 +167,7 @@
 			children = (
 				D774A00125DFCBA60038B6F4 /* Const.swift */,
 				D7749FD425DFC11A0038B6F4 /* AppDelegate.swift */,
-				D7B01C0F25F633A800FDA529 /* Quote.xcdatamodeld */,
+				D7B01C0F25F633A800FDA529 /* QuoteModel.xcdatamodeld */,
 				D7749FD625DFC11A0038B6F4 /* SceneDelegate.swift */,
 				D7749FDD25DFC11F0038B6F4 /* Assets.xcassets */,
 				D7749FDF25DFC11F0038B6F4 /* LaunchScreen.storyboard */,
@@ -239,7 +239,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "The App Experts";
 				TargetAttributes = {
 					D7749FD025DFC11A0038B6F4 = {
@@ -299,7 +299,7 @@
 				D7749FFE25DFC6D70038B6F4 /* ViewModel.swift in Sources */,
 				D7C480DC25F7866900D06EBC /* Qoute+CoreDataProperties.swift in Sources */,
 				D7749FD925DFC11A0038B6F4 /* ViewController.swift in Sources */,
-				D7B01C1125F633A800FDA529 /* Quote.xcdatamodeld in Sources */,
+				D7B01C1125F633A800FDA529 /* QuoteModel.xcdatamodeld in Sources */,
 				D7AFB3A925F2A3A7004FD354 /* UserDefaultsStore.swift in Sources */,
 				D7749FD525DFC11A0038B6F4 /* AppDelegate.swift in Sources */,
 				D7749FD725DFC11A0038B6F4 /* SceneDelegate.swift in Sources */,
@@ -378,6 +378,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -438,6 +439,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -579,13 +581,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		D7B01C0F25F633A800FDA529 /* Quote.xcdatamodeld */ = {
+		D7B01C0F25F633A800FDA529 /* QuoteModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				D7B01C1025F633A800FDA529 /* Quote.xcdatamodel */,
 			);
 			currentVersion = D7B01C1025F633A800FDA529 /* Quote.xcdatamodel */;
-			path = Quote.xcdatamodeld;
+			path = QuoteModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

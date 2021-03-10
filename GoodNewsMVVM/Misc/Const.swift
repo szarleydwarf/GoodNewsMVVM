@@ -31,7 +31,7 @@ struct Const {
     static let name = "username"
     static let bookmarksCount = "bookmarksCount"
     
-    static let persistentContainarName = "GoodNewsMVVM"
+    static let persistentContainarName = "QuoteModel"
     static let errorSaving = "Could not save - "
     static let persistentContainer = "Coredata container error "
 }
