@@ -190,6 +190,7 @@
                     </view>
                     <connections>
                         <outlet property="quotesTable" destination="cav-8X-1kJ" id="65f-hm-rDB"/>
+                        <outlet property="userInfoLabel" destination="XgW-Zy-gCt" id="nYH-ht-WnP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZU3-TC-4rb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
