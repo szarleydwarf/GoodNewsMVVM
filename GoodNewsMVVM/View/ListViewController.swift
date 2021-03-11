@@ -9,11 +9,25 @@
 import UIKit
 
 class ListViewController: UIViewController {
-//    private var vm:ListViewModel!
+    private var vm:ListViewModel!
    
     @IBOutlet weak var quotesTable: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.vm = ListViewModel()
+        
+        self.vm.fetchList()
+    }
+}
+
+extension ListViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        return UITableViewCell()
     }
 }
