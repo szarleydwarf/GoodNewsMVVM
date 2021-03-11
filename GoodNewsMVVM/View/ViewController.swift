@@ -125,6 +125,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func goToNextView(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let lvc = storyboard.instantiateViewController(withIdentifier: "ListViewController") as? ListViewController else { return }
+        present(lvc, animated: true, completion: nil)
     }
     
     @IBAction func refreshQuote(_ sender: UIButton) {
