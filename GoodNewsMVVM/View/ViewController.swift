@@ -125,9 +125,15 @@ class ViewController: UIViewController {
     }
     
     @IBAction func goToNextView(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let lvc = storyboard.instantiateViewController(withIdentifier: "ListViewController") as? ListViewController else { return }
-        present(lvc, animated: true, completion: nil)
+        if self.vm.checkIfEntryExist() {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            guard let lvc = storyboard.instantiateViewController(withIdentifier: "ListViewController") as? ListViewController else { return }
+            present(lvc, animated: true, completion: nil)
+        } else {
+            self.alerts.displayAlert(in: self) { (name) in
+                self.vm.saveUser(user: User(name: name, bookmarkCounts: 0))
+            }
+        }
     }
     
     @IBAction func refreshQuote(_ sender: UIButton) {

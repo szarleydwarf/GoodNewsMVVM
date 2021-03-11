@@ -26,9 +26,11 @@ class Alerts: AlertsProtocol {
     }
     
     func displayAlert(in view: UIViewController, completes:@escaping(_ name: String)->Void) {
-        let ac = UIAlertController(title: "Enter your name", message: nil, preferredStyle: .alert)
+        let ac = UIAlertController(title: "Enter your name to be able to bookmark the qoute", message: nil, preferredStyle: .alert)
         ac.addTextField()
         var answer:String?
+        let cancel = UIAlertAction(title: "Cancel", style: .default)
+         
         let submitAction = UIAlertAction(title: "Submit", style: .default) { [unowned ac] _ in
             answer = ac.textFields![0].text
             // do something interesting with "answer" here
@@ -38,6 +40,7 @@ class Alerts: AlertsProtocol {
                 }
             }
         }
+        ac.addAction(cancel)
         ac.addAction(submitAction)
         view.present(ac, animated: true)
     }
