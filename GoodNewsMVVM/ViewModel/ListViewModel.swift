@@ -16,7 +16,8 @@ class ListViewModel {
     
     weak var delegate: ListViewModelProtocol?
     
-    var user: User? 
+    var user: User?
+    var quotesList:[Qoute]?
     
     init(user:User, coreData:CoreDataManager = CoreDataManager.shared) {
         self.user = user

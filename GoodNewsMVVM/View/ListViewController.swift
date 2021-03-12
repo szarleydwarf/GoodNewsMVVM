@@ -48,7 +48,6 @@ extension ListViewController: ListViewModelProtocol {
         guard let user = self.vm.user else {return}
         var newLabelText:String = Const.tableLabel.replacingOccurrences(of: Const.userName, with: user.name)
         newLabelText = newLabelText.replacingOccurrences(of: Const.bookmarked, with: "\(user.bookmarkCounts)")
-        print("List UI refreshed \(newLabelText)")
         self.userInfoLabel.text = newLabelText
     }
 }
