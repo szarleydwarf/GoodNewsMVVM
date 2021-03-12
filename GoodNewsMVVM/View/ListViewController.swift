@@ -9,7 +9,7 @@
 import UIKit
 
 class ListViewController: UIViewController {
-    private var vm:ListViewModel!
+    var vm:ListViewModel!
    
     @IBOutlet weak var quotesTable: UITableView!
     @IBOutlet weak var userInfoLabel: UILabel!{
@@ -17,15 +17,7 @@ class ListViewController: UIViewController {
             userInfoLabel.text = Const.tableLabel
         }
     }
-    
-    init(viewModel: User){
-        super.init()
-        self.vm = ListViewModel(user: viewModel)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +44,6 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension ListViewController: ListViewModelProtocol {
     func refreshUI() {
-        
+        print("List UI refreshed")
     }
 }

@@ -128,6 +128,8 @@ class ViewController: UIViewController {
         if self.vm.checkIfEntryExist() {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             guard let lvc = storyboard.instantiateViewController(withIdentifier: "ListViewController") as? ListViewController else { return }
+            guard let user = self.vm.user else {return}
+            lvc.vm = ListViewModel(user: user)
             present(lvc, animated: true, completion: nil)
         } else {
             self.alerts.displayAlert(in: self) { (name) in
