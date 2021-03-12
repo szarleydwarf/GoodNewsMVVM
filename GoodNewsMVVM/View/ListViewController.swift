@@ -34,12 +34,19 @@ class ListViewController: UIViewController {
 
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return self.vm.quotesList?.count ?? 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
+        guard let q = self.vm.quotesList?[indexPath.row] else {return UITableViewCell()}
+        self.update(cell, with: q)
+        return cell ?? UITableViewCell()
+    }
+    
+    func update(_ cell:UITableViewCell?, with qoute: Qoute) {
+        cell?.detailTextLabel?.text = qoute.author
+        cell?.textLabel?.text = qoute.text
     }
 }
 

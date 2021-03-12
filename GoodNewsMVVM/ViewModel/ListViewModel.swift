@@ -26,6 +26,7 @@ class ListViewModel {
     
     func fetchList() {
         print("fetching list")
+        self.quotesList = self.coreDataManager.fetch()
     }
     
     

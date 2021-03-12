@@ -44,8 +44,9 @@ class CoreDataManager {
         return false
     }
     
-     func fetch() {
+     func fetch() -> [Qoute]{
          print("do fetch")
+        return [Qoute]()
      }
      
 
