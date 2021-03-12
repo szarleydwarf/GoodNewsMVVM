@@ -46,9 +46,9 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
 extension ListViewController: ListViewModelProtocol {
     func refreshLabel() {
         guard let user = self.vm.user else {return}
-        let newLabelText:String = Const.tableLabel.replacingOccurrences(of: Const.userName, with: user.name)
-        let text = newLabelText.replacingOccurrences(of: Const.bookmarked, with: user.bookmarkCounts)
-        print("List UI refreshed \(text)")
+        var newLabelText:String = Const.tableLabel.replacingOccurrences(of: Const.userName, with: user.name)
+        newLabelText = newLabelText.replacingOccurrences(of: Const.bookmarked, with: "\(user.bookmarkCounts)")
+        print("List UI refreshed \(newLabelText)")
         self.userInfoLabel.text = newLabelText
     }
 }
