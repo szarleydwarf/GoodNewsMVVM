@@ -41,5 +41,7 @@ struct Const {
     static let cancel = "Cancel"
     static let submit = "Submit"
     
-    static let tableLabel = "Hello (username), you have (number) bookmarked qoutes."
+    static let userName = "(username)"
+    static let bookmarked = "(number)"
+    static let tableLabel = "Hello \(userName), you have \(bookmarked) bookmarked qoutes."
 }

@@ -21,13 +21,14 @@ class ListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.vm = ListViewModel()
         self.vm.fetchList()
         
         self.vm.delegate = self
         
         self.quotesTable.delegate = self
         self.quotesTable.dataSource = self
+        
+        self.refreshLabel()
     }
 }
 
@@ -43,7 +44,11 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension ListViewController: ListViewModelProtocol {
-    func refreshUI() {
-        print("List UI refreshed")
+    func refreshLabel() {
+        guard let user = self.vm.user else {return}
+        let newLabelText:String = Const.tableLabel.replacingOccurrences(of: Const.userName, with: user.name)
+        let text = newLabelText.replacingOccurrences(of: Const.bookmarked, with: user.bookmarkCounts)
+        print("List UI refreshed \(text)")
+        self.userInfoLabel.text = newLabelText
     }
 }

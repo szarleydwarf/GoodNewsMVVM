@@ -9,27 +9,24 @@
 import Foundation
 
 protocol ListViewModelProtocol: class {
-    func refreshUI()
+    func refreshLabel()
 }
 class ListViewModel {
     private var coreDataManager: CoreDataManager
     
     weak var delegate: ListViewModelProtocol?
     
-    var user: User? {
-        didSet{
-            delegate?.refreshUI()
-        }
-    }
+    var user: User? 
     
-    init(user: User) {
+    init(user:User, coreData:CoreDataManager = CoreDataManager.shared) {
         self.user = user
-        self.coreDataManager = CoreDataManager.shared
+        self.coreDataManager = coreData
     }
     
     func fetchList() {
         print("fetching list")
     }
+    
     
     
 }

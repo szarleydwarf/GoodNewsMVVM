@@ -93,7 +93,6 @@ extension ViewModel {
         let q = Qoute(context: ctx)
         q.author = author
         q.text = quote
-        print("Q -> \(q)")
         return self.coreDataManager.save()
     }
 }
