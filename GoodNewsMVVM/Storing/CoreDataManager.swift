@@ -45,7 +45,16 @@ class CoreDataManager {
     }
     
      func fetch() -> [Qoute]{
-         print("do fetch")
+        let request = Qoute.fetchRequest()
+        let order = NSSortDescriptor(key: "author", ascending: true)
+        request.sortDescriptors = [order]
+        do{
+            let qList:[Qoute] = try self.mainContext.fetch(request) as! [Qoute]
+            print("do fetch >> \(qList.count)")
+            return qList
+        } catch {
+            print("do fetch failed")
+        }
         return [Qoute]()
      }
      
