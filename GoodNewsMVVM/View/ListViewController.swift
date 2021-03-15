@@ -39,8 +39,8 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
-        guard let q = self.vm.quotesList?[indexPath.row] else {return UITableViewCell()}
-        self.update(cell, with: q)
+        guard let q = self.vm.quotesList else {return UITableViewCell()}
+        self.update(cell, with: q[indexPath.row])
         return cell ?? UITableViewCell()
     }
     
