@@ -45,7 +45,7 @@ class CoreDataManager {
     }
     
      func fetch() -> [Qoute]{
-        let request = Qoute.fetchRequest()
+        let request = Qoute.createFetchRequest()
         let order = NSSortDescriptor(key: "author", ascending: true)
         request.sortDescriptors = [order]
         do{
@@ -57,7 +57,5 @@ class CoreDataManager {
         }
         return [Qoute]()
      }
-     
-
 
 }

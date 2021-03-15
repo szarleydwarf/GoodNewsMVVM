@@ -22,6 +22,7 @@ class ListViewModel {
     init(user:User, coreData:CoreDataManager = CoreDataManager.shared) {
         self.user = user
         self.coreDataManager = coreData
+        self.fetchList()
     }
     
     func fetchList() {

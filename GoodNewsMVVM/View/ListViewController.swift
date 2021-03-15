@@ -21,7 +21,7 @@ class ListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.vm.fetchList()
+//        self.vm.fetchList()
         
         self.vm.delegate = self
         
