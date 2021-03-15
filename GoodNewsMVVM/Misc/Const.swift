@@ -44,4 +44,7 @@ struct Const {
     static let userName = "(username)"
     static let bookmarked = "(number)"
     static let tableLabel = "Hello \(userName), you have \(bookmarked) bookmarked qoutes."
+    
+    static let info = "Qoute by -> "
+    static let ok = "OK"
 }
