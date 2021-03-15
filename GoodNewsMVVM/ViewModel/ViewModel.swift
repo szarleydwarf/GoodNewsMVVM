@@ -83,14 +83,11 @@ extension ViewModel {
     }
     
     func clearUserData() {
+        if let list = self.user?.qouteList {
+            self.coreDataManager.clearCoreData(list: list)
+        }
         self.defaults.deleteData()
-        self.clearCoreData()
         self.fetchUser()
-    }
-    
-    func clearCoreData() {
-        
-//        for i in
     }
 }
 

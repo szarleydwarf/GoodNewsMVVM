@@ -158,7 +158,7 @@ extension ViewController: ViewModelProtocol {
     func setLabel() {
         var text = Const.greetingLabel
         if let name = self.vm.user?.name {
-            text += name
+            text += name.capitalized
         }
         self.greetingLabel.text = text
     }

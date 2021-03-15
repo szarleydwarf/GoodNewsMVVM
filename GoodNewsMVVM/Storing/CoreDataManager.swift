@@ -57,5 +57,15 @@ class CoreDataManager {
         }
         return [Qoute]()
      }
-
+    
+    func clearCoreData(list:[Qoute]) {
+        do {
+            for i in list {
+                self.mainContext.delete(i)
+            }
+            try self.mainContext.save()
+        } catch {
+            print("could not delete")
+        }
+    }
 }
