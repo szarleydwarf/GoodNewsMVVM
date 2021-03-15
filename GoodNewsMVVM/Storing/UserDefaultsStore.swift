@@ -19,7 +19,7 @@ class UserDefaultsStore: UserDefaultsStoreProtocol {
     private let userDefaults = UserDefaults.standard
     
     func fetchUser() -> User {
-        var user: User = User(name: "", bookmarkCounts: 0)
+        var user: User = User(name: "", bookmarkCounts: 0, qouteList: nil)
         if let userName = self.userDefaults.string(forKey: Const.name) {
             user.name = userName
         }

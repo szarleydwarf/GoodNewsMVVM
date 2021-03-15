@@ -11,4 +11,5 @@ import Foundation
 struct User {
     var name:String
     var bookmarkCounts: Int
+    var qouteList: [Qoute]?
 }

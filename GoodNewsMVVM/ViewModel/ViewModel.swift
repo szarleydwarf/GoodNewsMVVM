@@ -78,12 +78,19 @@ extension ViewModel {
     }
     
     func fetchUser() {
-        self.user = self.defaults.fetchUser()        
+        self.user = self.defaults.fetchUser()
+        self.user?.qouteList = self.coreDataManager.fetch()
     }
     
     func clearUserData() {
         self.defaults.deleteData()
+        self.clearCoreData()
         self.fetchUser()
+    }
+    
+    func clearCoreData() {
+        
+//        for i in
     }
 }
 

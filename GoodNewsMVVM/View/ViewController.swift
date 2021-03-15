@@ -86,11 +86,9 @@ class ViewController: UIViewController {
     }
     
     @objc func greetingLabelTapped(_ sender: UITapGestureRecognizer) {
-        print("Greeting tapped")
         guard let name = self.vm.user?.name else {return}
         guard let text = self.greetingLabel.text else {return}
         if text.contains(name) {
-            // display alert
             self.alerts.displayAlert(in: self, getsInput: false) { (answer) in
                 if answer {
                     self.vm.clearUserData()
@@ -168,8 +166,10 @@ extension ViewController: ViewModelProtocol {
     func setBookmarkButton () {
         if self.vm.checkIfEntryExist() {
             self.bookmarkButton.alpha = 1
+            self.goToListButton.alpha = 1
         } else{
             self.bookmarkButton.alpha = 0.5
+            self.goToListButton.alpha = 0.5
         }
     }
 }
