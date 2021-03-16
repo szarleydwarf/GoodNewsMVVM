@@ -50,7 +50,11 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("SELECTED >> \(indexPath.row)")
+        if let list = self.vm.quotesList {
+            let element = list[indexPath.row]
+                self.alerts.displayAlert(in: self, of: .info, with: element) { _ in
+            }
+        }
     }
 }
 
