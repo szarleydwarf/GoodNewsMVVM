@@ -47,4 +47,5 @@ struct Const {
     
     static let info = "Qoute by -> "
     static let ok = "OK"
+    static let trueAnswer = "true"
 }

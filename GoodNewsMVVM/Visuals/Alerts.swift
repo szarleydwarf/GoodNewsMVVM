@@ -16,26 +16,31 @@ protocol AlertsProtocol {
     func displayAlert (in view:UIViewController, getsInput: Bool, completes:@escaping(_ clearUserData: Bool)->Void)
     func displayAlert(in view: UIViewController, completes:@escaping(_ name: String)->Void)
     
-    func displayAlert<T> (in view:UIViewController, of type: AlertTypes, with quote: Qoute?, completes:@escaping(_ result: T) -> Void)
+    func displayAlert(in view:UIViewController, of type: AlertTypes, with quote: Qoute?, completes:@escaping(_ result: String) -> Void)
 }
 
 class Alerts: AlertsProtocol {
-    func displayAlert<T>(in view: UIViewController, of type: AlertTypes, with quote: Qoute?, completes: @escaping (T) -> Void) {
+    func displayAlert(in view: UIViewController, of type: AlertTypes, with quote: Qoute?, completes: @escaping (String) -> Void) {
         let alert = self.createAlert(of: type, with: quote)
+        self.addActions(to: alert, of: type) { (answer) in
+            DispatchQueue.main.async {
+                completes(answer)
+            }
+        }
         view.present(alert, animated: true)
     }
     
     func createAlert(of type: AlertTypes, with quote: Qoute?) -> UIAlertController {
-        var alert:UIAlertController = UIAlertController()
+        let alert:UIAlertController = UIAlertController()
         
         switch type {
         case .info:
             alert.title = Const.info + (quote?.author ?? Const.unknown)
             alert.message = quote?.text ?? Const.unknown
-            
         case .input:
             alert.title = Const.giveMeYourName
             alert.message = nil
+            alert.addTextField()
         case .warning:
             alert.title = Const.warning
             alert.message = Const.deletionWarning
@@ -44,24 +49,23 @@ class Alerts: AlertsProtocol {
         return alert
     }
     
-    func addActions <T: Decodable> (to alert:UIAlertController, of type:AlertTypes, comletion:@escaping(T.Type?) -> Void) {
-        var cancel: UIAlertAction = UIAlertAction()
+    func addActions (to alert:UIAlertController, of type:AlertTypes, comletion:@escaping(String) -> Void) {
+        let cancel: UIAlertAction = UIAlertAction(title: Const.cancel, style: .default)
+        
         var submit: UIAlertAction = UIAlertAction()
         switch type {
         case .info:
             submit = UIAlertAction(title: Const.ok, style: .default)
         case .input:
-            cancel = UIAlertAction(title: Const.cancel, style: .default)
-            submit = UIAlertAction(title: Const.giveMeYourName, style: .default) { [unowned alert] _ in
-                DispatchQueue.main.async {
-                    if let answer = alert.textFields![0].text {
-                        comletion(answer.self)
-                    }
+            submit = UIAlertAction(title: Const.submit, style: .default) { [unowned alert] _ in
+                if let answer = alert.textFields![0].text {
+                    comletion(answer)
                 }
             }
         case .warning:
-            cancel = UIAlertAction(title: Const.cancel, style: .default)
-            
+            submit = UIAlertAction(title: Const.submit, style: .default) { _ in
+                comletion(Const.trueAnswer)
+            }
         }
         alert.addAction(cancel)
         alert.addAction(submit)
