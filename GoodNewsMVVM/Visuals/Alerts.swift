@@ -35,8 +35,14 @@ class Alerts: AlertsProtocol {
         
         switch type {
         case .info:
-            alert.title = Const.info + (quote?.author ?? Const.unknown)
-            alert.message = quote?.text ?? Const.unknown
+            if let author = quote?.author {
+                alert.title = Const.info + author
+                alert.setValue(self.setTextAttributes(of: author, to: .green, with: UIFont.boldSystemFont(ofSize: 20)), forKey: "attributedTitle")
+            }
+            if let q = quote?.text {
+                alert.message = q
+                alert.setValue(self.setTextAttributes(of: q, to: .blue, with: UIFont.italicSystemFont(ofSize: 22)), forKey: "attributedMessage")
+            }
         case .input:
             alert.title = Const.giveMeYourName
             alert.message = nil
@@ -104,4 +110,14 @@ class Alerts: AlertsProtocol {
     }
     
     
+}
+
+
+extension Alerts {
+    func setTextAttributes (of text: String, to color: UIColor, with font: UIFont ) -> NSMutableAttributedString {
+        let attributes = NSMutableAttributedString(string: text)
+        attributes.addAttributes([NSAttributedString.Key.font: font], range: NSMakeRange(0, text.count))
+        attributes.addAttributes([NSAttributedString.Key.foregroundColor : color], range: NSMakeRange(0, text.count))
+        return attributes
+    }
 }
