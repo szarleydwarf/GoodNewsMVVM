@@ -31,7 +31,7 @@ class Alerts: AlertsProtocol {
     }
     
     func createAlert(of type: AlertTypes, with quote: Qoute?) -> UIAlertController {
-        let alert:UIAlertController = UIAlertController()
+        let alert:UIAlertController = UIAlertController(title: "", message: "", preferredStyle: .alert)
         
         switch type {
         case .info:

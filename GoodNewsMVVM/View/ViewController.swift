@@ -89,7 +89,7 @@ class ViewController: UIViewController {
         guard let name = self.vm.user?.name else {return}
         guard let text = self.greetingLabel.text else {return}
         if text.contains(name.capitalized) {
-            self.alerts.displayAlert(in: self, of: .input, with: nil) { (answer) in
+            self.alerts.displayAlert(in: self, of: .warning, with: nil) { (answer) in
             
 //            self.alerts.displayAlert(in: self, getsInput: false) { (answer) in
                 if answer == Const.trueAnswer {
@@ -133,7 +133,6 @@ class ViewController: UIViewController {
             lvc.vm = ListViewModel(user: user)
             present(lvc, animated: true, completion: nil)
         } else {
-            //func displayAlert(in view: UIViewController, of type: AlertTypes, with quote: Qoute?, completes: @escaping (String) -> Void)
             self.alerts.displayAlert(in: self, of: .input, with: nil) { (name) in
             
 //            self.alerts.displayAlert(in: self) { (name) in
