@@ -37,7 +37,7 @@ class Alerts: AlertsProtocol {
         case .info:
             if let author = quote?.author {
                 alert.title = Const.info + author
-                alert.setValue(self.setTextAttributes(of: author, to: .green, with: UIFont.boldSystemFont(ofSize: 20)), forKey: "attributedTitle")
+                alert.setValue(self.setTextAttributes(of: author, to: .magenta, with: UIFont.boldSystemFont(ofSize: 20)), forKey: "attributedTitle")
             }
             if let q = quote?.text {
                 alert.message = q
@@ -49,6 +49,7 @@ class Alerts: AlertsProtocol {
             alert.addTextField()
         case .warning:
             alert.title = Const.warning
+            alert.setValue(self.setTextAttributes(of: Const.warning, to: .red, with: UIFont.boldSystemFont(ofSize: 24)), forKey: "attributedTitle")
             alert.message = Const.deletionWarning
         }
         
