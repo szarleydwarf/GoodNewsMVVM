@@ -10,7 +10,8 @@ import UIKit
 
 class ListViewController: UIViewController {
     var vm:ListViewModel!
-   
+    private var alerts: AlertsProtocol!
+    
     @IBOutlet weak var quotesTable: UITableView!
     @IBOutlet weak var userInfoLabel: UILabel!{
         didSet {
@@ -21,7 +22,7 @@ class ListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.alerts = Alerts()
         self.vm.delegate = self
         
         self.quotesTable.delegate = self
@@ -46,6 +47,10 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     func update(_ cell:UITableViewCell?, with qoute: Qoute) {
         cell?.detailTextLabel?.text = qoute.author
         cell?.textLabel?.text = qoute.text
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("SELECTED >> \(indexPath.row)")
     }
 }
 
