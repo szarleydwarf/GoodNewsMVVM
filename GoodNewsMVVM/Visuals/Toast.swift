@@ -9,12 +9,17 @@
 import UIKit
 
 class Toast {
+    let animations = Animations()
     
     func displayToast(in view: UIView) {
         let toast = createSubCenterView(in: view, in: .red)
         let lab = createSubCenterView(in: toast, in: .yellow, with: "SAVED !!!")
         toast.addSubview(lab)
-        toast.layer.add(Animations().fade(1.5, false, .easeOut), forKey: CATransitionType.fade.rawValue)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            print("Removing")
+            
+            toast.layer.add(self.animations.fade(1.5, false, .easeOut), forKey: CATransitionType.fade.rawValue)
+        }
     }
     
     func createSubCenterView(in view: UIView, in color: UIColor, with text:String = "") -> UILabel{

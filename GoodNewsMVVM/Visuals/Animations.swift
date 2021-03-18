@@ -12,6 +12,7 @@ import UIKit
 protocol AnimationProtocol {
     func fade(_ duration: CFTimeInterval,_ reverse:Bool, _ animatonName:CAMediaTimingFunctionName) -> CATransition
     func scale(_ duration:CFTimeInterval) -> CASpringAnimation
+    
 }
 
 extension AnimationProtocol {
