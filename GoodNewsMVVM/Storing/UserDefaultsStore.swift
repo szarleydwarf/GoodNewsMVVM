@@ -24,7 +24,6 @@ class UserDefaultsStore: UserDefaultsStoreProtocol {
             user.name = userName
         }
         user.bookmarkCounts = self.userDefaults.integer(forKey: Const.bookmarksCount)
-        print("FETCHING USER >> \(user.name) >> \(user.bookmarkCounts) << ")
         return user
     }
     

@@ -50,7 +50,6 @@ class CoreDataManager {
         request.sortDescriptors = [order]
         do{
             let qList:[Qoute] = try self.mainContext.fetch(request) as! [Qoute]
-            print("do fetch >> \(qList.count)")
             return qList
         } catch {
             print("do fetch failed")
