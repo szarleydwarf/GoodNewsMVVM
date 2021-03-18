@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class ListViewController: UIViewController {
     var vm:ListViewModel!
@@ -29,6 +30,13 @@ class ListViewController: UIViewController {
         self.quotesTable.dataSource = self
         
         self.refreshLabel()
+        
+        let box = UIView()
+        self.view.addSubview(box)
+        box.snp.makeConstraints { (make) -> Void in
+            make.edges.equalTo(self.view).inset(UIEdgeInsets(top: 50,left: 50,bottom: 50,right: 50))
+        }
+        box.backgroundColor = .red
     }
 }
 
