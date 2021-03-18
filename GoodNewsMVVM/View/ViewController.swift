@@ -108,6 +108,7 @@ class ViewController: UIViewController {
             let author = self.author.text ?? Const.unknown
             let quote = quoteLabel.text ?? Const.unknown
             if self.vm.saveQuote(author: author, quote: quote) {
+                Toast().displayToast(in: self.view)
                 print("SAVED!!")
             }
 //             udef no letbookmarks

@@ -11,12 +11,14 @@ import UIKit
 class Toast {
     
     func displayToast(in view: UIView) {
-        createView(in: view)
-        
+        let toast = createSubCenterView(in: view, in: .red)
+        toast.layer.add(Animations().fade(), forKey: CATransitionType.fade.rawValue)
+        let lab = createSubCenterView(in: toast, in: .yellow, with: "SAVED !!!")
+        toast.addSubview(lab)
     }
     
-    func createView(in view: UIView) {
-        let box = UIView()
+    func createSubCenterView(in view: UIView, in color: UIColor, with text:String = "") -> UILabel{
+        let box = UILabel()
         box.layer.cornerRadius = 10
         view.addSubview(box)
         box.snp.makeConstraints { (make) -> Void in
@@ -24,9 +26,12 @@ class Toast {
             make.centerY.equalTo(view)
             make.height.equalTo(100)
             make.width.equalTo(view).inset(UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
-                //make.equalTo(view).inset(UIEdgeInsets(top: 50,left: 50,bottom: 50,right: 50))
         }
-        box.backgroundColor = .red
+//        if !text.isEmpty{
+            box.textAlignment = .center
+//        }
+        box.backgroundColor = color
+        return box
     }
     
 }

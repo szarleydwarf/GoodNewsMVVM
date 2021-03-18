@@ -31,7 +31,7 @@ class ListViewController: UIViewController {
         
         self.refreshLabel()
         
-        Toast().displayToast(in: self.view)
+      
     }
 }
 
