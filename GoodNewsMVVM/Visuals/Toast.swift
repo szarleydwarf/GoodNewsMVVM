@@ -12,9 +12,9 @@ class Toast {
     
     func displayToast(in view: UIView) {
         let toast = createSubCenterView(in: view, in: .red)
-        toast.layer.add(Animations().fade(), forKey: CATransitionType.fade.rawValue)
         let lab = createSubCenterView(in: toast, in: .yellow, with: "SAVED !!!")
         toast.addSubview(lab)
+        toast.layer.add(Animations().fade(1.5, false, .easeOut), forKey: CATransitionType.fade.rawValue)
     }
     
     func createSubCenterView(in view: UIView, in color: UIColor, with text:String = "") -> UILabel{
@@ -27,9 +27,10 @@ class Toast {
             make.height.equalTo(100)
             make.width.equalTo(view).inset(UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
         }
-//        if !text.isEmpty{
+        if !text.isEmpty{
+            box.text = text
             box.textAlignment = .center
-//        }
+        }
         box.backgroundColor = color
         return box
     }

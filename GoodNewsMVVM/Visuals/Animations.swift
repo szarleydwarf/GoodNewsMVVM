@@ -10,13 +10,13 @@ import Foundation
 import UIKit
 
 protocol AnimationProtocol {
-    func fade(_ duration: CFTimeInterval,_ reverse:Bool) -> CATransition
+    func fade(_ duration: CFTimeInterval,_ reverse:Bool, _ animatonName:CAMediaTimingFunctionName) -> CATransition
     func scale(_ duration:CFTimeInterval) -> CASpringAnimation
 }
 
 extension AnimationProtocol {
-    func fade(_ duration: CFTimeInterval = 0.75,_ reverse:Bool = false) -> CATransition {
-        return fade(duration, reverse)
+    func fade(_ duration: CFTimeInterval = 0.75,_ reverse:Bool = false, _ animatonName:CAMediaTimingFunctionName = .easeIn) -> CATransition {
+        return fade(duration, reverse, animatonName)
     }
     func scale(_ duration:CFTimeInterval = 0.75) -> CASpringAnimation {
         return scale(duration)
@@ -24,10 +24,11 @@ extension AnimationProtocol {
 }
 
 class Animations: AnimationProtocol {
-    func fade(_ duration: CFTimeInterval = 0.75,_ reverse:Bool = false) -> CATransition {
+    func fade(_ duration: CFTimeInterval = 0.75,_ reverse:Bool = false, _ animatonName:CAMediaTimingFunctionName = .easeIn) -> CATransition {
         let anim = CATransition()
-        anim.timingFunction = CAMediaTimingFunction(name: .easeIn)
+        anim.timingFunction = CAMediaTimingFunction(name: animatonName)
         anim.type = .fade
+        anim.subtype = .fromTop
         anim.duration = duration
         anim.autoreverses = reverse
         return anim
