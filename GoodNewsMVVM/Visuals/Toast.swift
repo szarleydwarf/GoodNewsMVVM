@@ -12,13 +12,13 @@ class Toast {
     let animations = Animations()
     
     func displayToast(in view: UIView) {
-        let toast = createSubCenterView(in: view, in: .red)
-        let lab = createSubCenterView(in: toast, in: .yellow, with: "SAVED !!!")
+        let toast = createSubCenterView(in: view, in: .systemBlue)
+        let lab = createSubCenterView(in: toast, in: .systemYellow, with: "SAVED !!!")
         toast.addSubview(lab)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            print("Removing")
-            
-            toast.layer.add(self.animations.fade(1.5, false, .easeOut), forKey: CATransitionType.fade.rawValue)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            UIView.animate(withDuration:2) {
+                toast.alpha = 0
+            }
         }
     }
     
