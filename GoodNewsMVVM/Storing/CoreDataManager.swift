@@ -49,7 +49,7 @@ class CoreDataManager {
         let order = NSSortDescriptor(key: "author", ascending: true)
         request.sortDescriptors = [order]
         do{
-            let qList:[Qoute] = try self.mainContext.fetch(request) as! [Qoute]
+            let qList:[Qoute] = try self.mainContext.fetch(request) 
             return qList
         } catch {
             print("do fetch failed")

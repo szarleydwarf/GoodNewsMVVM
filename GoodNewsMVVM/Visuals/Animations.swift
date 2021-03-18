@@ -25,6 +25,14 @@ extension AnimationProtocol {
 }
 
 class Animations: AnimationProtocol {
+    func fadeOut(label: UILabel, duration:Double) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
+            UIView.animate(withDuration:duration) {
+                label.alpha = 0
+            }
+        }
+    }
+    
     func fade(_ duration: CFTimeInterval = 0.75,_ reverse:Bool = false, _ animatonName:CAMediaTimingFunctionName = .easeIn) -> CATransition {
         let anim = CATransition()
         anim.timingFunction = CAMediaTimingFunction(name: animatonName)

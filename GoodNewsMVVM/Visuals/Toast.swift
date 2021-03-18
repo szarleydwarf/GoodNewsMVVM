@@ -15,11 +15,7 @@ class Toast {
         let toast = createSubCenterView(in: view, in: .systemBlue)
         let lab = createSubCenterView(in: toast, in: .systemYellow, with: "SAVED !!!")
         toast.addSubview(lab)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            UIView.animate(withDuration:2) {
-                toast.alpha = 0
-            }
-        }
+        self.animations.fadeOut(label: toast, duration: 2)
     }
     
     func createSubCenterView(in view: UIView, in color: UIColor, with text:String = "") -> UILabel{
