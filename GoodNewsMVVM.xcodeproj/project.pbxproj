@@ -31,6 +31,7 @@
 		D7C480DC25F7866900D06EBC /* Qoute+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C480DA25F7866900D06EBC /* Qoute+CoreDataProperties.swift */; };
 		D7E596D12603942400B1F4B4 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7E596C9260393F800B1F4B4 /* SnapKit.framework */; };
 		D7E596D22603942400B1F4B4 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7E596C9260393F800B1F4B4 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D7E596D92603964200B1F4B4 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E596D82603964200B1F4B4 /* Toast.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,7 @@
 		D7E596BC260393AE00B1F4B4 /* SnapKit */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = SnapKit; path = Carthage/Build/iOS/SnapKit.framework/SnapKit; sourceTree = "<group>"; };
 		D7E596C3260393F800B1F4B4 /* SnapKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SnapKit.xcodeproj; path = Carthage/Checkouts/SnapKit/SnapKit.xcodeproj; sourceTree = "<group>"; };
 		D7E596D02603941300B1F4B4 /* SnapKit.xcworkspace */ = {isa = PBXFileReference; lastKnownFileType = wrapper.workspace; name = SnapKit.xcworkspace; path = Carthage/Checkouts/SnapKit/SnapKit.xcworkspace; sourceTree = "<group>"; };
+		D7E596D82603964200B1F4B4 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +224,7 @@
 				D7A8380925EE829D00DD39AE /* Animations.swift */,
 				D7A8381D25EE896E00DD39AE /* Filters.swift */,
 				D7AFB3A325F2A2BC004FD354 /* Alerts.swift */,
+				D7E596D82603964200B1F4B4 /* Toast.swift */,
 			);
 			path = Visuals;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				D74BE56D25F90A2F00B2D006 /* ListViewController.swift in Sources */,
 				D774A00025DFC6EC0038B6F4 /* NetworkServices.swift in Sources */,
 				D7749FFE25DFC6D70038B6F4 /* ViewModel.swift in Sources */,
+				D7E596D92603964200B1F4B4 /* Toast.swift in Sources */,
 				D7C480DC25F7866900D06EBC /* Qoute+CoreDataProperties.swift in Sources */,
 				D7749FD925DFC11A0038B6F4 /* ViewController.swift in Sources */,
 				D7B01C1125F633A800FDA529 /* QuoteModel.xcdatamodeld in Sources */,
