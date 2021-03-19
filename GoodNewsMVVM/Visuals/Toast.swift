@@ -15,7 +15,7 @@ class Toast {
         let toast = createSubCenterView(in: view, in: .systemBlue)
         let lab = createSubCenterView(in: toast, in: .systemYellow, with: "SAVED !!!")
         toast.addSubview(lab)
-        self.animations.fadeOut(label: toast, duration: 2)
+        self.animations.fadeOut(label: toast, duration: 1.25)
     }
     
     func createSubCenterView(in view: UIView, in color: UIColor, with text:String = "") -> UILabel{
