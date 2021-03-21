@@ -163,6 +163,7 @@ extension ViewController: ViewModelProtocol {
             text += name.capitalized
         }
         self.greetingLabel.text = text
+        self.fadeAnimation(on: self.greetingLabel)
     }
     
     func setBookmarkButton () {
