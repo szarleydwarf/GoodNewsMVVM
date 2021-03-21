@@ -37,6 +37,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hsW-Gd-49z" userLabel="Refresh_Button">
                                 <rect key="frame" x="366" y="366.5" width="44" height="42"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="Etg-yT-7uJ"/>
                                     <constraint firstAttribute="width" secondItem="hsW-Gd-49z" secondAttribute="height" multiplier="1:1" id="Uaw-pv-6Eq"/>
@@ -53,6 +54,7 @@
                             </imageView>
                             <button opaque="NO" alpha="0.25" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L5J-oI-QOQ" userLabel="Bookmark_Button">
                                 <rect key="frame" x="8" y="370.5" width="44" height="43"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="KdN-jQ-qfp"/>
                                     <constraint firstAttribute="width" secondItem="L5J-oI-QOQ" secondAttribute="height" multiplier="1:1" id="QWN-sy-swb"/>
@@ -81,6 +83,16 @@
                                     <action selector="goToNextView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FAB-ax-WWQ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWy-HJ-4xJ" userLabel="PlayMusic">
+                                <rect key="frame" x="360" y="107.5" width="44" height="43"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="07G-Yq-Nwv"/>
+                                    <constraint firstAttribute="width" secondItem="CWy-HJ-4xJ" secondAttribute="height" multiplier="1:1" id="GDs-tp-3Wv"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemYellowColor"/>
+                                <state key="normal" backgroundImage="music.quarternote.3" catalog="system"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -92,6 +104,8 @@
                             <constraint firstItem="el7-qV-GBu" firstAttribute="top" secondItem="pbN-uc-Hde" secondAttribute="bottom" constant="10" id="GhV-sm-gd0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WIl-RZ-GeE" secondAttribute="trailing" constant="4" id="HBr-8O-xz2"/>
                             <constraint firstItem="hsW-Gd-49z" firstAttribute="top" secondItem="el7-qV-GBu" secondAttribute="top" id="If0-fg-Jg4"/>
+                            <constraint firstItem="CWy-HJ-4xJ" firstAttribute="top" secondItem="pbN-uc-Hde" secondAttribute="top" constant="6" id="Jp4-xE-zZK"/>
+                            <constraint firstItem="CWy-HJ-4xJ" firstAttribute="trailing" secondItem="pbN-uc-Hde" secondAttribute="trailing" constant="-6" id="Mfb-a7-MNn"/>
                             <constraint firstItem="L5J-oI-QOQ" firstAttribute="top" secondItem="el7-qV-GBu" secondAttribute="top" constant="4" id="Pz1-yB-JLn"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="el7-qV-GBu" secondAttribute="bottom" constant="144" id="Q4q-lN-LnX"/>
                             <constraint firstItem="pbN-uc-Hde" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="4" id="R9E-H5-3mX"/>
@@ -202,6 +216,7 @@
         <image name="arrow.triangle.2.circlepath.camera.fill" catalog="system" width="128" height="94"/>
         <image name="bookmark.circle" catalog="system" width="128" height="121"/>
         <image name="doc.append" catalog="system" width="115" height="128"/>
+        <image name="music.quarternote.3" catalog="system" width="128" height="103"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
