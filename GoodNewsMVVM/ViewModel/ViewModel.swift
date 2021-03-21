@@ -80,10 +80,12 @@ extension ViewModel {
     func fetchUser() {
         self.user = self.defaults.fetchUser()
         self.user?.qouteList = self.coreDataManager.fetch()
+        print("LIST>> \(user?.qouteList)")
     }
     
     func clearUserData() {
         if let list = self.user?.qouteList {
+            // todo check why it not clear the CodeData
             self.coreDataManager.clearCoreData(list: list)
         }
         self.defaults.deleteData()

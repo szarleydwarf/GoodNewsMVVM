@@ -150,7 +150,7 @@ class ViewController: UIViewController {
 
 extension ViewController: ViewModelProtocol {
     func refreshUI() {
-        self.fadeAnimation()
+        self.fadeAnimation(on: self.quoteLabel)
         self.scaleAnimation()
         
         self.author.text = self.vm.model?.author
@@ -177,8 +177,8 @@ extension ViewController: ViewModelProtocol {
 }
 
 extension ViewController: AnimationProtocol {
-    func fadeAnimation() {
-        self.quoteLabel.layer.add(self.animations.fade(1.5), forKey: CATransitionType.fade.rawValue)
+    func fadeAnimation(on label: UILabel) {
+        label.layer.add(self.animations.fade(1.5), forKey: CATransitionType.fade.rawValue)
     }
     
     func scaleAnimation () {
