@@ -60,7 +60,7 @@ class ViewController: UIViewController {
         
         self.implementTapping()
     }
-        
+    
     func implementTapping () {
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTap(_:)))
         self.author.addGestureRecognizer(tap)
@@ -71,7 +71,7 @@ class ViewController: UIViewController {
         let greetingsLabelTap = UITapGestureRecognizer(target: self, action: #selector(greetingLabelTapped(_:)))
         self.greetingLabel.addGestureRecognizer(greetingsLabelTap)
     }
-
+    
     // selector version of tap recognision
     @objc func didTap(_ sender: UITapGestureRecognizer) {
         self.vm.requestModel()
@@ -91,8 +91,6 @@ class ViewController: UIViewController {
         guard let text = self.greetingLabel.text else {return}
         if text.contains(name.capitalized) {
             self.alerts.displayAlert(in: self, of: .warning, with: nil) { (answer) in
-            
-//            self.alerts.displayAlert(in: self, getsInput: false) { (answer) in
                 if answer == Const.trueAnswer {
                     self.vm.clearUserData()
                 }
@@ -105,14 +103,9 @@ class ViewController: UIViewController {
         sender.layer.add(self.animations.scale(1.75), forKey: "button")
         
         if self.vm.checkIfEntryExist() {
-            // save in core data & in userdefaults, no of bookmarks
-            let author = self.author.text ?? Const.unknown
-            let quote = quoteLabel.text ?? Const.unknown
-            if self.vm.saveQuote(author: author, quote: quote) {
+            if self.vm.saveQuote(author: self.author.text ?? Const.unknown, quote: quoteLabel.text ?? Const.unknown) {
                 Toast().displayToast(in: self.view)
-                print("SAVED!!")
             }
-//             udef no letbookmarks
             if var user = self.vm.user {
                 let bookmarkCount = user.bookmarkCounts + 1
                 user.bookmarkCounts = bookmarkCount
@@ -121,7 +114,6 @@ class ViewController: UIViewController {
         }
         else {
             self.alerts.displayAlert(in: self, of: .input, with: nil) { (name) in
-//             self.alerts.displayAlert(in: self) {answer in
                 self.vm.saveUser(user: User(name: name, bookmarkCounts: 0))
             }
         }
@@ -136,8 +128,6 @@ class ViewController: UIViewController {
             present(lvc, animated: true, completion: nil)
         } else {
             self.alerts.displayAlert(in: self, of: .input, with: nil) { (name) in
-            
-//            self.alerts.displayAlert(in: self) { (name) in
                 self.vm.saveUser(user: User(name: name, bookmarkCounts: 0))
             }
         }
@@ -154,7 +144,7 @@ class ViewController: UIViewController {
     
     
     @IBAction func playMusic(_ sender: UIButton) {
-        print("Music vill start soon...")
+        print("Music will start soon...")
     }
 }
 
