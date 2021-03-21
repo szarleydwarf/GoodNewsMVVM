@@ -92,6 +92,9 @@
                                 </constraints>
                                 <color key="tintColor" systemColor="systemYellowColor"/>
                                 <state key="normal" backgroundImage="music.quarternote.3" catalog="system"/>
+                                <connections>
+                                    <action selector="playMusic:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wtk-bW-22W"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -126,6 +129,7 @@
                         <outlet property="bookmarkButton" destination="L5J-oI-QOQ" id="Tzl-PO-iax"/>
                         <outlet property="goToListButton" destination="sk4-64-xe5" id="QEV-le-uvS"/>
                         <outlet property="greetingLabel" destination="mYH-1U-czw" id="XSB-N9-QUh"/>
+                        <outlet property="playMusicButton" destination="CWy-HJ-4xJ" id="1im-ek-4gr"/>
                         <outlet property="quoteLabel" destination="el7-qV-GBu" id="gTr-tZ-m8N"/>
                         <outlet property="theme" destination="pbN-uc-Hde" id="C3g-77-66o"/>
                     </connections>

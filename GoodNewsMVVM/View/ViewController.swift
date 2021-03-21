@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var bookmarkButton: UIButton!
     @IBOutlet weak var goToListButton: UIButton!
+    @IBOutlet weak var playMusicButton: UIButton!
     
     
     @IBOutlet weak var greetingLabel: UILabel! {
@@ -149,6 +150,11 @@ class ViewController: UIViewController {
     // storyboard(interface builder) version of tap recognision
     @IBAction func labelTapped (_ sender: UITapGestureRecognizer) {
         self.vm.requestModel()
+    }
+    
+    
+    @IBAction func playMusic(_ sender: UIButton) {
+        print("Music vill start soon...")
     }
 }
 
