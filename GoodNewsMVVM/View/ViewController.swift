@@ -102,7 +102,7 @@ class ViewController: UIViewController {
     @IBAction func bookmarkQuote(_ sender: UIButton) {
         sender.layer.add(self.animations.scale(1.75), forKey: "button")
         
-        if self.vm.checkIfEntryExist() {
+        if self.vm.checkIfUserExist() {
             if self.vm.saveQuote(author: self.author.text ?? Const.unknown, quote: quoteLabel.text ?? Const.unknown) {
                 Toast().displayToast(in: self.view)
             }
@@ -120,7 +120,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func goToNextView(_ sender: UIButton) {
-        if self.vm.checkIfEntryExist() {
+        if self.vm.checkIfUserExist() {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             guard let lvc = storyboard.instantiateViewController(withIdentifier: "ListViewController") as? ListViewController else { return }
             guard let user = self.vm.user else {return}
@@ -166,7 +166,7 @@ extension ViewController: ViewModelProtocol {
     }
     
     func setBookmarkButton () {
-        if self.vm.checkIfEntryExist() {
+        if self.vm.checkIfUserExist() {
             self.bookmarkButton.alpha = 1
             self.goToListButton.alpha = 1
         } else{

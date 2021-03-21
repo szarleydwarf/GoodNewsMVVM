@@ -67,9 +67,15 @@ extension ViewModel {
     func saveUser(user: User) {
         self.defaults.saveUser(user: user)
         self.user = user
+        self.user?.qouteList = [Qoute]()
     }
     
+    // todo check if quote exist in list before adding
     func checkIfEntryExist() -> Bool {
+        return false
+    }
+    
+    func checkIfUserExist() -> Bool {
         guard let noName = self.user?.name.isEmpty else {return false}
         if self.user == nil  || self.user?.name == nil || noName{
             return false
@@ -80,7 +86,13 @@ extension ViewModel {
     func fetchUser() {
         self.user = self.defaults.fetchUser()
         self.user?.qouteList = self.coreDataManager.fetch()
-        print("LIST>> \(user?.qouteList)")
+        print("LIST>> \(user?.qouteList?.count)")
+        if let list = user?.qouteList {
+        for e in list {
+            print("LIST>> \(e.author) > \(e.text)")
+
+        }
+        }
     }
     
     func clearUserData() {
@@ -99,6 +111,7 @@ extension ViewModel {
         let q = Qoute(context: ctx)
         q.author = author
         q.text = quote
+        self.user?.qouteList?.append(q)
         return self.coreDataManager.save()
     }
 }
