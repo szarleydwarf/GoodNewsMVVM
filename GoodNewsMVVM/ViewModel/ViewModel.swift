@@ -10,6 +10,7 @@ import Foundation
 
 protocol ViewModelProtocol: class {
     func refreshUI ()
+    func refreshImageLabel()
     func setLabel ()
     func setBookmarkButton ()
 }
@@ -25,10 +26,17 @@ class ViewModel {
             delegate?.refreshUI()
         }
     }
+    
     var user: User? {
         didSet {
             delegate?.setLabel()
             delegate?.setBookmarkButton()
+        }
+    }
+    
+    var image: Image? {
+        didSet {
+            delegate?.refreshImageLabel()
         }
     }
     
@@ -63,16 +71,23 @@ class ViewModel {
     }
     
     func requestImage() {
-        //https://pixabay.com/api/?key=18691967-c6bbf9bfa8dba2ffd4c907bb5&q=nature+horizontal&image_type=photo
-        
-        //https://api.forismatic.com/api/?q=nature+horizontal&image_type=photo&key=18691967-c6bbf9bfa8dba2ffd4c907bb5
-
         let params:[String:String] = [ Const.urlKeyPixabay:Const.urlParamKey,
                                        Const.urlQueryPixabay:Const.urlQueryParamPixabay,
                                        Const.urlImageType:Const.urlImageTypeParam
         ]
         guard let url = self.service.getURL(host: Const.urlHostImages, path: Const.urlPathImages, params: params) else {return}
-     print("URL >> \(url)")
+        print("URL >> \(url)")
+        self.service.fetchWithAlamo(url: url) { [weak self] result in
+            switch result {
+            case .success(let image):
+                print("SUCCESS \(image)")
+                DispatchQueue.main.async {
+                    self?.image = image
+                }
+            case .failure(let e):
+                print("ERROR IMAGE ALAMO \(e)")
+            }
+        }
     }
 }
 
@@ -99,18 +114,10 @@ extension ViewModel {
     func fetchUser() {
         self.user = self.defaults.fetchUser()
         self.user?.qouteList = self.coreDataManager.fetch()
-        print("LIST>> \(user?.qouteList?.count)")
-        if let list = user?.qouteList {
-        for e in list {
-            print("LIST>> \(e.author) > \(e.text)")
-
-        }
-        }
     }
     
     func clearUserData() {
         if let list = self.user?.qouteList {
-            // todo check why it not clear the CodeData
             self.coreDataManager.clearCoreData(list: list)
         }
         self.defaults.deleteData()
