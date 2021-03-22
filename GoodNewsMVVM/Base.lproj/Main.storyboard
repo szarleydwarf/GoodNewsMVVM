@@ -84,14 +84,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWy-HJ-4xJ" userLabel="PlayMusic">
-                                <rect key="frame" x="360" y="107.5" width="44" height="43"/>
+                                <rect key="frame" x="360" y="106" width="44" height="45"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="07G-Yq-Nwv"/>
                                     <constraint firstAttribute="width" secondItem="CWy-HJ-4xJ" secondAttribute="height" multiplier="1:1" id="GDs-tp-3Wv"/>
                                 </constraints>
                                 <color key="tintColor" systemColor="systemYellowColor"/>
-                                <state key="normal" backgroundImage="music.quarternote.3" catalog="system"/>
+                                <state key="normal" backgroundImage="photo.on.rectangle.angled" catalog="system"/>
                                 <connections>
                                     <action selector="playMusic:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wtk-bW-22W"/>
                                 </connections>
@@ -220,7 +220,7 @@
         <image name="arrow.triangle.2.circlepath.camera.fill" catalog="system" width="128" height="94"/>
         <image name="bookmark.circle" catalog="system" width="128" height="121"/>
         <image name="doc.append" catalog="system" width="115" height="128"/>
-        <image name="music.quarternote.3" catalog="system" width="128" height="103"/>
+        <image name="photo.on.rectangle.angled" catalog="system" width="128" height="101"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

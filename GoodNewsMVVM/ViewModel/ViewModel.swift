@@ -61,6 +61,19 @@ class ViewModel {
             }
         }
     }
+    
+    func requestImage() {
+        //https://pixabay.com/api/?key=18691967-c6bbf9bfa8dba2ffd4c907bb5&q=nature+horizontal&image_type=photo
+        
+        //https://api.forismatic.com/api/?q=nature+horizontal&image_type=photo&key=18691967-c6bbf9bfa8dba2ffd4c907bb5
+
+        let params:[String:String] = [ Const.urlKeyPixabay:Const.urlParamKey,
+                                       Const.urlQueryPixabay:Const.urlQueryParamPixabay,
+                                       Const.urlImageType:Const.urlImageTypeParam
+        ]
+        guard let url = self.service.getURL(host: Const.urlHostImages, path: Const.urlPathImages, params: params) else {return}
+     print("URL >> \(url)")
+    }
 }
 
 extension ViewModel {

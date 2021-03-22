@@ -144,7 +144,8 @@ class ViewController: UIViewController {
     
     
     @IBAction func playMusic(_ sender: UIButton) {
-        print("Music will start soon...")
+        print("Changing image...")
+        self.vm.requestImage()
     }
 }
 

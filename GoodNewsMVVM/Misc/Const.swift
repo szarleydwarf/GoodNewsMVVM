@@ -15,14 +15,26 @@ struct Const {
     static let urlScheme:String = "https"
     static let urlHost:String = "api.forismatic.com"
     static let urlPath:String = "/api/1.0/"
-    
+
     static let urlMethod:String = "method"
     static let urlParamMethod:String = "getQuote"
     static let urlFormat:String = "format"
     static let urlParamFormat:String = "json"
     static let urlLang:String = "lang"
     static let urlParamLang:String = "en"
+
+    static let urlHostImages:String = "pixabay.com"
+    static let urlPathImages:String = "/api/"
     
+    static let urlKeyPixabay:String = "key"
+    static let urlParamKey:String = "18691967-c6bbf9bfa8dba2ffd4c907bb5"
+    static let urlQueryPixabay:String = "q"
+    static let urlQueryParamPixabay:String = "nature+horizontal"
+    static let urlImageType:String = "image_type"
+    static let urlImageTypeParam:String = "photo"
+    
+
+
     static let unknown = "UNKNOWN"
     
     static let greetingLabel = "Hello "
