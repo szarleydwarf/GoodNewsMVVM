@@ -10,6 +10,7 @@ import Foundation
 
 struct Const {
     static let quotesAPI = "https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en"
+    static let imageAPI = "https://pixabay.com/api/?key=18691967-c6bbf9bfa8dba2ffd4c907bb5&q=nature+horizontal&image_type=photo"
 
     static let urlScheme:String = "https"
     static let urlHost:String = "api.forismatic.com"

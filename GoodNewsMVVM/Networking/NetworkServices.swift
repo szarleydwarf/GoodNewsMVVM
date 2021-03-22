@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import Alamofire
+
 
 enum NetworkErrors: Error {
     case badURL
@@ -17,6 +19,10 @@ enum NetworkErrors: Error {
 protocol NetworkingProtocol {
     func getURL(host:String?, path:String?, params:[String:String]?) -> URL?
     func fetch(url:URL?, completion:@escaping(Result<Model, NetworkErrors>)->Void)
+}
+
+protocol AlamoNetworkingProtocol {
+    func fetchWithAlamo(url:URL, comletion:@escaping(Result<Image, NetworkErrors>)->Void)
 }
 
 class NetworkService: NetworkingProtocol {
@@ -57,6 +63,12 @@ class NetworkService: NetworkingProtocol {
             }
             completion(.success(model))
         }.resume()
+    }
+}
+
+extension NetworkService: AlamoNetworkingProtocol {
+    func fetchWithAlamo(url: URL, comletion: @escaping (Result<Image, NetworkErrors>) -> Void) {
+        
     }
     
     
