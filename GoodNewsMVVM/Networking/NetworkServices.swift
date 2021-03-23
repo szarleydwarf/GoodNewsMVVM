@@ -75,8 +75,8 @@ class NetworkService: NetworkingProtocol {
                 return
             }
             print("THE AF >> \(response)")
-            print("THE AF >> \(images)")
-           
+            print("THE AF >> \(images.hits.count)")
+            comletion(.success(images.hits[Maths().randomNumber(limit: images.hits.count)]))
         }
     }
 }
