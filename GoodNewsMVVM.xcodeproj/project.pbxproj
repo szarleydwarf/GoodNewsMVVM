@@ -23,6 +23,7 @@
 		D77F9A562608EFE800607520 /* Alamofire.xcworkspace in Resources */ = {isa = PBXBuildFile; fileRef = D77F9A552608EFE800607520 /* Alamofire.xcworkspace */; };
 		D77F9A582608EFF400607520 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77F9A402608EFE800607520 /* Alamofire.framework */; };
 		D77F9A592608EFF500607520 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D77F9A402608EFE800607520 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D77F9A7A260A4D6500607520 /* Maths.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77F9A79260A4D6400607520 /* Maths.swift */; };
 		D789288525FA46C300644A4B /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D789288425FA46C300644A4B /* ListViewModel.swift */; };
 		D7A8380A25EE829D00DD39AE /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A8380925EE829D00DD39AE /* Animations.swift */; };
 		D7A8381E25EE896E00DD39AE /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A8381D25EE896E00DD39AE /* Filters.swift */; };
@@ -146,6 +147,7 @@
 		D77F9A2D2608EA9600607520 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		D77F9A352608EFE700607520 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Carthage/Checkouts/Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		D77F9A552608EFE800607520 /* Alamofire.xcworkspace */ = {isa = PBXFileReference; lastKnownFileType = wrapper.workspace; name = Alamofire.xcworkspace; path = Carthage/Checkouts/Alamofire/Alamofire.xcworkspace; sourceTree = "<group>"; };
+		D77F9A79260A4D6400607520 /* Maths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maths.swift; sourceTree = "<group>"; };
 		D789288425FA46C300644A4B /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		D7A8380925EE829D00DD39AE /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		D7A8381D25EE896E00DD39AE /* Filters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filters.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				D774A00125DFCBA60038B6F4 /* Const.swift */,
+				D77F9A79260A4D6400607520 /* Maths.swift */,
 				D7749FD425DFC11A0038B6F4 /* AppDelegate.swift */,
 				D7B01C0F25F633A800FDA529 /* QuoteModel.xcdatamodeld */,
 				D7749FD625DFC11A0038B6F4 /* SceneDelegate.swift */,
@@ -515,6 +518,7 @@
 				D774A00025DFC6EC0038B6F4 /* NetworkServices.swift in Sources */,
 				D7749FFE25DFC6D70038B6F4 /* ViewModel.swift in Sources */,
 				D7E596D92603964200B1F4B4 /* Toast.swift in Sources */,
+				D77F9A7A260A4D6500607520 /* Maths.swift in Sources */,
 				D7C480DC25F7866900D06EBC /* Qoute+CoreDataProperties.swift in Sources */,
 				D7749FD925DFC11A0038B6F4 /* ViewController.swift in Sources */,
 				D7B01C1125F633A800FDA529 /* QuoteModel.xcdatamodeld in Sources */,

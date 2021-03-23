@@ -63,8 +63,20 @@ class NetworkService: NetworkingProtocol {
     }
     
     func fetchWithAlamo(url: URL, comletion: @escaping (Result<Image, NetworkErrors>) -> Void) {
-        AF.request(Const.imageAPI).response { response in
+        AF.request(Const.imageAPI).responseData { response in
+            let decoder = JSONDecoder()
+            guard let data = response.data else {
+                comletion(.failure(.noData))
+                return
+            }
+            
+            guard let images = try? decoder.decode(Images.self, from: data) else  {
+                comletion(.failure(.couldNotDecode))
+                return
+            }
             print("THE AF >> \(response)")
+            print("THE AF >> \(images)")
+           
         }
     }
 }

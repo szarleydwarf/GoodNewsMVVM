@@ -150,6 +150,10 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: ViewModelProtocol {
+    func refreshImageLabel() {
+        print("refreashing label")
+    }
+    
     func refreshUI() {
         self.fadeAnimation(on: self.quoteLabel)
         self.scaleAnimation()
