@@ -81,9 +81,9 @@ class ViewModel {
             switch result {
             case .success(let image):
                 print("SUCCESS \(image)")
-                DispatchQueue.main.async {
-                    self?.image = image
-                }
+                self?.image = image
+               
+                
             case .failure(let e):
                 print("ERROR IMAGE ALAMO \(e)")
             }
