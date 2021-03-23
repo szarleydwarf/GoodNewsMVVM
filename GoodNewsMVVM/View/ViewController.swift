@@ -80,12 +80,6 @@ class ViewController: UIViewController {
     }
     
     @objc func imageTapped(_ sender: UITapGestureRecognizer) {
-//        guard let image = UIImage(named: Const.imageName) else {
-//            return
-//        }
-//        guard let image = self.imageOriginal else {
-//            return
-//        }
         var image:UIImage?
         if self.imageOriginal != nil {
             image = self.imageOriginal
