@@ -78,7 +78,10 @@ class ViewController: UIViewController {
     }
     
     @objc func imageTapped(_ sender: UITapGestureRecognizer) {
-        guard let image = UIImage(named: Const.imageName) else {
+//        guard let image = UIImage(named: Const.imageName) else {
+//            return
+//        }
+        guard let image = self.theme.image else {
             return
         }
         guard let tap = self.tapCount else {return}
