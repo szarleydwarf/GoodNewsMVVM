@@ -144,14 +144,12 @@ class ViewController: UIViewController {
     
     
     @IBAction func playMusic(_ sender: UIButton) {
-        print("Changing image...")
         self.vm.requestImage()
     }
 }
 
 extension ViewController: ViewModelProtocol {
     func refreshImageLabel() {
-        print("refreashing label")
         guard let url = self.vm.image?.previewURL else {return}
         if let data = try? Data(contentsOf: url) {
             if let image = UIImage(data: data) {

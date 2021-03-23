@@ -76,14 +76,10 @@ class ViewModel {
                                        Const.urlImageType:Const.urlImageTypeParam
         ]
         guard let url = self.service.getURL(host: Const.urlHostImages, path: Const.urlPathImages, params: params) else {return}
-        print("URL >> \(url)")
         self.service.fetchWithAlamo(url: url) { [weak self] result in
             switch result {
             case .success(let image):
-                print("SUCCESS \(image)")
                 self?.image = image
-               
-                
             case .failure(let e):
                 print("ERROR IMAGE ALAMO \(e)")
             }
