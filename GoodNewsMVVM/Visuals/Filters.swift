@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 
 protocol FilterProtocol {
-    func applyFilter (on image: UIImage, filterNumber: Int, intensity: Float) -> UIImage
+    func applyFilter (on image: UIImage?, filterNumber: Int, intensity: Float) -> UIImage?
 }
 extension FilterProtocol {
-    func applyFilter (on image: UIImage, filterNumber: Int = 0, intensity: Float = 0.66) -> UIImage {
+    func applyFilter (on image: UIImage?, filterNumber: Int = 0, intensity: Float = 0.66) -> UIImage? {
         return applyFilter(on: image, filterNumber: filterNumber, intensity: intensity)
     }
 }
@@ -22,7 +22,8 @@ class Filters: FilterProtocol {
     private var context:CIContext = CIContext(options: nil)
 
     
-    func applyFilter (on image: UIImage, filterNumber: Int = 0, intensity: Float = 0.66) -> UIImage{
+    func applyFilter (on image: UIImage?, filterNumber: Int = 0, intensity: Float = 0.66) -> UIImage?{
+        guard let image = image else{return nil}
         let beginImage = CIImage(image: image)
         var imageToReturn: UIImage = UIImage()
         var filter: CIFilter = CIFilter()

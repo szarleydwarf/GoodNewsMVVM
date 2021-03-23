@@ -16,6 +16,8 @@ class ViewController: UIViewController {
     private var alerts: AlertsProtocol!
     private var tapCount:Int!
     
+    private var imageOriginal:UIImage?
+    
     @IBOutlet weak var bookmarkButton: UIButton!
     @IBOutlet weak var goToListButton: UIButton!
     @IBOutlet weak var playMusicButton: UIButton!
@@ -81,8 +83,14 @@ class ViewController: UIViewController {
 //        guard let image = UIImage(named: Const.imageName) else {
 //            return
 //        }
-        guard let image = self.theme.image else {
-            return
+//        guard let image = self.imageOriginal else {
+//            return
+//        }
+        var image:UIImage?
+        if self.imageOriginal != nil {
+            image = self.imageOriginal
+        } else {
+            image = UIImage(named: Const.imageName)
         }
         guard let tap = self.tapCount else {return}
         self.tapCount = self.tapCount < 4 ? self.tapCount + 1 : 0
@@ -157,6 +165,7 @@ extension ViewController: ViewModelProtocol {
         if let data = try? Data(contentsOf: url) {
             if let image = UIImage(data: data) {
                 DispatchQueue.main.async {
+                    self.imageOriginal = image
                     self.theme.image = image
                 }
             }
