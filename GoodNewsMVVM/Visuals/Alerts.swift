@@ -41,7 +41,7 @@ class Alerts: AlertsProtocol {
             }
             if let q = quote?.text {
                 alert.message = q
-                alert.setValue(self.setTextAttributes(of: q, to: Colors.background ?? .blue, with: UIFont.italicSystemFont(ofSize: 22)), forKey: "attributedMessage")
+                alert.setValue(self.setTextAttributes(of: q, to: Colors.labelsBackgrounds ?? .blue, with: UIFont.italicSystemFont(ofSize: 22)), forKey: "attributedMessage")
             }
         case .input:
             alert.title = Const.giveMeYourName

@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ViewModelProtocol: class {
+protocol ViewModelProtocol: AnyObject {
     func refreshUI ()
     func refreshImageLabel()
     func setLabel ()

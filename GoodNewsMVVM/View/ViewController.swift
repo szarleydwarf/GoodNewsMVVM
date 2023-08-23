@@ -61,6 +61,8 @@ class ViewController: UIViewController {
         self.vm.fetchUser()
         
         self.implementTapping()
+        
+        self.roundLabels()
     }
     
     func implementTapping () {
@@ -72,6 +74,18 @@ class ViewController: UIViewController {
         
         let greetingsLabelTap = UITapGestureRecognizer(target: self, action: #selector(greetingLabelTapped(_:)))
         self.greetingLabel.addGestureRecognizer(greetingsLabelTap)
+    }
+    
+    func roundLabels() {
+        let radius: CGFloat = 10
+        self.author.layer.masksToBounds = true
+        self.author.layer.cornerRadius = radius
+        self.quoteLabel.layer.masksToBounds = true
+        self.quoteLabel.layer.cornerRadius = radius
+        self.greetingLabel.layer.masksToBounds = true
+        self.greetingLabel.layer.cornerRadius = radius
+        self.theme.layer.masksToBounds = true
+        self.theme.layer.cornerRadius = radius
     }
     
     // selector version of tap recognision
@@ -203,7 +217,7 @@ extension ViewController: ViewModelProtocol {
             self.goToListButton.alpha = 1
         } else{
             self.bookmarkButton.alpha = 0.5
-            self.goToListButton.alpha = 0.5
+            self.goToListButton.alpha = 0.75
         }
     }
 }

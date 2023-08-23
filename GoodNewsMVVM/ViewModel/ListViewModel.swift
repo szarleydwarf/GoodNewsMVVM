@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ListViewModelProtocol: class {
+protocol ListViewModelProtocol: AnyObject {
     func refreshLabel()
 }
 class ListViewModel {
