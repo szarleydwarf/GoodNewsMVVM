@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18ADD0442A9669750086B425 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ADD0432A9669750086B425 /* InfoViewController.swift */; };
 		D74BE56D25F90A2F00B2D006 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74BE56C25F90A2F00B2D006 /* ListViewController.swift */; };
 		D7749FD525DFC11A0038B6F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7749FD425DFC11A0038B6F4 /* AppDelegate.swift */; };
 		D7749FD725DFC11A0038B6F4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7749FD625DFC11A0038B6F4 /* SceneDelegate.swift */; };
@@ -128,6 +129,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		18ADD0432A9669750086B425 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		D74BE56C25F90A2F00B2D006 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		D7749FD125DFC11A0038B6F4 /* GoodNewsMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodNewsMVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7749FD425DFC11A0038B6F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 			children = (
 				D7749FD825DFC11A0038B6F4 /* ViewController.swift */,
 				D74BE56C25F90A2F00B2D006 /* ListViewController.swift */,
+				18ADD0432A9669750086B425 /* InfoViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -526,6 +529,7 @@
 				D7749FD525DFC11A0038B6F4 /* AppDelegate.swift in Sources */,
 				D7749FD725DFC11A0038B6F4 /* SceneDelegate.swift in Sources */,
 				D7C480DB25F7866900D06EBC /* Qoute+CoreDataClass.swift in Sources */,
+				18ADD0442A9669750086B425 /* InfoViewController.swift in Sources */,
 				D7749FFC25DFC6C60038B6F4 /* Model.swift in Sources */,
 				D7AFB3A425F2A2BC004FD354 /* Alerts.swift in Sources */,
 				D7AFB3B325F2AED6004FD354 /* User.swift in Sources */,

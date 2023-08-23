@@ -151,19 +151,33 @@ class ViewController: UIViewController {
     @IBAction func playMusic(_ sender: UIButton) {
         self.vm.requestImage()
     }
+    @IBAction func showInfoTapped(_ sender: UIButton) {
+        if let infoView = storyboard?.instantiateViewController(identifier: "InfoViewController") as? InfoViewController {
+            present(infoView, animated: true)
+        }
+    }
 }
 
 extension ViewController: ViewModelProtocol {
     func refreshImageLabel() {
         guard let url = self.vm.image?.previewURL else {return}
-        if let data = try? Data(contentsOf: url) {
-            if let image = UIImage(data: data) {
-                DispatchQueue.main.async {
-                    self.imageOriginal = image
-                    self.theme.image = image
+        let  session = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, respons, err in
+            if err != nil {
+                print("ERRR.\(err)")
+            } else {
+                if let res = respons as? HTTPURLResponse {
+                    if let imageData = data {
+                        let image = UIImage(data: imageData)
+                        DispatchQueue.main.async {
+                            self.imageOriginal = image
+                            self.theme.image = image
+                        }
+                    } else {
+                        print("Couldn't get image: Image is nil")
+                    }
                 }
             }
-        }
+        }.resume()
     }
     
     func refreshUI() {

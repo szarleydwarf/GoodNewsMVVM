@@ -1,0 +1,33 @@
+- Tailwind
+
+{ 'midnight_green': { DEFAULT: '#13505b', 100: '#041013', 200: '#082125', 300: '#0c3138', 400: '#10414a', 500: '#13505b', 600: '#228c9e', 700: '#3abed5', 800: '#7cd4e3', 900: '#bde9f1' }, 'asparagus': { DEFAULT: '#70ae6e', 100: '#152515', 200: '#2a4929', 300: '#3f6e3e', 400: '#549252', 500: '#70ae6e', 600: '#8ebe8c', 700: '#aacfa9', 800: '#c6dfc6', 900: '#e3efe2' }, 'chocolate_cosmos': { DEFAULT: '#4c061d', 100: '#0f0106', 200: '#1e020c', 300: '#2d0412', 400: '#3c0517', 500: '#4c061d', 600: '#9b0d3c', 700: '#ea135b', 800: '#f26091', 900: '#f9b0c8' }, 'papaya_whip': { DEFAULT: '#ffeed6', 100: '#5e3700', 200: '#bc6d00', 300: '#ffa01b', 400: '#ffc778', 500: '#ffeed6', 600: '#fff1de', 700: '#fff5e7', 800: '#fff8ef', 900: '#fffcf7' }, 'sky_blue': { DEFAULT: '#68c5db', 100: '#0d2d34', 200: '#195967', 300: '#26869b', 400: '#33b1ce', 500: '#68c5db', 600: '#85d1e2', 700: '#a4dce9', 800: '#c2e8f0', 900: '#e1f3f8' } }
+
+- CSV
+
+13505b,70ae6e,4c061d,ffeed6,68c5db
+
+- With #
+
+#13505b, #70ae6e, #4c061d, #ffeed6, #68c5db
+
+- Array
+
+["13505b","70ae6e","4c061d","ffeed6","68c5db"]
+
+- Object
+
+{"Midnight green":"13505b","Asparagus":"70ae6e","Chocolate cosmos":"4c061d","Papaya whip":"ffeed6","Sky blue":"68c5db"}
+
+- Extended Array
+
+[{"name":"Midnight green","hex":"13505b","rgb":[19,80,91],"cmyk":[79,12,0,64],"hsb":[189,79,36],"hsl":[189,65,22],"lab":[31,-15,-12]},{"name":"Asparagus","hex":"70ae6e","rgb":[112,174,110],"cmyk":[36,0,37,32],"hsb":[118,37,68],"hsl":[118,28,56],"lab":[66,-33,27]},{"name":"Chocolate cosmos","hex":"4c061d","rgb":[76,6,29],"cmyk":[0,92,62,70],"hsb":[340,92,30],"hsl":[340,85,16],"lab":[14,33,6]},{"name":"Papaya whip","hex":"ffeed6","rgb":[255,238,214],"cmyk":[0,7,16,0],"hsb":[35,16,100],"hsl":[35,100,92],"lab":[95,2,14]},{"name":"Sky blue","hex":"68c5db","rgb":[104,197,219],"cmyk":[53,10,0,14],"hsb":[191,53,86],"hsl":[191,61,63],"lab":[75,-22,-19]}]
+
+- XML
+
+<palette>
+  <color name="Midnight green" hex="13505b" r="19" g="80" b="91" />
+  <color name="Asparagus" hex="70ae6e" r="112" g="174" b="110" />
+  <color name="Chocolate cosmos" hex="4c061d" r="76" g="6" b="29" />
+  <color name="Papaya whip" hex="ffeed6" r="255" g="238" b="214" />
+  <color name="Sky blue" hex="68c5db" r="104" g="197" b="219" />
+</palette>
