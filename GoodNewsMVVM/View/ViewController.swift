@@ -161,11 +161,11 @@ class ViewController: UIViewController {
 extension ViewController: ViewModelProtocol {
     func refreshImageLabel() {
         guard let url = self.vm.image?.previewURL else {return}
-        let  session = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, respons, err in
+        URLSession.shared.dataTask(with: URLRequest(url: url)) { data, respons, err in
             if err != nil {
-                print("ERRR.\(err)")
+                print("ERRR.\(String(describing: err))")
             } else {
-                if let res = respons as? HTTPURLResponse {
+                if respons is HTTPURLResponse {
                     if let imageData = data {
                         let image = UIImage(data: imageData)
                         DispatchQueue.main.async {
@@ -189,9 +189,9 @@ extension ViewController: ViewModelProtocol {
     }
     
     func setLabel() {
-        var text = Const.greetingLabel
+        var text = Const.greetingLabelDefault
         if let name = self.vm.user?.name {
-            text += name.capitalized
+            text = Const.greetingLabel + name.capitalized
         }
         self.greetingLabel.text = text
         self.fadeAnimation(on: self.greetingLabel)

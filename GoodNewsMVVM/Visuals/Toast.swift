@@ -12,10 +12,12 @@ class Toast {
     let animations = Animations()
     
     func displayToast(in view: UIView) {
-        let toast = createSubCenterView(in: view, in: .systemBlue)
-        let lab = createSubCenterView(in: toast, in: .systemYellow, with: "SAVED !!!")
-        toast.addSubview(lab)
-        self.animations.fadeOut(label: toast, duration: 1.75)
+        let toast = createSubCenterView(in: view, in: .systemBlue, with: "SAVED !!!")
+        toast.font = UIFont(name: "Impact", size: 41)
+        toast.textColor = Colors.pois
+        toast.backgroundColor = Colors.asparagus
+
+        self.animations.fadeOut(label: toast, duration: 1.5)
     }
     
     func createSubCenterView(in view: UIView, in color: UIColor, with text:String = "") -> UILabel{

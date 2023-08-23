@@ -37,7 +37,8 @@ struct Const {
 
     static let unknown = "UNKNOWN"
     
-    static let greetingLabel = "Hello "
+    static let greetingLabelDefault = "Hello, tap on icon to add your name and be able to bookmark quotes."
+    static let greetingLabel = "Hello, "
     static let imageName = "ducks"
     static let stranger = "stranger"
     
@@ -48,7 +49,7 @@ struct Const {
     static let errorSaving = "Could not save - "
     static let persistentContainer = "Coredata container error "
     
-    static let giveMeYourName = "Enter your name to be able to bookmark the qoute"
+    static let giveMeYourName = "Enter your name to be able to bookmark qoute"
     static let deletionWarning = "This action will delete your records. Do you still want to proceed?"
     static let warning = "WARNING"
     static let cancel = "Cancel"

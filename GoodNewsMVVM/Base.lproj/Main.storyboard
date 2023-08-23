@@ -50,7 +50,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="KYJ-bM-6Mw"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="36"/>
+                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="36"/>
                                 <color key="textColor" name="Papaya whip"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -94,28 +94,28 @@
                                     <action selector="bookmarkQuote:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bx6-Fd-svv"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello, tap on icon to add your name and be able to bookmark quotes" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYH-1U-czw">
-                                <rect key="frame" x="4" y="816" width="406" height="44"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello, tap on icon to add your name and be able to bookmark quotes" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYH-1U-czw">
+                                <rect key="frame" x="4" y="801" width="366" height="59"/>
                                 <color key="backgroundColor" name="Chocolate cosmos"/>
                                 <color key="tintColor" name="Asparagus"/>
-                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="24"/>
                                 <color key="textColor" name="Papaya whip"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sk4-64-xe5" userLabel="List of bookmarket">
-                                <rect key="frame" x="377" y="816" width="33" height="33"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sk4-64-xe5" userLabel="List of bookmarket">
+                                <rect key="frame" x="370" y="818" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="sk4-64-xe5" secondAttribute="height" multiplier="1:1" id="7D1-cK-Pxs"/>
-                                    <constraint firstAttribute="width" constant="33" id="dB9-jb-qSg"/>
+                                    <constraint firstAttribute="width" constant="44" id="dB9-jb-qSg"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <color key="tintColor" name="Papaya whip"/>
-                                <state key="normal" image="doc.append" catalog="system"/>
+                                <state key="normal" image="list.bullet.rectangle.fill" catalog="system"/>
                                 <connections>
                                     <action selector="goToNextView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FAB-ax-WWQ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWy-HJ-4xJ" userLabel="PlayMusic">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWy-HJ-4xJ" userLabel="Image refresh">
                                 <rect key="frame" x="360" y="105.5" width="44" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="07G-Yq-Nwv"/>
@@ -127,7 +127,7 @@
                                     <action selector="playMusic:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wtk-bW-22W"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yVq-UC-QZP">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yVq-UC-QZP" userLabel="Info Button">
                                 <rect key="frame" x="366" y="52" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="yVq-UC-QZP" secondAttribute="height" multiplier="1:1" id="4ma-br-R9c"/>
@@ -149,23 +149,22 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="el7-qV-GBu" secondAttribute="trailing" constant="4" id="4g3-Zf-Rce"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WIl-RZ-GeE" secondAttribute="trailing" constant="4" id="HBr-8O-xz2"/>
                             <constraint firstItem="hsW-Gd-49z" firstAttribute="bottom" secondItem="el7-qV-GBu" secondAttribute="top" constant="2" id="If0-fg-Jg4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="sk4-64-xe5" secondAttribute="bottom" id="ItK-Go-fXR"/>
                             <constraint firstItem="CWy-HJ-4xJ" firstAttribute="top" secondItem="pbN-uc-Hde" secondAttribute="top" constant="6" id="Jp4-xE-zZK"/>
                             <constraint firstItem="CWy-HJ-4xJ" firstAttribute="trailing" secondItem="pbN-uc-Hde" secondAttribute="trailing" constant="-6" id="Mfb-a7-MNn"/>
                             <constraint firstItem="L5J-oI-QOQ" firstAttribute="bottom" secondItem="el7-qV-GBu" secondAttribute="top" constant="2" id="Pz1-yB-JLn"/>
                             <constraint firstItem="pbN-uc-Hde" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="4" id="R9E-H5-3mX"/>
                             <constraint firstItem="pbN-uc-Hde" firstAttribute="bottom" secondItem="L5J-oI-QOQ" secondAttribute="top" constant="2" id="TPQ-V1-f5D"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mYH-1U-czw" secondAttribute="trailing" constant="4" id="V5r-1P-up9"/>
                             <constraint firstItem="WIl-RZ-GeE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="4" id="XDF-wA-RE3"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mYH-1U-czw" secondAttribute="bottom" constant="2" id="XuS-GE-3nI"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="hsW-Gd-49z" secondAttribute="bottom" constant="452" id="YND-yk-TPc"/>
                             <constraint firstItem="pbN-uc-Hde" firstAttribute="top" secondItem="WIl-RZ-GeE" secondAttribute="bottom" constant="4" id="YNz-8i-vGt"/>
                             <constraint firstItem="L5J-oI-QOQ" firstAttribute="leading" secondItem="el7-qV-GBu" secondAttribute="leading" constant="4" id="bre-Tq-pXz"/>
-                            <constraint firstItem="sk4-64-xe5" firstAttribute="top" secondItem="mYH-1U-czw" secondAttribute="top" id="jgI-wb-oAV"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mYH-1U-czw" secondAttribute="bottom" constant="2" id="chR-1M-3eD"/>
+                            <constraint firstItem="sk4-64-xe5" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="eaO-le-xNS"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pbN-uc-Hde" secondAttribute="trailing" constant="4" id="kUg-pH-Eej"/>
                             <constraint firstItem="yVq-UC-QZP" firstAttribute="top" secondItem="WIl-RZ-GeE" secondAttribute="top" id="oLd-nq-JpX"/>
                             <constraint firstItem="hsW-Gd-49z" firstAttribute="trailing" secondItem="el7-qV-GBu" secondAttribute="trailing" id="oqs-xA-uO4"/>
-                            <constraint firstItem="sk4-64-xe5" firstAttribute="trailing" secondItem="mYH-1U-czw" secondAttribute="trailing" id="qAE-Ad-dL7"/>
-                            <constraint firstItem="sk4-64-xe5" firstAttribute="trailing" secondItem="mYH-1U-czw" secondAttribute="trailing" id="rUY-eZ-EUw"/>
+                            <constraint firstItem="sk4-64-xe5" firstAttribute="leading" secondItem="mYH-1U-czw" secondAttribute="trailing" id="rUY-eZ-EUw"/>
                             <constraint firstItem="yVq-UC-QZP" firstAttribute="trailing" secondItem="WIl-RZ-GeE" secondAttribute="trailing" id="tPr-IY-oRy"/>
                             <constraint firstItem="mYH-1U-czw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="4" id="wES-do-l3P"/>
                         </constraints>
@@ -267,8 +266,8 @@
         <image name="appInfo" width="864" height="1856"/>
         <image name="arrow.clockwise.circle" catalog="system" width="128" height="123"/>
         <image name="bookmark.circle" catalog="system" width="128" height="123"/>
-        <image name="doc.append" catalog="system" width="115" height="128"/>
         <image name="info.circle" catalog="system" width="128" height="123"/>
+        <image name="list.bullet.rectangle.fill" catalog="system" width="128" height="93"/>
         <image name="rectangle.2.swap" catalog="system" width="128" height="102"/>
         <namedColor name="Asparagus">
             <color red="0.43921568630000002" green="0.68235294120000001" blue="0.43137254899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		18ADD0442A9669750086B425 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ADD0432A9669750086B425 /* InfoViewController.swift */; };
+		18ADD04F2A966C7E0086B425 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ADD04E2A966C7E0086B425 /* Colors.swift */; };
 		D74BE56D25F90A2F00B2D006 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74BE56C25F90A2F00B2D006 /* ListViewController.swift */; };
 		D7749FD525DFC11A0038B6F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7749FD425DFC11A0038B6F4 /* AppDelegate.swift */; };
 		D7749FD725DFC11A0038B6F4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7749FD625DFC11A0038B6F4 /* SceneDelegate.swift */; };
@@ -130,6 +131,7 @@
 
 /* Begin PBXFileReference section */
 		18ADD0432A9669750086B425 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		18ADD04E2A966C7E0086B425 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		D74BE56C25F90A2F00B2D006 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		D7749FD125DFC11A0038B6F4 /* GoodNewsMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodNewsMVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7749FD425DFC11A0038B6F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 				D7749FD625DFC11A0038B6F4 /* SceneDelegate.swift */,
 				D7749FDD25DFC11F0038B6F4 /* Assets.xcassets */,
 				D7749FDF25DFC11F0038B6F4 /* LaunchScreen.storyboard */,
+				18ADD04E2A966C7E0086B425 /* Colors.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -383,8 +386,9 @@
 		D7749FC925DFC11A0038B6F4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1220;
+				LastUpgradeCheck = 1430;
 				ORGANIZATIONNAME = "The App Experts";
 				TargetAttributes = {
 					D7749FD025DFC11A0038B6F4 = {
@@ -530,6 +534,7 @@
 				D7749FD725DFC11A0038B6F4 /* SceneDelegate.swift in Sources */,
 				D7C480DB25F7866900D06EBC /* Qoute+CoreDataClass.swift in Sources */,
 				18ADD0442A9669750086B425 /* InfoViewController.swift in Sources */,
+				18ADD04F2A966C7E0086B425 /* Colors.swift in Sources */,
 				D7749FFC25DFC6C60038B6F4 /* Model.swift in Sources */,
 				D7AFB3A425F2A2BC004FD354 /* Alerts.swift in Sources */,
 				D7AFB3B325F2AED6004FD354 /* User.swift in Sources */,

@@ -37,11 +37,11 @@ class Alerts: AlertsProtocol {
         case .info:
             if let author = quote?.author {
                 alert.title = Const.info + author
-                alert.setValue(self.setTextAttributes(of: author, to: .magenta, with: UIFont.boldSystemFont(ofSize: 20)), forKey: "attributedTitle")
+                alert.setValue(self.setTextAttributes(of: author, to: Colors.asparagus ?? .magenta, with: UIFont.boldSystemFont(ofSize: 20)), forKey: "attributedTitle")
             }
             if let q = quote?.text {
                 alert.message = q
-                alert.setValue(self.setTextAttributes(of: q, to: .blue, with: UIFont.italicSystemFont(ofSize: 22)), forKey: "attributedMessage")
+                alert.setValue(self.setTextAttributes(of: q, to: Colors.background ?? .blue, with: UIFont.italicSystemFont(ofSize: 22)), forKey: "attributedMessage")
             }
         case .input:
             alert.title = Const.giveMeYourName
@@ -49,7 +49,7 @@ class Alerts: AlertsProtocol {
             alert.addTextField()
         case .warning:
             alert.title = Const.warning
-            alert.setValue(self.setTextAttributes(of: Const.warning, to: .red, with: UIFont.boldSystemFont(ofSize: 24)), forKey: "attributedTitle")
+            alert.setValue(self.setTextAttributes(of: Const.warning, to: Colors.labelsBackgrounds ?? .red, with: UIFont.boldSystemFont(ofSize: 24)), forKey: "attributedTitle")
             alert.message = Const.deletionWarning
         }
         
