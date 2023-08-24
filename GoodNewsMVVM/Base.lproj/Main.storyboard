@@ -6,7 +6,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -54,83 +53,6 @@
                                 <color key="textColor" name="Papaya whip"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quote" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="el7-qV-GBu">
-                                <rect key="frame" x="4" y="408" width="406" height="41"/>
-                                <color key="backgroundColor" name="Chocolate cosmos"/>
-                                <gestureRecognizers/>
-                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
-                                <color key="textColor" name="Papaya whip"/>
-                                <nil key="highlightedColor"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="aHR-QQ-k6e" appends="YES" id="N0i-tm-dfd"/>
-                                </connections>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hsW-Gd-49z" userLabel="Refresh_Button">
-                                <rect key="frame" x="366" y="366.5" width="44" height="43"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="44" id="Etg-yT-7uJ"/>
-                                    <constraint firstAttribute="width" secondItem="hsW-Gd-49z" secondAttribute="height" multiplier="1:1" id="Uaw-pv-6Eq"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="tintColor" name="Papaya whip"/>
-                                <state key="normal" backgroundImage="arrow.clockwise.circle" catalog="system"/>
-                                <connections>
-                                    <action selector="refreshQuote:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6LC-vS-xdE"/>
-                                </connections>
-                            </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pbN-uc-Hde">
-                                <rect key="frame" x="4" y="100" width="406" height="268"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="406" id="73U-qh-Lwn"/>
-                                    <constraint firstAttribute="height" constant="268" id="EL7-aJ-f69"/>
-                                </constraints>
-                            </imageView>
-                            <button opaque="NO" alpha="0.25" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L5J-oI-QOQ" userLabel="Bookmark_Button">
-                                <rect key="frame" x="8" y="366.5" width="44" height="43"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="44" id="KdN-jQ-qfp"/>
-                                    <constraint firstAttribute="width" secondItem="L5J-oI-QOQ" secondAttribute="height" multiplier="1:1" id="QWN-sy-swb"/>
-                                </constraints>
-                                <color key="tintColor" name="Papaya whip"/>
-                                <state key="normal" backgroundImage="bookmark.circle" catalog="system"/>
-                                <connections>
-                                    <action selector="bookmarkQuote:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bx6-Fd-svv"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello, tap on icon to add your name and be able to bookmark quotes" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYH-1U-czw">
-                                <rect key="frame" x="4" y="801" width="366" height="59"/>
-                                <color key="backgroundColor" name="Chocolate cosmos"/>
-                                <color key="tintColor" name="Asparagus"/>
-                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="24"/>
-                                <color key="textColor" name="Papaya whip"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sk4-64-xe5" userLabel="List of bookmarket">
-                                <rect key="frame" x="370" y="818" width="44" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="sk4-64-xe5" secondAttribute="height" multiplier="1:1" id="7D1-cK-Pxs"/>
-                                    <constraint firstAttribute="width" constant="44" id="dB9-jb-qSg"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <color key="tintColor" name="Papaya whip"/>
-                                <state key="normal" image="list.bullet.rectangle.fill" catalog="system"/>
-                                <connections>
-                                    <action selector="goToNextView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FAB-ax-WWQ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWy-HJ-4xJ" userLabel="Image refresh">
-                                <rect key="frame" x="360" y="105.5" width="44" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="44" id="07G-Yq-Nwv"/>
-                                    <constraint firstAttribute="width" secondItem="CWy-HJ-4xJ" secondAttribute="height" multiplier="1:1" id="GDs-tp-3Wv"/>
-                                </constraints>
-                                <color key="tintColor" name="Papaya whip"/>
-                                <state key="normal" backgroundImage="rectangle.2.swap" catalog="system"/>
-                                <connections>
-                                    <action selector="playMusic:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wtk-bW-22W"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yVq-UC-QZP" userLabel="Info Button">
                                 <rect key="frame" x="366" y="52" width="44" height="44"/>
                                 <constraints>
@@ -144,33 +66,127 @@
                                     <action selector="showInfoTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dA1-SD-kTc"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ducks" translatesAutoresizingMaskIntoConstraints="NO" id="pbN-uc-Hde">
+                                <rect key="frame" x="4" y="100" width="406" height="128"/>
+                                <color key="backgroundColor" name="Midnight green"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="406" id="73U-qh-Lwn"/>
+                                    <constraint firstAttribute="height" constant="128" id="EL7-aJ-f69"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWy-HJ-4xJ" userLabel="Image refresh">
+                                <rect key="frame" x="366" y="99.5" width="44" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="07G-Yq-Nwv"/>
+                                    <constraint firstAttribute="width" secondItem="CWy-HJ-4xJ" secondAttribute="height" multiplier="1:1" id="GDs-tp-3Wv"/>
+                                </constraints>
+                                <color key="tintColor" name="Papaya whip"/>
+                                <state key="normal" backgroundImage="rectangle.2.swap" catalog="system"/>
+                                <connections>
+                                    <action selector="playMusic:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wtk-bW-22W"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.25" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L5J-oI-QOQ" userLabel="Bookmark_Button">
+                                <rect key="frame" x="4" y="230.5" width="44" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="KdN-jQ-qfp"/>
+                                    <constraint firstAttribute="width" secondItem="L5J-oI-QOQ" secondAttribute="height" multiplier="1:1" id="QWN-sy-swb"/>
+                                </constraints>
+                                <color key="tintColor" name="Papaya whip"/>
+                                <state key="normal" backgroundImage="bookmark.circle" catalog="system"/>
+                                <connections>
+                                    <action selector="bookmarkQuote:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bx6-Fd-svv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hsW-Gd-49z" userLabel="Refresh_Button">
+                                <rect key="frame" x="366" y="230.5" width="44" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="Etg-yT-7uJ"/>
+                                    <constraint firstAttribute="width" secondItem="hsW-Gd-49z" secondAttribute="height" multiplier="1:1" id="Uaw-pv-6Eq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="tintColor" name="Papaya whip"/>
+                                <state key="normal" backgroundImage="arrow.clockwise.circle" catalog="system"/>
+                                <connections>
+                                    <action selector="refreshQuote:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6LC-vS-xdE"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello, tap on icon to add your name and be able to bookmark quotes" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYH-1U-czw">
+                                <rect key="frame" x="4" y="801" width="366" height="59"/>
+                                <color key="backgroundColor" name="Chocolate cosmos"/>
+                                <color key="tintColor" name="Asparagus"/>
+                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="24"/>
+                                <color key="textColor" name="Papaya whip"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sk4-64-xe5" userLabel="List of bookmarket">
+                                <rect key="frame" x="370" y="801" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="sk4-64-xe5" secondAttribute="height" multiplier="1:1" id="7D1-cK-Pxs"/>
+                                    <constraint firstAttribute="width" constant="44" id="dB9-jb-qSg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <color key="tintColor" name="Papaya whip"/>
+                                <state key="normal" image="list.bullet.rectangle.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="goToNextView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FAB-ax-WWQ"/>
+                                </connections>
+                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qYc-rg-bUI">
+                                <rect key="frame" x="2" y="272" width="410" height="531"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quote" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="el7-qV-GBu">
+                                        <rect key="frame" x="0.0" y="0.0" width="410" height="41"/>
+                                        <color key="backgroundColor" name="Chocolate cosmos"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="1000" id="xjX-aN-vhi"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                        <color key="textColor" name="Papaya whip"/>
+                                        <nil key="highlightedColor"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="aHR-QQ-k6e" appends="YES" id="N0i-tm-dfd"/>
+                                        </connections>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="el7-qV-GBu" firstAttribute="top" secondItem="9vY-cX-dCH" secondAttribute="top" id="JC8-4A-bNK"/>
+                                    <constraint firstItem="9vY-cX-dCH" firstAttribute="leading" secondItem="el7-qV-GBu" secondAttribute="leading" id="KR6-JQ-U0U"/>
+                                    <constraint firstItem="el7-qV-GBu" firstAttribute="width" secondItem="ImV-BE-wj0" secondAttribute="width" id="afr-vM-KlJ"/>
+                                    <constraint firstItem="el7-qV-GBu" firstAttribute="trailing" secondItem="9vY-cX-dCH" secondAttribute="trailing" id="nr4-LI-Rh2"/>
+                                    <constraint firstItem="el7-qV-GBu" firstAttribute="bottom" secondItem="9vY-cX-dCH" secondAttribute="bottom" id="ueA-RU-cQ5"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="9vY-cX-dCH"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="ImV-BE-wj0"/>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="Sky blue"/>
                         <constraints>
-                            <constraint firstItem="WIl-RZ-GeE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="4" id="0Gn-Om-pe9"/>
-                            <constraint firstItem="el7-qV-GBu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="4" id="4Uk-1H-DFO"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="el7-qV-GBu" secondAttribute="trailing" constant="4" id="4g3-Zf-Rce"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WIl-RZ-GeE" secondAttribute="trailing" constant="4" id="HBr-8O-xz2"/>
-                            <constraint firstItem="hsW-Gd-49z" firstAttribute="bottom" secondItem="el7-qV-GBu" secondAttribute="top" constant="2" id="If0-fg-Jg4"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="sk4-64-xe5" secondAttribute="bottom" id="ItK-Go-fXR"/>
-                            <constraint firstItem="CWy-HJ-4xJ" firstAttribute="top" secondItem="pbN-uc-Hde" secondAttribute="top" constant="6" id="Jp4-xE-zZK"/>
-                            <constraint firstItem="CWy-HJ-4xJ" firstAttribute="trailing" secondItem="pbN-uc-Hde" secondAttribute="trailing" constant="-6" id="Mfb-a7-MNn"/>
-                            <constraint firstItem="L5J-oI-QOQ" firstAttribute="bottom" secondItem="el7-qV-GBu" secondAttribute="top" constant="2" id="Pz1-yB-JLn"/>
-                            <constraint firstItem="pbN-uc-Hde" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="4" id="R9E-H5-3mX"/>
-                            <constraint firstItem="pbN-uc-Hde" firstAttribute="bottom" secondItem="L5J-oI-QOQ" secondAttribute="top" constant="2" id="TPQ-V1-f5D"/>
-                            <constraint firstItem="WIl-RZ-GeE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="4" id="XDF-wA-RE3"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="hsW-Gd-49z" secondAttribute="bottom" constant="452" id="YND-yk-TPc"/>
-                            <constraint firstItem="pbN-uc-Hde" firstAttribute="top" secondItem="WIl-RZ-GeE" secondAttribute="bottom" constant="4" id="YNz-8i-vGt"/>
-                            <constraint firstItem="L5J-oI-QOQ" firstAttribute="leading" secondItem="el7-qV-GBu" secondAttribute="leading" constant="4" id="bre-Tq-pXz"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mYH-1U-czw" secondAttribute="bottom" constant="2" id="chR-1M-3eD"/>
-                            <constraint firstItem="sk4-64-xe5" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="eaO-le-xNS"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pbN-uc-Hde" secondAttribute="trailing" constant="4" id="kUg-pH-Eej"/>
-                            <constraint firstItem="yVq-UC-QZP" firstAttribute="top" secondItem="WIl-RZ-GeE" secondAttribute="top" id="oLd-nq-JpX"/>
-                            <constraint firstItem="hsW-Gd-49z" firstAttribute="trailing" secondItem="el7-qV-GBu" secondAttribute="trailing" id="oqs-xA-uO4"/>
-                            <constraint firstItem="sk4-64-xe5" firstAttribute="leading" secondItem="mYH-1U-czw" secondAttribute="trailing" id="rUY-eZ-EUw"/>
-                            <constraint firstItem="yVq-UC-QZP" firstAttribute="trailing" secondItem="WIl-RZ-GeE" secondAttribute="trailing" id="tPr-IY-oRy"/>
-                            <constraint firstItem="mYH-1U-czw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="4" id="wES-do-l3P"/>
+                            <constraint firstItem="CWy-HJ-4xJ" firstAttribute="trailing" secondItem="pbN-uc-Hde" secondAttribute="trailing" id="1dn-Ii-m4r"/>
+                            <constraint firstItem="mYH-1U-czw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="4" id="91L-TZ-SjR"/>
+                            <constraint firstItem="sk4-64-xe5" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="BCU-Vs-Nut"/>
+                            <constraint firstItem="sk4-64-xe5" firstAttribute="leading" secondItem="mYH-1U-czw" secondAttribute="trailing" id="CIZ-5b-iF1"/>
+                            <constraint firstItem="WIl-RZ-GeE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="4" id="EIC-FV-85T"/>
+                            <constraint firstItem="qYc-rg-bUI" firstAttribute="bottom" secondItem="mYH-1U-czw" secondAttribute="top" constant="2" id="EcN-Q4-llI"/>
+                            <constraint firstItem="L5J-oI-QOQ" firstAttribute="top" secondItem="pbN-uc-Hde" secondAttribute="bottom" constant="2" id="HC7-3W-7at"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mYH-1U-czw" secondAttribute="bottom" constant="2" id="It7-7y-whj"/>
+                            <constraint firstItem="yVq-UC-QZP" firstAttribute="top" secondItem="WIl-RZ-GeE" secondAttribute="top" id="LGi-Xx-oty"/>
+                            <constraint firstItem="L5J-oI-QOQ" firstAttribute="leading" secondItem="pbN-uc-Hde" secondAttribute="leading" id="Nyp-Cf-rK2"/>
+                            <constraint firstItem="sk4-64-xe5" firstAttribute="top" secondItem="mYH-1U-czw" secondAttribute="top" id="RgS-wj-aRu"/>
+                            <constraint firstItem="WIl-RZ-GeE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="4" id="S5a-e9-eG6"/>
+                            <constraint firstItem="yVq-UC-QZP" firstAttribute="trailing" secondItem="WIl-RZ-GeE" secondAttribute="trailing" id="Wg7-jl-E74"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qYc-rg-bUI" secondAttribute="trailing" constant="2" id="ZLh-DW-veM"/>
+                            <constraint firstItem="hsW-Gd-49z" firstAttribute="trailing" secondItem="pbN-uc-Hde" secondAttribute="trailing" id="ahO-MG-RgR"/>
+                            <constraint firstItem="pbN-uc-Hde" firstAttribute="top" secondItem="WIl-RZ-GeE" secondAttribute="bottom" constant="4" id="buB-KX-1fB"/>
+                            <constraint firstItem="hsW-Gd-49z" firstAttribute="top" secondItem="pbN-uc-Hde" secondAttribute="bottom" constant="2" id="fY0-g4-HPq"/>
+                            <constraint firstItem="CWy-HJ-4xJ" firstAttribute="top" secondItem="pbN-uc-Hde" secondAttribute="top" id="ifU-n9-Gck"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WIl-RZ-GeE" secondAttribute="trailing" constant="4" id="nKR-zB-kZ5"/>
+                            <constraint firstItem="qYc-rg-bUI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="2" id="poW-br-tFG"/>
+                            <constraint firstItem="pbN-uc-Hde" firstAttribute="leading" secondItem="WIl-RZ-GeE" secondAttribute="leading" id="t7K-V5-SUm"/>
+                            <constraint firstItem="qYc-rg-bUI" firstAttribute="top" secondItem="hsW-Gd-49z" secondAttribute="bottom" constant="-2" id="ufG-dE-2oQ"/>
+                            <constraint firstItem="pbN-uc-Hde" firstAttribute="trailing" secondItem="WIl-RZ-GeE" secondAttribute="trailing" id="vZz-aP-OoX"/>
                         </constraints>
                     </view>
                     <connections>
@@ -180,6 +196,7 @@
                         <outlet property="greetingLabel" destination="mYH-1U-czw" id="XSB-N9-QUh"/>
                         <outlet property="playMusicButton" destination="CWy-HJ-4xJ" id="1im-ek-4gr"/>
                         <outlet property="quoteLabel" destination="el7-qV-GBu" id="gTr-tZ-m8N"/>
+                        <outlet property="quoteScrollView" destination="qYc-rg-bUI" id="EgI-9Q-gha"/>
                         <outlet property="theme" destination="pbN-uc-Hde" id="C3g-77-66o"/>
                     </connections>
                 </viewController>
@@ -270,6 +287,7 @@
         <image name="appInfo" width="864" height="1856"/>
         <image name="arrow.clockwise.circle" catalog="system" width="128" height="123"/>
         <image name="bookmark.circle" catalog="system" width="128" height="123"/>
+        <image name="ducks" width="1000" height="643"/>
         <image name="info.circle" catalog="system" width="128" height="123"/>
         <image name="list.bullet.rectangle.fill" catalog="system" width="128" height="93"/>
         <image name="rectangle.2.swap" catalog="system" width="128" height="102"/>
@@ -288,8 +306,5 @@
         <namedColor name="Sky blue">
             <color red="0.40799999237060547" green="0.77300000190734863" blue="0.85900002717971802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

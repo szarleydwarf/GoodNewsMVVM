@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var goToListButton: UIButton!
     @IBOutlet weak var playMusicButton: UIButton!
     
+    @IBOutlet weak var quoteScrollView: UIScrollView!
     
     @IBOutlet weak var greetingLabel: UILabel! {
         didSet {
@@ -86,6 +87,8 @@ class ViewController: UIViewController {
         self.greetingLabel.layer.cornerRadius = radius
         self.theme.layer.masksToBounds = true
         self.theme.layer.cornerRadius = radius
+        self.quoteScrollView.layer.masksToBounds = true
+        self.quoteScrollView.layer.cornerRadius = radius
     }
     
     // selector version of tap recognision
