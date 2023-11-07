@@ -1,10 +1,16 @@
-# GoodNewsMVVM
+# good_news_app
 
-Available on Apple  App Store
-https://apps.apple.com/gb/app/good-news-for-today/id6463114989
+A new Flutter project.
 
-Tap for instant wisdom from thinkers, visionaries, and leaders. Let their words guide your journey.
+## Getting Started
 
-Unleash a daily dose of inspiration right at your fingertips. Whether you're striving for success, seeking positivity, or simply looking for a mental boost, our curated collection of motivational quotes is here to uplift and empower you.
+This project is a starting point for a Flutter application.
 
-Share the Positivity: Found a quote that speaks to your soul? Spread the good vibes by sharing it directly from the app! Send it to friends, family, or anyone who could use a little extra encouragement.
+A few resources to get you started if this is your first Flutter project:
+
+- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
