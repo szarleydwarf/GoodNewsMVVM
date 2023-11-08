@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Good News App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 25, 195, 10)),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green.shade400),
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Get A Good News Every Day'),
@@ -31,7 +31,10 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(title),
+        title: Text(
+          title,
+          style: const TextStyle(fontSize: 16, color: Colors.white)
+          ),
       ),
       body: Center(
         child: Column(
@@ -40,17 +43,34 @@ class MyHomePage extends StatelessWidget {
             Text(
               "Author Name",
               style: Theme.of(context).textTheme.headlineLarge,
+  
+            ),
+            const SizedBox(
+              height: 10,
             ),
             Image.network(
               'https://images.squarespace-cdn.com/content/v1/647e19ffc1836a5f26764e43/91d4e109-23fc-4c77-b3d7-4c92f33d268d/A+journey+of+a+thousand+miles.png?format=1500w',
 
             ),
-            Text(
-              "Quote placeholder",
-              style: Theme.of(context).textTheme.headlineMedium,
+            const SizedBox(
+              height: 10,
+            ),
+             Text(
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
+              style: Theme.of(context).textTheme.headlineSmall,
+              textAlign: TextAlign.center,
+              softWrap: true,
+              overflow: TextOverflow.visible,
+            ),
+            const Divider(
+              color: Colors.amber,
+            ),
+            const Spacer(
+              flex: 1,
             ),
             Text(
-              "Hello $friend"
+              "Hello $friend",
+              style: Theme.of(context).textTheme.headlineMedium,
             )
           ],
         ),
