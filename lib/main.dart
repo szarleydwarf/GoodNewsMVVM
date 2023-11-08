@@ -33,17 +33,30 @@ class MyHomePage extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(
           title,
-          style: const TextStyle(fontSize: 16, color: Colors.white)
+          style:  TextStyle(fontSize: 24, color: Colors.amber.shade900)
           ),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              "Author Name",
-              style: Theme.of(context).textTheme.headlineLarge,
-  
+            ListTile(
+              title: Text(
+                "Author Name",
+                style: Theme.of(context).textTheme.headlineLarge,
+              ),
+              trailing: IconButton(
+                icon: const Icon(Icons.replay_outlined),
+                color: Colors.amber.shade900,
+                iconSize: 21,
+                onPressed: () => {
+                  print("Icon button 1")
+                },
+              ),
+            ),
+            
+            const Divider(
+              color: Colors.amber,
             ),
             const SizedBox(
               height: 10,
@@ -61,6 +74,14 @@ class MyHomePage extends StatelessWidget {
               textAlign: TextAlign.center,
               softWrap: true,
               overflow: TextOverflow.visible,
+            ),
+            IconButton(
+                icon: const Icon(Icons.save_alt_outlined), 
+                color: Colors.amber.shade900,
+                iconSize: 21,
+                onPressed: () {
+                  print("Elllooo.");
+                },
             ),
             const Divider(
               color: Colors.amber,
