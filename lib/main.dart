@@ -37,13 +37,15 @@ class MyHomePage extends StatelessWidget {
           ),
       ),
       body: Center(
-        child: Column(
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             ListTile(
               title: Text(
                 "Author Name",
-                style: Theme.of(context).textTheme.headlineLarge,
+                style: Theme.of(context).textTheme.headlineMedium,
               ),
               trailing: IconButton(
                 icon: const Icon(Icons.replay_outlined),
@@ -61,28 +63,37 @@ class MyHomePage extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            Image.network(
-              'https://images.squarespace-cdn.com/content/v1/647e19ffc1836a5f26764e43/91d4e109-23fc-4c77-b3d7-4c92f33d268d/A+journey+of+a+thousand+miles.png?format=1500w',
-
+            ClipRRect(
+              borderRadius: BorderRadius.circular(25.0),
+              child: Image.network(
+                'https://images.squarespace-cdn.com/content/v1/647e19ffc1836a5f26764e43/91d4e109-23fc-4c77-b3d7-4c92f33d268d/A+journey+of+a+thousand+miles.png?format=1500w',
+								width: MediaQueryData.fromView(View.of(context)).size.width - 100,
+              ),
             ),
-            const SizedBox(
-              height: 10,
-            ),
-             Text(
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
-              style: Theme.of(context).textTheme.headlineSmall,
-              textAlign: TextAlign.center,
-              softWrap: true,
-              overflow: TextOverflow.visible,
-            ),
-            IconButton(
-                icon: const Icon(Icons.save_alt_outlined), 
-                color: Colors.amber.shade900,
-                iconSize: 21,
-                onPressed: () {
-                  print("Elllooo.");
-                },
-            ),
+						Stack(
+            children:<Widget>[
+								Text(
+									"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
+									style: Theme.of(context).textTheme.bodyMedium,
+									textAlign: TextAlign.center,
+									softWrap: true,
+									overflow: TextOverflow.visible,
+								),
+								Positioned(
+									top: 0,
+									right: 0,
+									child: IconButton(
+										onPressed: () {
+											print("Elllooo.");
+										}, 
+										icon: const Icon(Icons.save),
+										color: Colors.amber.shade900,
+										iconSize: 27,
+										
+									),
+								),
+							]
+						),
             const Divider(
               color: Colors.amber,
             ),
@@ -95,6 +106,7 @@ class MyHomePage extends StatelessWidget {
             )
           ],
         ),
+      ),
       ),
     );
   }
