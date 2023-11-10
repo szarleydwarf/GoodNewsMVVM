@@ -12,3 +12,8 @@ const String imagePathPlaceholder =
 const double cornerRadius = 25.0;
 const double iconButtonSize = 27.0;
 const double wholeScreenPadding = 18.0;
+
+const String quotesAPI =
+    "https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en";
+const String imageAPI =
+    "https://pixabay.com/api/?key=18691967-c6bbf9bfa8dba2ffd4c907bb5&q=nature+horizontal&image_type=photo";

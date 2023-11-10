@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:good_news_app/networking/network_manager.dart';
 import '../misc/constants.dart';
 
 class HomeScreenElements {
@@ -10,7 +11,7 @@ class HomeScreenElements {
     iconColor = userExist ? Colors.amber.shade900 : Colors.amber;
   }
 
-  Widget authorRow(String name, TextStyle? textStyle) {
+  Widget getAuthorRow(String name, TextStyle? textStyle) {
     return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
       Text(
         name,
@@ -77,5 +78,24 @@ class HomeScreenElements {
         width: MediaQueryData.fromView(View.of(context)).size.width - 100,
       ),
     );
+  }
+
+  Widget getFutureDataFrom(Future<Quote> futureQuote) {
+    return FutureBuilder<Quote>(
+        future: futureQuote,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const CircularProgressIndicator();
+          } else if (snapshot.hasData) {
+            return buildHomeScreen(snapshot.data);
+          } else if (snapshot.hasError) {
+            return Text('${snapshot.error}');
+          } 
+          return const CircularProgressIndicator();
+        });
+  }
+
+  Widget buildHomeScreen(Quote? data) {
+    return Column();
   }
 }
