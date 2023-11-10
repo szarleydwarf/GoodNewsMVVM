@@ -28,14 +28,17 @@ class _SplashScreen extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: Colors.blue.shade400,
       body: Padding(
-          padding: const EdgeInsets.all(18),
+          padding: const EdgeInsets.all(wholeScreenPadding),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               ClipRRect(
-                borderRadius: BorderRadius.circular(25.0),
-                child: Image.asset("assets/appstore.png"),
+                borderRadius: BorderRadius.circular(cornerRadius),
+                child: Image.asset(
+                  appSplashIcon,
+                  width: MediaQueryData.fromView(View.of(context)).size.width - 200,
+                ),
             ),
           ]
         )

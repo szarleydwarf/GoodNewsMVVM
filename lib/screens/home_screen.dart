@@ -1,92 +1,51 @@
-
 import 'package:flutter/material.dart';
+import 'package:good_news_app/screen_elements/home_elements.dart';
 import '../misc/constants.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key, required this.title});
 
   final String title;
+  final bool userExist = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(
-          title,
-          style:  TextStyle(fontSize: 24, color: Colors.amber.shade900)
-          ),
+        title: Text(title,
+        style: TextStyle(fontSize: 24, color: Colors.yellow.shade400)),
       ),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(8),
+          padding: const EdgeInsets.all(wholeScreenPadding),
           child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            ListTile(
-              title: Text(
-                "Author Name",
-                style: Theme.of(context).textTheme.headlineMedium,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              HomeScreenElements(context, userExist).authorRow(authorNamePlaceholder,
+                  Theme.of(context).textTheme.headlineMedium),
+              const Divider(
+                color: Colors.amber,
               ),
-              trailing: IconButton(
-                icon: const Icon(Icons.replay_outlined),
-                color: Colors.amber.shade900,
-                iconSize: 21,
-                onPressed: () => {
-                  print("Icon button 1")
-                },
+              const SizedBox(
+                height: 10,
               ),
-            ),
-            
-            const Divider(
-              color: Colors.amber,
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(25.0),
-              child: Image.network(
-                'https://images.squarespace-cdn.com/content/v1/647e19ffc1836a5f26764e43/91d4e109-23fc-4c77-b3d7-4c92f33d268d/A+journey+of+a+thousand+miles.png?format=1500w',
-								width: MediaQueryData.fromView(View.of(context)).size.width - 100,
+              HomeScreenElements(context, userExist).getImageElement(imagePathPlaceholder),
+              HomeScreenElements(context, userExist).getBookmarkRow(),
+              HomeScreenElements(context, userExist).getQuoteElement(
+                  textPlaceholder, Theme.of(context).textTheme.headlineSmall),
+              const Spacer(
+                flex: 1,
               ),
-            ),
-						Row(
-							mainAxisAlignment: MainAxisAlignment.end,
-								children: [
-									IconButton(
-									onPressed: () {
-										print("Elllooo.");
-									}, 
-									icon: const Icon(Icons.save),
-									color: Colors.amber.shade900,
-									iconSize: 27,
-									
-								),
-							]
-						),
-						Text(
-							"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
-							style: Theme.of(context).textTheme.headlineSmall,
-							textAlign: TextAlign.center,
-							softWrap: true,
-							overflow: TextOverflow.visible,
-						),
-						const Spacer(
-              flex: 1,
-            ),
-            const Divider(
-              color: Colors.amber,
-            ),
-            Text(
-              "Hello $friend",
-              style: Theme.of(context).textTheme.headlineMedium,
-            )
-          ],
+              const Divider(
+                color: Colors.amber,
+              ),
+              HomeScreenElements(context, userExist).getUserBar(
+                  friend, Theme.of(context).textTheme.headlineMedium)
+            ],
+          ),
         ),
-      ),
       ),
     );
   }
-
 }
