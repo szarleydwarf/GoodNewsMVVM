@@ -8,7 +8,9 @@ class NetworkManager {
   Future<Quote> fetchQuote() async {
     final response = await http.get(Uri.parse(quotesAPI));
     if (response.statusCode == 200) {
-      return Quote.fromJSON(jsonDecode(response.body) as Map<String, dynamic>);
+      String fixed = response.body.replaceAll(r"\'", "'");
+    print("fixed $fixed");
+      return Quote.fromJSON(jsonDecode(fixed) as Map<String, dynamic>);
     } else {
       throw Exception("FETCHING FAILED WITH STATUS CODE $response.statusCode");
     }

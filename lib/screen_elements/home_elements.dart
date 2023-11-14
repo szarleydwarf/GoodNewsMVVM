@@ -12,6 +12,7 @@ class HomeScreenElements {
   }
 
   Widget getAuthorRow(String name, TextStyle? textStyle) {
+    Future<Quote> resp;
     return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
       Text(
         name,
@@ -21,7 +22,10 @@ class HomeScreenElements {
         icon: const Icon(Icons.replay_outlined),
         color: iconColor,
         iconSize: iconButtonSize,
-        onPressed: () => {print("Fetching from API")},
+        onPressed: () => {
+          resp = NetworkManager().fetchQuote(),
+          print("Fetching from API $resp")
+        },
       ),
     ]);
   }
@@ -90,12 +94,51 @@ class HomeScreenElements {
             return buildHomeScreen(snapshot.data);
           } else if (snapshot.hasError) {
             return Text('${snapshot.error}');
-          } 
+          }
           return const CircularProgressIndicator();
         });
   }
 
   Widget buildHomeScreen(Quote? data) {
-    return Column();
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: Text(appTitle,
+            style: TextStyle(fontSize: 24, color: Colors.yellow.shade400)),
+      ),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(wholeScreenPadding),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+          
+              HomeScreenElements(context, userExist).getAuthorRow(
+                  data?.author ?? authorNamePlaceholder,
+                  Theme.of(context).textTheme.headlineMedium),
+              const Divider(
+                color: Colors.amber,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              HomeScreenElements(context, userExist)
+                  .getImageElement(imagePathPlaceholder),
+              HomeScreenElements(context, userExist).getBookmarkRow(),
+              HomeScreenElements(context, userExist).getQuoteElement(
+                  data?.quote ?? textPlaceholder, Theme.of(context).textTheme.headlineSmall),
+              const Spacer(
+                flex: 1,
+              ),
+              const Divider(
+                color: Colors.amber,
+              ),
+              HomeScreenElements(context, userExist).getUserBar(
+                  friend, Theme.of(context).textTheme.headlineMedium)
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
