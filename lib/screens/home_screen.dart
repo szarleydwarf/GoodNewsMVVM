@@ -21,7 +21,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    futureQuote = NetworkManager().fetchQuote().then((value) => quote = value);
+    futureQuote =
+        NetworkManager().fetchQuote(); //.then((value) => quote = value);
     iconColor = userExist ? Colors.amber.shade900 : Colors.amber;
   }
 
@@ -44,7 +45,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: Colors.amber,
               ),
               getFutureDataFrom(futureQuote),
-    // getQuoteWidget(quote),
               const Spacer(
                 flex: 1,
               ),
@@ -86,6 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
           } else if (snapshot.hasData && snapshot.data != null) {
             return getQuoteWidget(snapshot.data);
           } else if (snapshot.hasError) {
+            // TODO: Change the error to "There was a qonection error"
             return Text('${snapshot.error}');
           }
           return const CircularProgressIndicator();
@@ -99,8 +100,8 @@ class _HomeScreenState extends State<HomeScreen> {
         getAuthorRow(authorName ?? authorNamePlaceholder,
             Theme.of(context).textTheme.headlineMedium),
         const Divider(
-            color: Colors.amber,
-          ),
+          color: Colors.amber,
+        ),
         getQuoteElement(data?.quote ?? quotePlaceholder,
             Theme.of(context).textTheme.headlineSmall),
       ],
@@ -110,16 +111,22 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget getAuthorRow(String name, TextStyle? textStyle) {
     return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
       getBookmarkRow(),
-      Text(
-        name,
-        style: textStyle,
+      Flexible(
+        child: Wrap(
+          crossAxisAlignment: WrapCrossAlignment.center,
+          alignment: WrapAlignment.spaceBetween,
+          spacing: 30,
+          direction: Axis.horizontal,
+          children: [
+            Text(
+              name,
+              style: textStyle,
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
       ),
-      IconButton(
-        icon: const Icon(Icons.replay_outlined),
-        color: iconColor,
-        iconSize: iconButtonSize,
-        onPressed: _onSubmit,
-      ),
+      getRefreshButton(),
     ]);
   }
 
@@ -163,5 +170,14 @@ class _HomeScreenState extends State<HomeScreen> {
         iconSize: iconButtonSize,
       )
     ]);
+  }
+
+  Widget getRefreshButton() {
+    return IconButton(
+      icon: const Icon(Icons.replay_outlined),
+      color: iconColor,
+      iconSize: iconButtonSize,
+      onPressed: _onSubmit,
+    );
   }
 }
