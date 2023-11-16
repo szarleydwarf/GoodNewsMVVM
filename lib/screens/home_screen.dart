@@ -14,6 +14,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late Future<Quote> futureQuote;
+  late Future<Widget> futureImage;
   final bool userExist = false;
   Color iconColor = Colors.black;
   late Quote quote = Quote(author: "author", quote: "quote");
@@ -21,8 +22,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    futureQuote =
-        NetworkManager().fetchQuote(); //.then((value) => quote = value);
+    futureQuote = NetworkManager().fetchQuote();
+    futureImage = NetworkManager().fetchImage();
     iconColor = userExist ? Colors.amber.shade900 : Colors.amber;
   }
 
@@ -59,15 +60,17 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Future<void> _onSubmit() async {
+  Future<void> _onRefreshTapped() async {
     setState(() {
       futureQuote = NetworkManager().fetchQuote();
-      print("Fetching from API $futureQuote");
       futureQuote.then((value) => quote = value);
+      futureImage = NetworkManager().fetchImage();
+      print("FUTURE IMAGE $futureImage");
     });
   }
 
   Widget getImageElement(String imagePath) {
+    NetworkManager().fetchImage;
     return ClipRRect(
       borderRadius: BorderRadius.circular(cornerRadius),
       child: Image.network(
@@ -177,7 +180,7 @@ class _HomeScreenState extends State<HomeScreen> {
       icon: const Icon(Icons.replay_outlined),
       color: iconColor,
       iconSize: iconButtonSize,
-      onPressed: _onSubmit,
+      onPressed: _onRefreshTapped,
     );
   }
 }
