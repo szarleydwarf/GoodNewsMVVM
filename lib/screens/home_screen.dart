@@ -17,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
   late Future<Widget> futureImage;
   final bool userExist = false;
   Color iconColor = Colors.black;
-  late Quote quote = Quote(author: "author", quote: "quote");
+  late Quote quote;
 
   @override
   void initState() {
@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              getImageElement(imagePathPlaceholder),
+              getImageElement(),
               const Divider(
                 color: Colors.amber,
               ),
@@ -65,18 +65,28 @@ class _HomeScreenState extends State<HomeScreen> {
       futureQuote = NetworkManager().fetchQuote();
       futureQuote.then((value) => quote = value);
       futureImage = NetworkManager().fetchImage();
-      print("FUTURE IMAGE $futureImage");
     });
   }
 
-  Widget getImageElement(String imagePath) {
+  Widget getImageElement() {
     NetworkManager().fetchImage;
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(cornerRadius),
-      child: Image.network(
-        imagePath,
-        width: MediaQueryData.fromView(View.of(context)).size.width - 100,
-      ),
+    return Column(
+      children: [
+        FutureBuilder(
+            future: futureImage,
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const CircularProgressIndicator();
+              } else if (snapshot.hasData && snapshot.data != null) {
+                return getRoundedImage(snapshot.data as Image);
+              } else if (snapshot.hasError) {
+                // TODO: Implement so crash/error login system (???)
+                print(snapshot.error);
+                return getRoundedImage(null);
+              }
+              return getRoundedImage(null);
+            }),
+      ],
     );
   }
 
@@ -89,8 +99,9 @@ class _HomeScreenState extends State<HomeScreen> {
           } else if (snapshot.hasData && snapshot.data != null) {
             return getQuoteWidget(snapshot.data);
           } else if (snapshot.hasError) {
-            // TODO: Change the error to "There was a qonection error"
-            return Text('${snapshot.error}');
+            // TODO: Implement so crash/error login system (???)
+            print(snapshot.error);
+            return getQuoteWidget(null);
           }
           return const CircularProgressIndicator();
         });
@@ -181,6 +192,17 @@ class _HomeScreenState extends State<HomeScreen> {
       color: iconColor,
       iconSize: iconButtonSize,
       onPressed: _onRefreshTapped,
+    );
+  }
+
+  Widget getRoundedImage(Image? image) {
+    var defaultImage = Image.network(
+      imagePathPlaceholder,
+      width: MediaQueryData.fromView(View.of(context)).size.width - 100,
+    );
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(cornerRadius),
+      child: image ?? defaultImage,
     );
   }
 }

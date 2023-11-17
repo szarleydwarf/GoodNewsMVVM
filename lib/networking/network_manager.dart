@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 
@@ -21,34 +22,14 @@ class NetworkManager {
     final respone = await http.get(Uri.parse(imageAPI));
     print(respone.body);
     if (respone.statusCode == 200) {
-      print("BODY $respone.body");
       var data = json.decode(respone.body);
-      var hits = data["hits"];
-      print("HITS $hits");
-      var imageUri = hits.first["previewURL"];
-      print(imageUri);
+      var hits = data["hits"] as List;
+      var index = Random().nextInt(hits.length);
+      var imageUri = hits[index]["webformatURL"];
       return Image.network(imageUri);
     } else {
       return const CircularProgressIndicator();
     }
-  }
-}
-
-class Hits {
-  ImageURL imageURL;
-  Hits({required this.imageURL});
-
-  factory Hits.fromJson(Map<String, dynamic> json) {
-    return Hits(imageURL: ImageURL.fromJson(json));
-  }
-}
-
-class ImageURL {
-  String imageURL;
-  ImageURL({required this.imageURL});
-
-  factory ImageURL.fromJson(Map<String, dynamic> json) {
-    return ImageURL(imageURL: json["previewURL"]);
   }
 }
 
