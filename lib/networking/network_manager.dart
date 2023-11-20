@@ -20,7 +20,6 @@ class NetworkManager {
 
   Future<Widget> fetchImage() async {
     final respone = await http.get(Uri.parse(imageAPI));
-    print(respone.body);
     if (respone.statusCode == 200) {
       var data = json.decode(respone.body);
       var hits = data["hits"] as List;

@@ -18,13 +18,14 @@ class _HomeScreenState extends State<HomeScreen> {
   final bool userExist = false;
   Color iconColor = Colors.black;
   late Quote quote;
+  late String userName;
 
   @override
   void initState() {
     super.initState();
     futureQuote = NetworkManager().fetchQuote();
     futureImage = NetworkManager().fetchImage();
-    iconColor = userExist ? Colors.amber.shade900 : Colors.amber;
+    iconColor = userExist ? Colors.amber.shade900 : Colors.amber.shade200;
   }
 
   @override
@@ -124,7 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget getAuthorRow(String name, TextStyle? textStyle) {
     return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-      getBookmarkRow(),
+      getBookmarkButton(),
       Flexible(
         child: Wrap(
           crossAxisAlignment: WrapCrossAlignment.center,
@@ -154,13 +155,13 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget getBookmarkRow() {
+  Widget getBookmarkButton() {
     return IconButton(
       onPressed: userExist
           ? () {
               print("Bookmarking  quote.");
             }
-          : null,
+          : () => {showAlert()},
       icon: const Icon(Icons.bookmark_add_outlined),
       color: iconColor,
       iconSize: iconButtonSize,
@@ -178,7 +179,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ? () {
                 print("SHOWING LIST");
               }
-            : null,
+            : () => {showAlert()},
         icon: const Icon(Icons.list_alt_outlined),
         color: iconColor,
         iconSize: iconButtonSize,
@@ -189,7 +190,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget getRefreshButton() {
     return IconButton(
       icon: const Icon(Icons.replay_outlined),
-      color: iconColor,
+      color: Colors.amber.shade900,
       iconSize: iconButtonSize,
       onPressed: _onRefreshTapped,
     );
@@ -203,6 +204,73 @@ class _HomeScreenState extends State<HomeScreen> {
     return ClipRRect(
       borderRadius: BorderRadius.circular(cornerRadius),
       child: image ?? defaultImage,
+    );
+  }
+
+  Future<void> showAlert() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: true,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text(infoAlertTitle),
+          content: const SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text(infoAlertDescription_1),
+                Text(infoAlertDescription_2),
+                Text(infoAlertDescription_3)
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.pop(context, 'Cancel'),
+              child: const Text(cancelButton),
+            ),
+            TextButton(
+              child: const Text(okButton),
+              onPressed: () {
+                Navigator.of(context).pop();
+                _showNamePrompt();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> _showNamePrompt() async {
+    var textEditorController = TextEditingController();
+
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text(enterNamePrompt1),
+          content: TextField(
+            controller: textEditorController,
+            decoration: const InputDecoration(hintText: enterNamePrompt2),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text(cancelButton),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+            TextButton(
+              child: const Text(saveButton),
+              onPressed: () {
+                userName = textEditorController.text;
+                print(userName);
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
