@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:good_news_app/networking/network_manager.dart';
+import '../helpers/string_extensions.dart';
+import '../networking/network_manager.dart';
 
 import '../misc/constants.dart';
 
@@ -15,10 +16,11 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   late Future<Quote> futureQuote;
   late Future<Widget> futureImage;
-  final bool userExist = false;
+  bool userExist = false;
   Color iconColor = Colors.black;
-  late Quote quote;
-  late String userName;
+  // late Quote quote;
+  late String userName = "";
+  late String userBarText;
 
   @override
   void initState() {
@@ -26,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
     futureQuote = NetworkManager().fetchQuote();
     futureImage = NetworkManager().fetchImage();
     iconColor = userExist ? Colors.amber.shade900 : Colors.amber.shade200;
+    // _setUserBar();
   }
 
   @override
@@ -53,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const Divider(
                 color: Colors.amber,
               ),
-              getUserBar(friend, Theme.of(context).textTheme.headlineMedium)
+              getUserBar(Theme.of(context).textTheme.headlineMedium)
             ],
           ),
         ),
@@ -64,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Future<void> _onRefreshTapped() async {
     setState(() {
       futureQuote = NetworkManager().fetchQuote();
-      futureQuote.then((value) => quote = value);
+      // futureQuote.then((value) => quote = value);
       futureImage = NetworkManager().fetchImage();
     });
   }
@@ -168,10 +171,11 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget getUserBar(String name, TextStyle? textStyle) {
+  Widget getUserBar(TextStyle? textStyle) {
+    _setUserBar();
     return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
       Text(
-        "Hello $name",
+        userBarText,
         style: textStyle,
       ),
       IconButton(
@@ -207,7 +211,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Future<void> showAlert() async {
+  void showAlert() async {
     return showDialog<void>(
       context: context,
       barrierDismissible: true,
@@ -241,7 +245,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Future<void> _showNamePrompt() async {
+  void _showNamePrompt() async {
     var textEditorController = TextEditingController();
 
     return showDialog(
@@ -263,14 +267,29 @@ class _HomeScreenState extends State<HomeScreen> {
             TextButton(
               child: const Text(saveButton),
               onPressed: () {
-                userName = textEditorController.text;
+                var name = textEditorController.text;
+                if (name != "") {
+                  setState(() {
+                    userName = name.capitalize();
+                    userExist = true;
+                  });
+                  Navigator.pop(context);
+                } else {
+                  Navigator.pop(context);
+                  showAlert();
+                }
                 print(userName);
-                Navigator.pop(context);
+                
               },
             ),
           ],
         );
       },
     );
+  }
+
+  void _setUserBar() {
+    userBarText =
+        (userExist && userName != "") ? "Hello $userName" : "Hello $friend";
   }
 }
