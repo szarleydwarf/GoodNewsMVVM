@@ -30,3 +30,7 @@ const String enterNamePrompt2 = 'Please, enter your name:';
 const String cancelButton = 'Nah, maybe later.';
 const String okButton = 'Yup, Let\s create.';
 const String saveButton = 'Save';
+
+// prefs keys
+const String nameKey = 'name';
+const String userExistKey = 'userExist';

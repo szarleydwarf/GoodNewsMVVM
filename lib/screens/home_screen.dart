@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 import '../helpers/string_extensions.dart';
 import '../networking/network_manager.dart';
 
@@ -14,6 +16,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   late Future<Quote> futureQuote;
   late Future<Widget> futureImage;
   bool userExist = false;
@@ -28,7 +31,6 @@ class _HomeScreenState extends State<HomeScreen> {
     futureQuote = NetworkManager().fetchQuote();
     futureImage = NetworkManager().fetchImage();
     iconColor = userExist ? Colors.amber.shade900 : Colors.amber.shade200;
-    // _setUserBar();
   }
 
   @override
@@ -67,7 +69,6 @@ class _HomeScreenState extends State<HomeScreen> {
   Future<void> _onRefreshTapped() async {
     setState(() {
       futureQuote = NetworkManager().fetchQuote();
-      // futureQuote.then((value) => quote = value);
       futureImage = NetworkManager().fetchImage();
     });
   }
@@ -278,8 +279,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   Navigator.pop(context);
                   showAlert();
                 }
-                print(userName);
-                
               },
             ),
           ],
@@ -288,8 +287,32 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  void _setUserBar() {
+  void _setUserBar() async {
+    getName();
     userBarText =
         (userExist && userName != "") ? "Hello $userName" : "Hello $friend";
+    saveName();
+  }
+
+  Future<void> saveName() async {
+    final SharedPreferences prefs = await _prefs;
+
+    setState(() {
+      print("setting name");
+      print(userName);
+
+      prefs.setString(nameKey, userName);
+    });
+  }
+
+  Future<void> getName() async {
+    final SharedPreferences prefs = await _prefs;
+    final String name = (prefs.getString(nameKey) ?? friend);
+
+    setState(() {
+      print("getting name");
+      print(name);
+      userName = name;
+    });
   }
 }
