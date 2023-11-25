@@ -31,6 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
     futureQuote = NetworkManager().fetchQuote();
     futureImage = NetworkManager().fetchImage();
     iconColor = userExist ? Colors.amber.shade900 : Colors.amber.shade200;
+    getUser();
   }
 
   @override
@@ -274,6 +275,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     userName = name.capitalize();
                     userExist = true;
                   });
+                  saveUser();
                   Navigator.pop(context);
                 } else {
                   Navigator.pop(context);
@@ -288,31 +290,24 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _setUserBar() async {
-    getName();
-    userBarText =
-        (userExist && userName != "") ? "Hello $userName" : "Hello $friend";
-    saveName();
+    userBarText = (userExist && userName != "") ? "Hello $userName" : "Hello $friend";
   }
 
-  Future<void> saveName() async {
+  void saveUser() async {
     final SharedPreferences prefs = await _prefs;
 
-    setState(() {
-      print("setting name");
-      print(userName);
-
-      prefs.setString(nameKey, userName);
-    });
+    prefs.setString(nameKey, userName);
+    prefs.setBool(userExistKey, userExist);
   }
 
-  Future<void> getName() async {
+  void getUser() async {
     final SharedPreferences prefs = await _prefs;
     final String name = (prefs.getString(nameKey) ?? friend);
+    final bool userExistInPrefs = (prefs.getBool(userExistKey) ?? false);
 
     setState(() {
-      print("getting name");
-      print(name);
       userName = name;
+      userExist = userExistInPrefs;
     });
   }
 }
