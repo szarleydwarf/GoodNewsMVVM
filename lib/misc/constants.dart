@@ -1,5 +1,6 @@
 const String appTitle = 'Good News App';
 const String homePageTitle = "Get A Good News Every Day";
+const String settingsPageTitle = "Settings";
 const String appSplashIcon = "assets/appstore.png";
 
 const String friend = "My Friend.";
@@ -27,8 +28,13 @@ const String infoAlertDescription_3 = 'Do you want to create user now?';
 const String enterNamePrompt1 = 'How should I call you?';
 const String enterNamePrompt2 = 'Please, enter your name:';
 
+const String deleteAlertDescription_1 = "Are you sure you want to delete account?";
+const String deleteAlertDescription_2 = "All data will be deleted with this action";
+
+
 const String cancelButton = 'Nah, maybe later.';
 const String okButton = 'Yup, Let\s create.';
+const String deleteButton = 'Yup, Delete.';
 const String saveButton = 'Save';
 
 // prefs keys

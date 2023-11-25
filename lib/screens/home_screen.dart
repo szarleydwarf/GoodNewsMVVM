@@ -5,6 +5,7 @@ import '../helpers/string_extensions.dart';
 import '../networking/network_manager.dart';
 
 import '../misc/constants.dart';
+import 'settings_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key, required this.title});
@@ -40,7 +41,27 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(appTitle,
-            style: TextStyle(fontSize: 24, color: Colors.yellow.shade400)),
+            style: TextStyle(fontSize: 24, color: Colors.amber.shade100)),
+        automaticallyImplyLeading: false,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.settings,
+              color: Colors.amber.shade100,
+            ),
+            onPressed: () {
+              // do something
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => SettingsScreen(
+                          title: settingsPageTitle,
+                          userName: getUserName(),
+                        )),
+              );
+            },
+          )
+        ],
       ),
       body: Center(
         child: Padding(
@@ -274,6 +295,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   setState(() {
                     userName = name.capitalize();
                     userExist = true;
+                    iconColor = Colors.amber.shade900;
                   });
                   saveUser();
                   Navigator.pop(context);
@@ -290,7 +312,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _setUserBar() async {
-    userBarText = (userExist && userName != "") ? "Hello $userName" : "Hello $friend";
+    userBarText = "Hello ${getUserName()}";
   }
 
   void saveUser() async {
@@ -308,6 +330,11 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       userName = name;
       userExist = userExistInPrefs;
+      iconColor = userExist ? Colors.amber.shade900 : Colors.amber.shade200;
     });
+  }
+
+  String getUserName() {
+    return (userExist && userName != "") ? userName : friend;
   }
 }
