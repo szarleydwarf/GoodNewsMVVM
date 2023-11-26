@@ -46,22 +46,20 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 color: Colors.amber,
               ),
               displayPP(),
+              showAppInfoScreen(),
               const Spacer(
                 flex: 1,
               ),
-              const Text(quotePlaceholder),
-              const Divider(
-                color: Colors.amber,
+               Divider(
+                color: Colors.red.shade900,
               ),
-              ElevatedButton(
-                onPressed: () => {showAlert()},
-                style: ElevatedButton.styleFrom(
-                  textStyle: const TextStyle(fontSize: 20),
-                  backgroundColor: Colors.red.shade900,
-                  foregroundColor: Colors.white,
+              Text("Danger Zone",style: TextStyle(
+                fontSize: 28, 
+                color: Colors.red.shade900,
+                fontWeight: FontWeight.w900
                 ),
-                child: const Text("Delete User"),
-              )
+              ),
+              getDeleteUSerButton(),
             ],
           ),
         ),
@@ -123,28 +121,56 @@ class _SettingsScreenState extends State<SettingsScreen> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
         ElevatedButton(
-          onPressed: () => Navigator.push(
-            context,
-            MaterialPageRoute<dynamic>(
-              builder: (_) => const PDFViewerCachedFromUrl(
-                url: ppURL,
-              ),
+            onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute<dynamic>(
+                    builder: (_) => const PDFViewerCachedFromUrl(
+                      url: ppURL,
+                    ),
+                  ),
+                ),
+            style: ElevatedButton.styleFrom(
+              textStyle: const TextStyle(fontSize: 20),
+              backgroundColor: Colors.amber.shade300,
+              foregroundColor: Colors.black,
             ),
-          ),
-          style: ElevatedButton.styleFrom(
-                  textStyle: const TextStyle(fontSize: 20),
-                  backgroundColor: Colors.amber.shade300,
-                  foregroundColor: Colors.black,
-                ),
-          child: const Text(
-                ppPageTitle,
-                style: TextStyle(
-                  fontSize: 24,
-                ),
-                textAlign: TextAlign.center,
-              )
-        ),
+            child: const Text(
+              ppPageTitle,
+              style: TextStyle(
+                fontSize: 24,
+              ),
+              textAlign: TextAlign.center,
+            )),
       ],
     );
+  }
+
+  Widget getDeleteUSerButton() {
+    return ElevatedButton(
+      onPressed: () => {showAlert()},
+      style: ElevatedButton.styleFrom(
+        textStyle: const TextStyle(fontSize: 20),
+        backgroundColor: Colors.red.shade900,
+        foregroundColor: Colors.white,
+      ),
+      child: const Text("Delete User"),
+    );
+  }
+
+  Widget showAppInfoScreen() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+      const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
+      ElevatedButton(
+        onPressed: () => {},
+        style: ElevatedButton.styleFrom(
+          textStyle: const TextStyle(fontSize: 20),
+          backgroundColor: Colors.amber.shade300,
+          foregroundColor: Colors.black87,
+        ),
+        child: const Text("Show Info"),
+      )
+    ]);
   }
 }
