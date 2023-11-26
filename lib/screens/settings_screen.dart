@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:good_news_app/networking/pdf_viewer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_cached_pdfview/flutter_cached_pdfview.dart';
 
 import '../misc/constants.dart';
 
@@ -43,7 +45,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               const Divider(
                 color: Colors.amber,
               ),
-              const Text("Some More Text"),
+              displayPP(),
               const Spacer(
                 flex: 1,
               ),
@@ -113,5 +115,36 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget getUserLabel() {
     return Text("Here are your settings $userName",
         style: Theme.of(context).textTheme.headlineMedium);
+  }
+
+  Widget displayPP() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: <Widget>[
+        ElevatedButton(
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute<dynamic>(
+              builder: (_) => const PDFViewerCachedFromUrl(
+                url: ppURL,
+              ),
+            ),
+          ),
+          style: ElevatedButton.styleFrom(
+                  textStyle: const TextStyle(fontSize: 20),
+                  backgroundColor: Colors.amber.shade300,
+                  foregroundColor: Colors.black,
+                ),
+          child: const Text(
+                ppPageTitle,
+                style: TextStyle(
+                  fontSize: 24,
+                ),
+                textAlign: TextAlign.center,
+              )
+        ),
+      ],
+    );
   }
 }
