@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:good_news_app/helpers/user_manager.dart';
 import 'package:good_news_app/networking/pdf_viewer.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_cached_pdfview/flutter_cached_pdfview.dart';
 
 import '../misc/constants.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen(
-      {super.key, required this.title, required this.userName});
+      {super.key, required this.title, required this.userName, required this.userManager});
 
   final String title;
   final String userName;
+  final UserManager userManager;
 
   @override
   State<SettingsScreen> createState() => _SettingsScreenState();
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   late String userName;
+  
   @override
   void initState() {
     // TODO: implement initState
@@ -50,15 +50,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
               const Spacer(
                 flex: 1,
               ),
-               Divider(
+              Divider(
                 color: Colors.red.shade900,
               ),
-              Text(dangerzoneLabelText,
+              Text(
+                dangerzoneLabelText,
                 style: TextStyle(
-                fontSize: 28, 
-                color: Colors.red.shade900,
-                fontWeight: FontWeight.w900
-                ),
+                    fontSize: 28,
+                    color: Colors.red.shade900,
+                    fontWeight: FontWeight.w900),
               ),
               getDeleteUSerButton(),
             ],
@@ -102,10 +102,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   void removeUser() async {
-    final SharedPreferences prefs = await _prefs;
-
-    prefs.setString(nameKey, emptyString);
-    prefs.setBool(userExistKey, false);
+    widget.userManager.deleteUser();
     setState(() {
       userName = friend;
     });
@@ -117,8 +114,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       children: [
         Text(settingsLabelText,
             style: Theme.of(context).textTheme.headlineMedium),
-        Text(userName,
-            style: Theme.of(context).textTheme.headlineMedium),
+        Text(userName, style: Theme.of(context).textTheme.headlineMedium),
       ],
     );
   }
@@ -166,14 +162,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   Widget showAppInfoScreen() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
+    return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
       const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
       ElevatedButton(
-        onPressed: () => {
-          showAlert()
-        },
+        onPressed: () => {showAlert()},
         style: ElevatedButton.styleFrom(
           textStyle: const TextStyle(fontSize: 20),
           backgroundColor: Colors.amber.shade300,

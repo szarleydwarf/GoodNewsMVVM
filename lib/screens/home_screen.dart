@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:good_news_app/helpers/user_manager.dart';
 
 import '../helpers/string_extensions.dart';
+import '../models/quote_model.dart';
 import '../networking/network_manager.dart';
 
 import '../misc/constants.dart';
@@ -17,7 +18,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  final UserManager userManager = UserManager();
   late Future<Quote> futureQuote;
   late Future<Widget> futureImage;
   bool userExist = false;
@@ -57,6 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     builder: (context) => SettingsScreen(
                           title: settingsPageTitle,
                           userName: getUserName(),
+                          userManager: userManager,
                         )),
               );
             },
@@ -297,7 +299,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     userExist = true;
                     iconColor = Colors.amber.shade900;
                   });
-                  saveUser();
+                  userManager.saveUser(userName, userExist);
+                  
                   Navigator.pop(context);
                 } else {
                   Navigator.pop(context);
@@ -315,21 +318,11 @@ class _HomeScreenState extends State<HomeScreen> {
     userBarText = helloLabelText + getUserName();
   }
 
-  void saveUser() async {
-    final SharedPreferences prefs = await _prefs;
-
-    prefs.setString(nameKey, userName);
-    prefs.setBool(userExistKey, userExist);
-  }
-
   void getUser() async {
-    final SharedPreferences prefs = await _prefs;
-    final String name = (prefs.getString(nameKey) ?? friend);
-    final bool userExistInPrefs = (prefs.getBool(userExistKey) ?? false);
-
+    // Future<User> user = User.empty.getUser();
     setState(() {
-      userName = name;
-      userExist = userExistInPrefs;
+      // userName = name;
+      // userExist = userExistInPrefs;
       iconColor = userExist ? Colors.amber.shade900 : Colors.amber.shade200;
     });
   }

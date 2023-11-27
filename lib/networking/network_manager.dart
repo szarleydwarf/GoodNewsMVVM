@@ -2,10 +2,10 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 import '../misc/constants.dart';
-
-import 'package:http/http.dart' as http;
+import '../models/quote_model.dart';
 
 class NetworkManager {
   Future<Quote> fetchQuote() async {
@@ -29,19 +29,5 @@ class NetworkManager {
     } else {
       return const CircularProgressIndicator();
     }
-  }
-}
-
-class Quote {
-  final String author;
-  final String quote;
-
-  const Quote({
-    required this.author,
-    required this.quote,
-  });
-
-  factory Quote.fromJSON(Map<String, dynamic> json) {
-    return Quote(author: json['quoteAuthor'], quote: json['quoteText']);
   }
 }
