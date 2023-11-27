@@ -135,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget getQuoteWidget(Quote? data) {
-    var authorName = data?.author == "" ? "Unknown" : data?.author;
+    var authorName = data?.author == "" ? unknownAuthor : data?.author;
     return Column(
       children: [
         getAuthorRow(authorName ?? authorNamePlaceholder,
@@ -252,7 +252,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           actions: <Widget>[
             TextButton(
-              onPressed: () => Navigator.pop(context, 'Cancel'),
+              onPressed: () => Navigator.pop(context, cancelButton),
               child: const Text(cancelButton),
             ),
             TextButton(
@@ -312,7 +312,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _setUserBar() async {
-    userBarText = "Hello ${getUserName()}";
+    userBarText = helloLabelText + getUserName();
   }
 
   void saveUser() async {

@@ -53,7 +53,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                Divider(
                 color: Colors.red.shade900,
               ),
-              Text("Danger Zone",style: TextStyle(
+              Text(dangerzoneLabelText,
+                style: TextStyle(
                 fontSize: 28, 
                 color: Colors.red.shade900,
                 fontWeight: FontWeight.w900
@@ -84,7 +85,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
           actions: <Widget>[
             TextButton(
-              onPressed: () => Navigator.pop(context, 'Cancel'),
+              onPressed: () => Navigator.pop(context, cancelButton),
               child: const Text(cancelButton),
             ),
             TextButton(
@@ -111,8 +112,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   Widget getUserLabel() {
-    return Text("Here are your settings $userName",
-        style: Theme.of(context).textTheme.headlineMedium);
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(settingsLabelText,
+            style: Theme.of(context).textTheme.headlineMedium),
+        Text(userName,
+            style: Theme.of(context).textTheme.headlineMedium),
+      ],
+    );
   }
 
   Widget displayPP() {
@@ -153,7 +161,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         backgroundColor: Colors.red.shade900,
         foregroundColor: Colors.white,
       ),
-      child: const Text("Delete User"),
+      child: const Text(deleteUserButton),
     );
   }
 
@@ -163,13 +171,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
       children: [
       const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
       ElevatedButton(
-        onPressed: () => {},
+        onPressed: () => {
+          showAlert()
+        },
         style: ElevatedButton.styleFrom(
           textStyle: const TextStyle(fontSize: 20),
           backgroundColor: Colors.amber.shade300,
           foregroundColor: Colors.black87,
         ),
-        child: const Text("Show Info"),
+        child: const Text(infoButton),
       )
     ]);
   }
