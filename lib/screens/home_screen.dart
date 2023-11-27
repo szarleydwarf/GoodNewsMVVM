@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
   bool userExist = false;
   Color iconColor = Colors.black;
   // late Quote quote;
-  late String userName = "";
+  late String userName = emptyString;
   late String userBarText;
 
   @override
@@ -135,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget getQuoteWidget(Quote? data) {
-    var authorName = data?.author == "" ? unknownAuthor : data?.author;
+    var authorName = data?.author == emptyString ? unknownAuthor : data?.author;
     return Column(
       children: [
         getAuthorRow(authorName ?? authorNamePlaceholder,
@@ -291,7 +291,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: const Text(saveButton),
               onPressed: () {
                 var name = textEditorController.text;
-                if (name != "") {
+                if (name != emptyString) {
                   setState(() {
                     userName = name.capitalize();
                     userExist = true;
@@ -335,6 +335,6 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   String getUserName() {
-    return (userExist && userName != "") ? userName : friend;
+    return (userExist && userName != emptyString) ? userName : friend;
   }
 }

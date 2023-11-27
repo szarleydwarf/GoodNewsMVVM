@@ -104,7 +104,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   void removeUser() async {
     final SharedPreferences prefs = await _prefs;
 
-    prefs.setString(nameKey, "");
+    prefs.setString(nameKey, emptyString);
     prefs.setBool(userExistKey, false);
     setState(() {
       userName = friend;
