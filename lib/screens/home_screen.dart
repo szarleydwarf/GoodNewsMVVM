@@ -3,6 +3,7 @@ import 'package:good_news_app/helpers/user_manager.dart';
 
 import '../helpers/string_extensions.dart';
 import '../models/quote_model.dart';
+import '../models/user_model.dart';
 import '../networking/network_manager.dart';
 
 import '../misc/constants.dart';
@@ -21,9 +22,10 @@ class _HomeScreenState extends State<HomeScreen> {
   final UserManager userManager = UserManager();
   late Future<Quote> futureQuote;
   late Future<Widget> futureImage;
+
   bool userExist = false;
   Color iconColor = Colors.black;
-  // late Quote quote;
+  late User user = User.empty();
   late String userName = emptyString;
   late String userBarText;
 
@@ -38,6 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    getUser();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -57,7 +60,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 MaterialPageRoute(
                     builder: (context) => SettingsScreen(
                           title: settingsPageTitle,
-                          userName: getUserName(),
                           userManager: userManager,
                         )),
               );
@@ -300,7 +302,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     iconColor = Colors.amber.shade900;
                   });
                   userManager.saveUser(userName, userExist);
-                  
+
                   Navigator.pop(context);
                 } else {
                   Navigator.pop(context);
@@ -319,10 +321,10 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void getUser() async {
-    // Future<User> user = User.empty.getUser();
+    user = await userManager.getUser();
     setState(() {
-      // userName = name;
-      // userExist = userExistInPrefs;
+      userName = (user.name != emptyString) ? user.name : friend;
+      userExist = user.isExisting;
       iconColor = userExist ? Colors.amber.shade900 : Colors.amber.shade200;
     });
   }

@@ -3,13 +3,13 @@ import 'package:good_news_app/helpers/user_manager.dart';
 import 'package:good_news_app/networking/pdf_viewer.dart';
 
 import '../misc/constants.dart';
+import '../models/user_model.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen(
-      {super.key, required this.title, required this.userName, required this.userManager});
+      {super.key, required this.title, required this.userManager});
 
   final String title;
-  final String userName;
   final UserManager userManager;
 
   @override
@@ -17,17 +17,18 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  late String userName;
-  
+  late User user = User.empty();
+  late String userName = emptyString;
+
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    userName = widget.userName;
+    getUser();
   }
 
   @override
   Widget build(BuildContext context) {
+    getUser();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -74,7 +75,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       barrierDismissible: true,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text(infoAlertTitle),
+          title: const Text(deleteAlertTitle),
           content: const SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
@@ -151,7 +152,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   Widget getDeleteUSerButton() {
     return ElevatedButton(
-      onPressed: () => {showAlert()},
+      onPressed: user.isExisting ? () => {showAlert()}
+      : null,
       style: ElevatedButton.styleFrom(
         textStyle: const TextStyle(fontSize: 20),
         backgroundColor: Colors.red.shade900,
@@ -174,5 +176,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
         child: const Text(infoButton),
       )
     ]);
+  }
+
+  void getUser() async {
+    user = await widget.userManager.getUser();
+    setState(() {
+      userName = (user.name != emptyString) ? user.name : friend;
+      // userExist = user.isExisting;
+      // iconColor = userExist ? Colors.amber.shade900 : Colors.amber.shade200;
+    });
   }
 }
