@@ -3,6 +3,7 @@ const String appTitle = 'Good News App';
 const String homePageTitle = "Get A Good News Every Day";
 const String settingsPageTitle = "Settings";
 const String ppPageTitle = "Privacy Policy";
+const String quotesScreen = "Your Quotes";
 
 // Assets
 const String appSplashIcon = "assets/appstore.png";

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:good_news_app/helpers/user_manager.dart';
+import 'package:good_news_app/screens/quotes_list_screen.dart';
 
 import '../helpers/string_extensions.dart';
 import '../models/quote_model.dart';
@@ -208,7 +209,21 @@ class _HomeScreenState extends State<HomeScreen> {
       IconButton(
         onPressed: userExist
             ? () {
-                print("SHOWING LIST");
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => QuotesScreen(quotes: const <Quote>[
+                      Quote(author: unknownAuthor, quote: quotePlaceholder),
+                      Quote(author: unknownAuthor, quote: quotePlaceholder),
+                      Quote(author: unknownAuthor, quote: quotePlaceholder),
+                      Quote(author: unknownAuthor, quote: quotePlaceholder),
+                      Quote(author: unknownAuthor, quote: quotePlaceholder),
+                      Quote(author: unknownAuthor, quote: quotePlaceholder),
+                      Quote(author: unknownAuthor, quote: quotePlaceholder),
+                      Quote(author: unknownAuthor, quote: quotePlaceholder),
+                    ],)
+                  ),
+                );
               }
             : () => {showAlert()},
         icon: const Icon(Icons.list_alt_outlined),
