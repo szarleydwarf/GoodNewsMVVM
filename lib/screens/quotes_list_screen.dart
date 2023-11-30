@@ -5,11 +5,10 @@ import 'package:good_news_app/screen_elements/quote_tile.dart';
 import '../misc/constants.dart';
 
 class QuotesScreen extends StatelessWidget {
-  QuotesScreen({super.key, required this.quotes});
+  const QuotesScreen({super.key, required this.quotes});
 
-  var quotes = <Quote>[
-    const Quote(author: unknownAuthor, quote: quotePlaceholder),
-  ];
+  final List<Quote> quotes;
+
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +22,19 @@ class QuotesScreen extends StatelessWidget {
       body: Column(
         children: [
           Expanded(
-            child: ListView.builder(
+            child:
+            quotes.isNotEmpty ? ListView.builder(
               itemCount: quotes.length,
               itemBuilder: (context, index) {
                 return QuoteTile(quote: quotes[index]);
               },
-            ),
+            ) : Center(
+              child: Text(
+                emptyListMessage,
+                style: Theme.of(context).textTheme.headlineMedium,
+                textAlign: TextAlign.center,
+              ),
+            )
           ),
         ],
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:good_news_app/helpers/quote_manager.dart';
 import 'package:good_news_app/helpers/user_manager.dart';
 import 'package:good_news_app/screens/quotes_list_screen.dart';
 
@@ -21,14 +22,18 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final UserManager userManager = UserManager();
+  final QuoteManager quoteManager = QuoteManager();
+
   late Future<Quote> futureQuote;
   late Future<Widget> futureImage;
 
-  bool userExist = false;
-  Color iconColor = Colors.black;
   late User user = User.empty();
   late String userName = emptyString;
   late String userBarText;
+  late Quote quote = Quote.empty();
+
+  bool userExist = false;
+  Color iconColor = Colors.black;
 
   @override
   void initState() {
@@ -129,6 +134,7 @@ class _HomeScreenState extends State<HomeScreen> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const CircularProgressIndicator();
           } else if (snapshot.hasData && snapshot.data != null) {
+            quote = snapshot.data as Quote;
             return getQuoteWidget(snapshot.data);
           } else if (snapshot.hasError) {
             // TODO: Implement so crash/error login system (???)
@@ -190,7 +196,8 @@ class _HomeScreenState extends State<HomeScreen> {
     return IconButton(
       onPressed: userExist
           ? () {
-              print("Bookmarking  quote.");
+              print("Bookmarking  quote - ${quote.author}");
+              quoteManager.insert(quote);
             }
           : () => {showAlert()},
       icon: const Icon(Icons.bookmark_add_outlined),
@@ -209,21 +216,7 @@ class _HomeScreenState extends State<HomeScreen> {
       IconButton(
         onPressed: userExist
             ? () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => QuotesScreen(quotes: const <Quote>[
-                      Quote(author: unknownAuthor, quote: quotePlaceholder),
-                      Quote(author: unknownAuthor, quote: quotePlaceholder),
-                      Quote(author: unknownAuthor, quote: quotePlaceholder),
-                      Quote(author: unknownAuthor, quote: quotePlaceholder),
-                      Quote(author: unknownAuthor, quote: quotePlaceholder),
-                      Quote(author: unknownAuthor, quote: quotePlaceholder),
-                      Quote(author: unknownAuthor, quote: quotePlaceholder),
-                      Quote(author: unknownAuthor, quote: quotePlaceholder),
-                    ],)
-                  ),
-                );
+                goToQuotesScreen();
               }
             : () => {showAlert()},
         icon: const Icon(Icons.list_alt_outlined),
@@ -346,5 +339,20 @@ class _HomeScreenState extends State<HomeScreen> {
 
   String getUserName() {
     return (userExist && userName != emptyString) ? userName : friend;
+  }
+
+  void goToQuotesScreen() async {
+    final quotes = await quoteManager.getQuotes();
+    // ignore: unnecessary_null_comparison
+    final unwrappedQuotes = (quotes == null) ? <Quote>[] : quotes;
+    print(quotes);
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => QuotesScreen(
+                quotes: unwrappedQuotes,
+              )
+            ),
+    );
   }
 }

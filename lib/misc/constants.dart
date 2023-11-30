@@ -58,7 +58,16 @@ const String dangerzoneLabelText = "Danger Zone";
 const String unknownAuthor = "Author Unknown";
 const String helloLabelText = "Hello, ";
 const String emptyString = "";
+const String emptyListMessage = "Nothing to show, yet!";
 
 // prefs keys
 const String nameKey = 'name';
 const String userExistKey = 'userExist';
+
+// database
+const String databasePath = 'quotes_database.db';
+const String databaseName = 'quotes';
+const String dbID = 'id';
+const String author = 'author';
+const String quote = 'quote';
+const String idSearch = 'id = ?';
