@@ -134,6 +134,7 @@ class _HomeScreenState extends State<HomeScreen> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const CircularProgressIndicator();
           } else if (snapshot.hasData && snapshot.data != null) {
+            
             quote = snapshot.data as Quote;
             return getQuoteWidget(snapshot.data);
           } else if (snapshot.hasError) {

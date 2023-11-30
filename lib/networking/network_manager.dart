@@ -12,6 +12,7 @@ class NetworkManager {
     final response = await http.get(Uri.parse(quotesAPI));
     if (response.statusCode == 200) {
       String fixed = response.body.replaceAll(r"\'", "'");
+      print("RESPONSE: ${response.body}");
       return Quote.fromJSON(jsonDecode(fixed) as Map<String, dynamic>);
     } else {
       throw Exception("FETCHING FAILED WITH STATUS CODE $response.statusCode");

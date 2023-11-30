@@ -68,6 +68,10 @@ const String userExistKey = 'userExist';
 const String databasePath = 'quotes_database.db';
 const String databaseName = 'quotes';
 const String dbID = 'id';
-const String author = 'author';
-const String quote = 'quote';
-const String idSearch = 'id = ?';
+const String dbAuthor = 'author';
+const String dbQuote = 'quote';
+const String dbIDSearch = 'id = ?';
+
+// JSON
+const String jsonAuthor = 'quoteAuthor';
+const String jsonQuote = 'quoteText';
