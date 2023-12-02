@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:good_news_app/helpers/quote_manager.dart';
 
 import '../misc/constants.dart';
 import '../models/quote_model.dart';
@@ -34,6 +35,7 @@ class QuoteTile extends StatelessWidget {
           trailing: IconButton(
             onPressed: () {
               print("DELETING QUOTE");
+              QuoteManager().deleteQuote(quote.id);
             },
             icon: const Icon(Icons.bookmark_remove_outlined),
             color: Colors.amber.shade900,

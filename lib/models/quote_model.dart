@@ -24,7 +24,6 @@ class Quote {
 
   Map<String, dynamic> toMap() {
     return {
-      dbID: id,
       dbAuthor: author,
       dbQuote: quote,
     };
