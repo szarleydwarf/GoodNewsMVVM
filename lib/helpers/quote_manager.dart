@@ -9,17 +9,7 @@ class QuoteManager {
   late Future<Database> database;
 
   static final QuoteManager _instance = QuoteManager._internal();
- 
-  // using a factory is important
-  // because it promises to return _an_ object of this type
-  // but it doesn't promise to make a new one.
-  // factory QuoteManager() {
-  //   return _instance;
-  // }
-  
-  // This named constructor is the "real" constructor
-  // It'll be called exactly once, by the static property assignment above
-  // it's also private, so it can only be called in this class
+
   QuoteManager._internal() {
     initDataBase();
   }
@@ -45,12 +35,14 @@ class QuoteManager {
 
   Future<void> insert(Quote quote) async {
     final db = await database;
-
-    await db.insert(
-      databaseName,
-      quote.toMap(),
-      conflictAlgorithm: ConflictAlgorithm.replace,
-    );
+    bool isExist = await checkIfExist(quote) == Quote.empty();
+    if (!isExist) {
+      await db.insert(
+        databaseName,
+        quote.toMap(),
+        conflictAlgorithm: ConflictAlgorithm.replace,
+      );
+    }
   }
 
   Future<List<Quote>> getQuotes() async {
@@ -86,5 +78,20 @@ class QuoteManager {
       where: dbIDSearch,
       whereArgs: [id],
     );
+  }
+
+  Future<Quote> checkIfExist(Quote quote) async {
+    final db = await database;
+
+    List<Map<String, dynamic>> maps = await db.query(
+      databaseName,
+      where: dbQuoteSearch,
+      whereArgs: [quote.quote],
+    );
+    if (maps.isNotEmpty) {
+      return Quote.fromDb(maps.first);
+    }
+
+    return Quote.empty();
   }
 }

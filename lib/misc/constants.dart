@@ -71,6 +71,7 @@ const String dbID = 'id';
 const String dbAuthor = 'author';
 const String dbQuote = 'quote';
 const String dbIDSearch = 'id = ?';
+const String dbQuoteSearch = 'quote = ?';//author  = ? AND 
 
 // JSON
 const String jsonAuthor = 'quoteAuthor';
