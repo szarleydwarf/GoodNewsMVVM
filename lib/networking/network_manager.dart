@@ -11,7 +11,7 @@ class NetworkManager {
   Future<Quote> fetchQuote() async {
     final response = await http.get(Uri.parse(quotesAPI));
     if (response.statusCode == 200) {
-      String fixed = response.body.replaceAll(r"\'", "'");
+      String fixed = response.body.replaceAll(r"\'", "'").trim();
       print("RESPONSE: ${response.body}");
       return Quote.fromJSON(jsonDecode(fixed) as Map<String, dynamic>);
     } else {

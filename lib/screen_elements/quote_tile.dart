@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:good_news_app/helpers/quote_manager.dart';
 
@@ -5,12 +7,13 @@ import '../misc/constants.dart';
 import '../models/quote_model.dart';
 
 class QuoteTile extends StatelessWidget {
-  const QuoteTile({
+  QuoteTile({
     required this.quote,
-    super.key,
+    super.key, required this.deleteQuote,
   });
-
+  
   final Quote quote;
+  final void Function(int) deleteQuote;
 
   @override
   Widget build(BuildContext context) {
@@ -33,10 +36,7 @@ class QuoteTile extends StatelessWidget {
             style: const TextStyle(fontWeight: FontWeight.w800),
           ),
           trailing: IconButton(
-            onPressed: () {
-              print("DELETING QUOTE");
-              QuoteManager().deleteQuote(quote.id);
-            },
+            onPressed: () => deleteQuote(quote.id),
             icon: const Icon(Icons.bookmark_remove_outlined),
             color: Colors.amber.shade900,
           ),
@@ -52,38 +52,3 @@ class QuoteTile extends StatelessWidget {
     );
   }
 }
-
-/*
-Container(
-      margin: const EdgeInsets.fromLTRB(11, 4, 11, 2),
-      decoration: BoxDecoration(
-        color: Colors.amber.shade50,
-        borderRadius: const BorderRadius.all(Radius.circular(11)),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(children: [
-          Row(
-            children: [
-                Text(
-                  quote.author,
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                ),
-          
-                IconButton(
-                onPressed: () {
-                  print("DELETING QUOTE");
-                },
-                icon: const Icon(Icons.bookmark_remove_outlined),
-                color: Colors.amber.shade900,
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 3,
-          ),
-          Text(quote.quote)
-        ]),
-      ),
-    );
-    */

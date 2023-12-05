@@ -13,9 +13,9 @@ class QuoteManager {
   // using a factory is important
   // because it promises to return _an_ object of this type
   // but it doesn't promise to make a new one.
-  factory QuoteManager() {
-    return _instance;
-  }
+  // factory QuoteManager() {
+  //   return _instance;
+  // }
   
   // This named constructor is the "real" constructor
   // It'll be called exactly once, by the static property assignment above
@@ -24,7 +24,7 @@ class QuoteManager {
     initDataBase();
   }
 
-  // static QuoteManager get instance => _instance;
+  static QuoteManager get instance => _instance;
 
   initDataBase() async {
     final dbDirectory = await getApplicationSupportDirectory();

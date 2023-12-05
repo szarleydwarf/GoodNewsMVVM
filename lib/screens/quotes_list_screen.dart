@@ -2,13 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:good_news_app/models/quote_model.dart';
 import 'package:good_news_app/screen_elements/quote_tile.dart';
 
+import '../helpers/quote_manager.dart';
 import '../misc/constants.dart';
 
-class QuotesScreen extends StatelessWidget {
-  const QuotesScreen({super.key, required this.quotes});
+class QuotesScreen extends StatefulWidget {
+  const QuotesScreen({super.key});
 
-  final List<Quote> quotes;
+  @override
+  State<QuotesScreen> createState() => _QuotesScreenState();
+}
 
+class _QuotesScreenState extends State<QuotesScreen> {
+  final QuoteManager quoteManager = QuoteManager.instance;
+  List quotes = [];
+
+  @override
+  void initState() {
+    getQuoteList();
+    
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,22 +35,42 @@ class QuotesScreen extends StatelessWidget {
       body: Column(
         children: [
           Expanded(
-            child:
-            quotes.isNotEmpty ? ListView.builder(
-              itemCount: quotes.length,
-              itemBuilder: (context, index) {
-                return QuoteTile(quote: quotes[index]);
-              },
-            ) : Center(
-              child: Text(
-                emptyListMessage,
-                style: Theme.of(context).textTheme.headlineMedium,
-                textAlign: TextAlign.center,
-              ),
-            )
-          ),
+              child: (quotes.isNotEmpty)
+                  ? ListView.builder(
+                      itemCount: quotes.length,
+                      itemBuilder: (context, index) {
+                        return QuoteTile(
+                          quote: quotes[index],
+                          deleteQuote: _onDelete,
+                        );
+                      },
+                    )
+                  : Center(
+                      child: Text(
+                        emptyListMessage,
+                        style: Theme.of(context).textTheme.headlineMedium,
+                        textAlign: TextAlign.center,
+                      ),
+                    )),
         ],
       ),
     );
+  }
+
+  void getQuoteList() async {
+    print("GETTING LIST");
+    final list = await quoteManager.getQuotes();
+    setState(() {
+      quotes = list;
+    });
+  }
+
+  Future<void> _onDelete(int id) async {
+    print("DELETING QUOTE");
+    await quoteManager.deleteQuote(id);
+
+    setState(() {
+      getQuoteList();
+    });
   }
 }

@@ -22,7 +22,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final UserManager userManager = UserManager();
-  // final QuoteManager quoteManager = QuoteManager.instance;
+  final QuoteManager quoteManager = QuoteManager.instance;
 
   late Future<Quote> futureQuote;
   late Future<Widget> futureImage;
@@ -198,7 +198,7 @@ class _HomeScreenState extends State<HomeScreen> {
       onPressed: userExist
           ? () {
               print("Bookmarking  quote - ${quote.author}");
-              QuoteManager().insert(quote);
+              quoteManager.insert(quote);
             }
           : () => {showAlert()},
       icon: const Icon(Icons.bookmark_add_outlined),
@@ -343,17 +343,11 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void goToQuotesScreen() async {
-    final quotes = await QuoteManager().getQuotes();
-    // ignore: unnecessary_null_comparison
-    final unwrappedQuotes = (quotes == null) ? <Quote>[] : quotes;
-    print(quotes);
     Navigator.push(
       context,
       MaterialPageRoute(
-          builder: (context) => QuotesScreen(
-                quotes: unwrappedQuotes,
-              )
-            ),
+          builder: (context) => const QuotesScreen()
+      ),
     );
   }
 }
