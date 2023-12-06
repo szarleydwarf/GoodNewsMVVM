@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:good_news_app/models/quote_model.dart';
 import 'package:good_news_app/screen_elements/quote_tile.dart';
 
 import '../helpers/quote_manager.dart';
@@ -56,15 +57,14 @@ class _QuotesScreenState extends State<QuotesScreen> {
     );
   }
 
-  void getQuoteList() async {
-    final list = await quoteManager.getQuotes();
+  void getQuoteList() async {   
     setState(() {
-      quotes = list;
+      quotes = quoteManager.getQuotesList();
     });
   }
 
-  Future<void> _onDelete(int id) async {
-    await quoteManager.deleteQuote(id);
+  Future<void> _onDelete(Quote quote) async {
+    quoteManager.remove(quote);
 
     setState(() {
       getQuoteList();

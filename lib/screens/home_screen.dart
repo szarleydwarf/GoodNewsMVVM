@@ -134,7 +134,6 @@ class _HomeScreenState extends State<HomeScreen> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const CircularProgressIndicator();
           } else if (snapshot.hasData && snapshot.data != null) {
-            
             quote = snapshot.data as Quote;
             return getQuoteWidget(snapshot.data);
           } else if (snapshot.hasError) {
@@ -198,7 +197,7 @@ class _HomeScreenState extends State<HomeScreen> {
       onPressed: userExist
           ? () {
               print("Bookmarking  quote - ${quote.author}");
-              quoteManager.insert(quote);
+              quoteManager.add(quote);
             }
           : () => {showAlert()},
       icon: const Icon(Icons.bookmark_add_outlined),
@@ -345,9 +344,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void goToQuotesScreen() async {
     Navigator.push(
       context,
-      MaterialPageRoute(
-          builder: (context) => const QuotesScreen()
-      ),
+      MaterialPageRoute(builder: (context) => const QuotesScreen()),
     );
   }
 }

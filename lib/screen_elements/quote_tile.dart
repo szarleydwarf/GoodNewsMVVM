@@ -13,7 +13,7 @@ class QuoteTile extends StatelessWidget {
   });
   
   final Quote quote;
-  final void Function(int) deleteQuote;
+  final void Function(Quote) deleteQuote;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class QuoteTile extends StatelessWidget {
             style: const TextStyle(fontWeight: FontWeight.w800),
           ),
           trailing: IconButton(
-            onPressed: () => deleteQuote(quote.id),
+            onPressed: () => deleteQuote(quote),
             icon: const Icon(Icons.bookmark_remove_outlined),
             color: Colors.amber.shade900,
           ),
