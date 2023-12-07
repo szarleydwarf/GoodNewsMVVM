@@ -13,7 +13,6 @@ class QuotesScreen extends StatefulWidget {
 }
 
 class _QuotesScreenState extends State<QuotesScreen> {
-  final QuoteManager quoteManager = QuoteManager.instance;
   List quotes = [];
 
   @override
@@ -57,14 +56,15 @@ class _QuotesScreenState extends State<QuotesScreen> {
     );
   }
 
-  void getQuoteList() async {   
+  void getQuoteList() async {
+    final list = await QuoteManager.instance.getQuotes();
     setState(() {
       quotes = quoteManager.getQuotesList();
     });
   }
 
-  Future<void> _onDelete(Quote quote) async {
-    quoteManager.remove(quote);
+  Future<void> _onDelete(int id) async {
+    await QuoteManager.instance.deleteQuote(id);
 
     setState(() {
       getQuoteList();

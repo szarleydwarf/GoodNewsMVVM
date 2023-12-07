@@ -22,8 +22,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final UserManager userManager = UserManager();
-  final QuoteManager quoteManager = QuoteManager.instance;
-
+  
   late Future<Quote> futureQuote;
   late Future<Widget> futureImage;
 
@@ -197,7 +196,7 @@ class _HomeScreenState extends State<HomeScreen> {
       onPressed: userExist
           ? () {
               print("Bookmarking  quote - ${quote.author}");
-              quoteManager.add(quote);
+              QuoteManager.instance.insert(quote);
             }
           : () => {showAlert()},
       icon: const Icon(Icons.bookmark_add_outlined),
