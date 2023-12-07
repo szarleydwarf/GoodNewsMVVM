@@ -9,38 +9,13 @@ class QuoteManager {
   late Future<Database> database;
 
   static final QuoteManager _instance = QuoteManager._internal();
-  late List<Quote> _qoutes = [];
-
+  
   QuoteManager._internal() {
     _initDataBase();
   }
 
   static QuoteManager get instance => _instance;
 
-  List<Quote> getQuotesList() {
-    return _qoutes;
-  }
-
-  // add
-  void add(Quote quote) {
-    if (!isExisting(quote)) {
-      _qoutes.add(quote);
-    }
-  }
-
-  // update
-  void update(Quote quote) {}
-  //remove
-  void remove(Quote quote) {}
-
-  bool isExisting(Quote quote) {
-    if (_qoutes.map((e) => e.quote).contains(quote.quote)) {
-      return true;
-    }
-    return false;
-  }
-
-  // SQFLITE database
   Future<void> _initDataBase() async {
     final dbDirectory = await getApplicationSupportDirectory();
     final dbFilePath = dbDirectory.path;
@@ -58,7 +33,7 @@ class QuoteManager {
     );
   }
 
-  Future<void> _insert(Quote quote) async {
+  Future<void> insert(Quote quote) async {
     final db = await database;
     bool isExist = await checkIfExist(quote);
     if (!isExist) {
@@ -70,13 +45,12 @@ class QuoteManager {
     }
   }
 
-  // Future<List<Quote>>
-  Future<void> _getQuotes() async {
+  Future<List<Quote>> getQuotes() async {
     final db = await database;
 
     final List<Map<String, dynamic>> maps = await db.query(databaseName);
 
-    _qoutes = List.generate(maps.length, (i) {
+    return List.generate(maps.length, (i) {
       return Quote(
         maps[i][dbID] as int,
         maps[i][dbAuthor] as String,
@@ -85,7 +59,7 @@ class QuoteManager {
     });
   }
 
-  Future<void> _updatequote(Quote quote) async {
+  Future<void> updatequote(Quote quote) async {
     final db = await database;
 
     await db.update(
@@ -96,7 +70,7 @@ class QuoteManager {
     );
   }
 
-  Future<void> _deleteQuote(int id) async {
+  Future<void> deleteQuote(int id) async {
     final db = await database;
 
     await db.delete(

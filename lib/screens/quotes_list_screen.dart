@@ -59,7 +59,7 @@ class _QuotesScreenState extends State<QuotesScreen> {
   void getQuoteList() async {
     final list = await QuoteManager.instance.getQuotes();
     setState(() {
-      quotes = quoteManager.getQuotesList();
+      quotes = list;
     });
   }
 
