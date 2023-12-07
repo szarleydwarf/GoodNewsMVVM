@@ -4,6 +4,7 @@ const String homePageTitle = "Get A Good News Every Day";
 const String settingsPageTitle = "Settings";
 const String ppPageTitle = "Privacy Policy";
 const String quotesScreen = "Your Quotes";
+const String detailScreen = "Saved qoute";
 
 // Assets
 const String appSplashIcon = "assets/appstore.png";
@@ -37,6 +38,7 @@ const String infoAlertDescription_2 =
 const String infoAlertDescription_3 = 'Do you want to create user now?';
 const String enterNamePrompt1 = 'How should I call you?';
 const String enterNamePrompt2 = 'Please, enter your name:';
+const String enterCommentPrompt = "Enter your comment here";
 
 const String deleteAlertTitle = 'You\'re about to delete your data.';
 const String deleteAlertDescription_1 =
@@ -59,6 +61,7 @@ const String unknownAuthor = "Author Unknown";
 const String helloLabelText = "Hello, ";
 const String emptyString = "";
 const String emptyListMessage = "Nothing to show, yet!";
+const String commentInfo = "Here you can add a comment to your saved quote";
 
 // prefs keys
 const String nameKey = 'name';
@@ -71,7 +74,7 @@ const String dbID = 'id';
 const String dbAuthor = 'author';
 const String dbQuote = 'quote';
 const String dbIDSearch = 'id = ?';
-const String dbQuoteSearch = 'quote = ?';//author  = ? AND 
+const String dbQuoteSearch = 'quote = ?'; //author  = ? AND
 
 // JSON
 const String jsonAuthor = 'quoteAuthor';

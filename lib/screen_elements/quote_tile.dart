@@ -1,19 +1,18 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
-import 'package:good_news_app/helpers/quote_manager.dart';
 
-import '../misc/constants.dart';
 import '../models/quote_model.dart';
 
 class QuoteTile extends StatelessWidget {
-  QuoteTile({
+  const QuoteTile({
     required this.quote,
-    super.key, required this.deleteQuote,
+    super.key,
+    required this.deleteQuote, 
+    required this.itemTapped,
   });
-  
+
   final Quote quote;
   final void Function(int) deleteQuote;
+  final void Function(Quote) itemTapped;
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +46,7 @@ class QuoteTile extends StatelessWidget {
           ),
           tileColor: Colors.amber.shade50,
           contentPadding: const EdgeInsets.symmetric(horizontal: 11.0),
+          onTap: () => itemTapped(quote),
         ),
       ),
     );

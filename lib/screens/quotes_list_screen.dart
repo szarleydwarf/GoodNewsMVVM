@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:good_news_app/models/quote_model.dart';
 import 'package:good_news_app/screen_elements/quote_tile.dart';
+import 'package:good_news_app/screens/qoute_details.dart';
 
 import '../helpers/quote_manager.dart';
 import '../misc/constants.dart';
@@ -18,7 +19,7 @@ class _QuotesScreenState extends State<QuotesScreen> {
   @override
   void initState() {
     getQuoteList();
-    
+
     super.initState();
   }
 
@@ -41,6 +42,7 @@ class _QuotesScreenState extends State<QuotesScreen> {
                         return QuoteTile(
                           quote: quotes[index],
                           deleteQuote: _onDelete,
+                          itemTapped: _onTap,
                         );
                       },
                     )
@@ -69,5 +71,16 @@ class _QuotesScreenState extends State<QuotesScreen> {
     setState(() {
       getQuoteList();
     });
+  }
+
+  void _onTap(Quote quote) {
+    print("TAPPED: ${quote.author}");
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => QuoteDetails( 
+          quote: quote 
+        )),
+    );
   }
 }
