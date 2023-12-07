@@ -60,7 +60,7 @@ class QuoteManager {
 
   Future<void> _insert(Quote quote) async {
     final db = await database;
-    bool isExist = await _checkIfExist(quote) == Quote.empty();
+    bool isExist = await checkIfExist(quote);
     if (!isExist) {
       await db.insert(
         databaseName,
@@ -106,7 +106,7 @@ class QuoteManager {
     );
   }
 
-  Future<Quote> _checkIfExist(Quote quote) async {
+  Future<bool> checkIfExist(Quote quote) async {
     final db = await database;
 
     List<Map<String, dynamic>> maps = await db.query(
@@ -115,9 +115,9 @@ class QuoteManager {
       whereArgs: [quote.quote],
     );
     if (maps.isNotEmpty) {
-      return Quote.fromDb(maps.first);
+      return true;
     }
 
-    return Quote.empty();
+    return false;
   }
 }
