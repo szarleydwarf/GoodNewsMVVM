@@ -74,7 +74,7 @@ class _QuotesScreenState extends State<QuotesScreen> {
   }
 
   void _onTap(Quote quote) {
-    print("TAPPED: ${quote.author}");
+    print("TAPPED: ${quote.comment}");
     Navigator.push(
       context,
       MaterialPageRoute(

@@ -26,7 +26,7 @@ class QuoteManager {
       path,
       onCreate: (db, version) {
         return db.execute(
-          'CREATE TABLE quotes($dbID INTEGER PRIMARY KEY, $dbAuthor TEXT, $dbQuote TEXT)',
+          'CREATE TABLE quotes($dbID INTEGER PRIMARY KEY, $dbAuthor TEXT, $dbQuote TEXT, $dbComment TEXT)',
         );
       },
       version: 1,
@@ -55,6 +55,7 @@ class QuoteManager {
         maps[i][dbID] as int,
         maps[i][dbAuthor] as String,
         maps[i][dbQuote] as String,
+        maps[i][dbComment] as String,
       );
     });
   }

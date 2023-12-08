@@ -73,6 +73,7 @@ const String databaseName = 'quotes';
 const String dbID = 'id';
 const String dbAuthor = 'author';
 const String dbQuote = 'quote';
+const String dbComment = 'comment';
 const String dbIDSearch = 'id = ?';
 const String dbQuoteSearch = 'quote = ?'; //author  = ? AND
 
