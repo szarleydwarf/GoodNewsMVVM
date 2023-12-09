@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:good_news_app/misc/palet.dart';
 import 'package:good_news_app/screens/home_screen.dart';
 
 import '../helpers/quote_manager.dart';
@@ -28,7 +29,7 @@ class _SplashScreen extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.blue.shade400,
+        backgroundColor: blue400,
         body: Padding(
             padding: const EdgeInsets.all(wholeScreenPadding),
             child: Column(

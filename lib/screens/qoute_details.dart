@@ -3,6 +3,8 @@ import 'package:good_news_app/helpers/quote_manager.dart';
 import 'package:good_news_app/models/quote_model.dart';
 
 import '../misc/constants.dart';
+import '../misc/palet.dart';
+import '../screen_elements/lines.dart';
 
 class QuoteDetails extends StatefulWidget {
   const QuoteDetails({super.key, required this.quote});
@@ -31,7 +33,7 @@ class _QuoteDetails extends State<QuoteDetails> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(detailScreen,
-            style: TextStyle(fontSize: 24, color: Colors.amber.shade100)),
+            style: TextStyle(fontSize: 24, color: amber200)),
         automaticallyImplyLeading: true,
       ),
       body: Padding(
@@ -44,51 +46,54 @@ class _QuoteDetails extends State<QuoteDetails> {
               textAlign: TextAlign.center,
             ),
           ),
-          Divider(
-            color: Colors.amber.shade400,
-            thickness: 1,
-          ),
+          drawLine(),
           Expanded(
-              child: Center(
-            child: Text(
-              widget.quote.quote,
-              style: Theme.of(context).textTheme.headlineSmall,
-              textAlign: TextAlign.center,
-            ),
-          )),
+            child: displayQuote(),
+          ),
           Expanded(
               child: Center(
             child: Column(
               children: [
-                Divider(
-                  color: Colors.amber.shade400,
-                  thickness: 1,
-                ),
+                drawLine(),
                 commentNotEmpty
-                    ? Row(
-                        children: [
-                          Text(
-                            comment,
-                            style: Theme.of(context).textTheme.bodyLarge,
-                          ),
-                          IconButton(
-                              onPressed: editComment,
-                              icon: Icon(Icons.edit_outlined))
-                        ],
-                      )
+                    ? displayCommentSection()
                     : Text(
-                        commentInfo,
+                        noComments,
                         style: Theme.of(context).textTheme.bodyLarge,
                       ),
-                Divider(
-                  color: Colors.amber.shade400,
-                  thickness: 1,
+                drawLine(),
+                Text(
+                  commentInfo,
+                  style: Theme.of(context).textTheme.bodyLarge,
                 ),
+                drawLine(),
                 textFieldWidget(),
               ],
             ),
           ))
         ]),
+      ),
+    );
+  }
+
+  Widget displayQuote() {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 11.0),
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: amberOpaq,
+            blurRadius: 21.0,
+            offset: const Offset(0.0, 0.0),
+          )
+        ],
+      ),
+      child: Center(
+        child: Text(
+          widget.quote.quote,
+          style: Theme.of(context).textTheme.headlineSmall,
+          textAlign: TextAlign.center,
+        ),
       ),
     );
   }
@@ -100,34 +105,77 @@ class _QuoteDetails extends State<QuoteDetails> {
   }
 
   Widget textFieldWidget() {
-    return Column(children: [
-      TextField(
-        controller: textEditorController,
-        decoration: const InputDecoration(hintText: enterCommentPrompt),
-        autofocus: true,
-        maxLength: 160,
-        minLines: 3,
-        maxLines: 5,
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 11.0),
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: amberLightOpaq,
+            blurRadius: 10.0,
+            offset: const Offset(0.0, 0.0),
+          )
+        ],
       ),
-      IconButton(
-          onPressed: () {
-            print(textEditorController.text);
-            if (textEditorController.text.isNotEmpty) {
-              final tq = widget.quote;
-              var qouteToSave =
-                  Quote(tq.id, tq.author, tq.quote, textEditorController.text);
+      child: Column(children: [
+        TextField(
+          controller: textEditorController,
+          decoration: const InputDecoration(hintText: enterCommentPrompt),
+          autofocus: true,
+          maxLength: 160,
+          minLines: 1,
+          maxLines: 3,
+        ),
+        displaySaveButton(),
+      ]),
+    );
+  }
 
-              QuoteManager.instance.updatequote(qouteToSave);
-              setState(() {
-                comment = qouteToSave.comment;
-                commentNotEmpty = true;
-              });
-            }
-          },
-          icon: Icon(
-            Icons.save_alt_outlined,
-            color: Colors.amber.shade900,
-          ))
-    ]);
+  Widget displayCommentSection() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Flexible(
+          child: Wrap(
+            crossAxisAlignment: WrapCrossAlignment.center,
+            alignment: WrapAlignment.spaceBetween,
+            spacing: 30,
+            direction: Axis.horizontal,
+            children: [
+              Text(
+                comment,
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+            ],
+          ),
+        ),
+        IconButton(
+            onPressed: editComment,
+            icon: Icon(
+              Icons.edit_outlined,
+              color: amber900,
+            )),
+      ],
+    );
+  }
+
+  Widget displaySaveButton() {
+    return IconButton(
+        onPressed: () {
+          if (textEditorController.text.isNotEmpty) {
+            final tq = widget.quote;
+            var qouteToSave =
+                Quote(tq.id, tq.author, tq.quote, textEditorController.text);
+
+            QuoteManager.instance.updatequote(qouteToSave);
+            setState(() {
+              comment = qouteToSave.comment;
+              commentNotEmpty = true;
+            });
+          }
+        },
+        icon: Icon(
+          Icons.save_alt_outlined,
+          color: amber900,
+        ));
   }
 }

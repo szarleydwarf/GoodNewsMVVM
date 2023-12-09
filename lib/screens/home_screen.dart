@@ -4,11 +4,13 @@ import 'package:good_news_app/helpers/user_manager.dart';
 import 'package:good_news_app/screens/quotes_list_screen.dart';
 
 import '../helpers/string_extensions.dart';
+import '../misc/palet.dart';
 import '../models/quote_model.dart';
 import '../models/user_model.dart';
 import '../networking/network_manager.dart';
 
 import '../misc/constants.dart';
+import '../screen_elements/lines.dart';
 import 'settings_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -22,7 +24,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final UserManager userManager = UserManager();
-  
+
   late Future<Quote> futureQuote;
   late Future<Widget> futureImage;
 
@@ -32,14 +34,14 @@ class _HomeScreenState extends State<HomeScreen> {
   late Quote quote = Quote.empty();
 
   bool userExist = false;
-  Color iconColor = Colors.black;
+  late Color iconColor;
 
   @override
   void initState() {
     super.initState();
     futureQuote = NetworkManager().fetchQuote();
     futureImage = NetworkManager().fetchImage();
-    iconColor = userExist ? Colors.amber.shade900 : Colors.amber.shade200;
+    iconColor = userExist ? amber900 : amber200;
     getUser();
   }
 
@@ -50,13 +52,13 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(appTitle,
-            style: TextStyle(fontSize: 24, color: Colors.amber.shade100)),
+            style: TextStyle(fontSize: 24, color: amber50)),
         automaticallyImplyLeading: false,
         actions: <Widget>[
           IconButton(
             icon: Icon(
               Icons.settings,
-              color: Colors.amber.shade100,
+              color: amber50,
             ),
             onPressed: () {
               // do something
@@ -79,16 +81,12 @@ class _HomeScreenState extends State<HomeScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               getImageElement(),
-              const Divider(
-                color: Colors.amber,
-              ),
+              drawLine(),
               getFutureDataFrom(futureQuote),
               const Spacer(
                 flex: 1,
               ),
-              const Divider(
-                color: Colors.amber,
-              ),
+              drawLine(),
               getUserBar(Theme.of(context).textTheme.headlineMedium)
             ],
           ),
@@ -150,9 +148,7 @@ class _HomeScreenState extends State<HomeScreen> {
       children: [
         getAuthorRow(authorName ?? authorNamePlaceholder,
             Theme.of(context).textTheme.headlineMedium),
-        const Divider(
-          color: Colors.amber,
-        ),
+        drawLine(),
         getQuoteElement(data?.quote ?? quotePlaceholder,
             Theme.of(context).textTheme.headlineSmall),
       ],
@@ -195,7 +191,6 @@ class _HomeScreenState extends State<HomeScreen> {
     return IconButton(
       onPressed: userExist
           ? () {
-              print("Bookmarking  quote - ${quote.author}");
               QuoteManager.instance.insert(quote);
             }
           : () => {showAlert()},
@@ -228,7 +223,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget getRefreshButton() {
     return IconButton(
       icon: const Icon(Icons.replay_outlined),
-      color: Colors.amber.shade900,
+      color: amber900,
       iconSize: iconButtonSize,
       onPressed: _onRefreshTapped,
     );
@@ -306,7 +301,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   setState(() {
                     userName = name.capitalize();
                     userExist = true;
-                    iconColor = Colors.amber.shade900;
+                    iconColor = amber900;
                   });
                   userManager.saveUser(userName, userExist);
 
@@ -332,7 +327,7 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       userName = (user.name != emptyString) ? user.name : friend;
       userExist = user.isExisting;
-      iconColor = userExist ? Colors.amber.shade900 : Colors.amber.shade200;
+      iconColor = userExist ? amber900 : amber200;
     });
   }
 

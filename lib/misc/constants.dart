@@ -62,6 +62,7 @@ const String helloLabelText = "Hello, ";
 const String emptyString = "";
 const String emptyListMessage = "Nothing to show, yet!";
 const String commentInfo = "Here you can add a comment to your saved quote";
+const String noComments = "No comments, yet";
 
 // prefs keys
 const String nameKey = 'name';

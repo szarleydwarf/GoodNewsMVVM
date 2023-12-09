@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:good_news_app/misc/palet.dart';
 import 'package:good_news_app/models/quote_model.dart';
 import 'package:good_news_app/screen_elements/quote_tile.dart';
 import 'package:good_news_app/screens/qoute_details.dart';
@@ -29,7 +30,7 @@ class _QuotesScreenState extends State<QuotesScreen> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(quotesScreen,
-            style: TextStyle(fontSize: 24, color: Colors.amber.shade100)),
+            style: TextStyle(fontSize: 24, color: amber50)),
         automaticallyImplyLeading: true,
       ),
       body: Column(

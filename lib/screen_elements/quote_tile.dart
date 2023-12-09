@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
+import '../misc/palet.dart';
 import '../models/quote_model.dart';
 
 class QuoteTile extends StatelessWidget {
   const QuoteTile({
     required this.quote,
     super.key,
-    required this.deleteQuote, 
+    required this.deleteQuote,
     required this.itemTapped,
   });
 
@@ -21,14 +22,14 @@ class QuoteTile extends StatelessWidget {
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
-            color: const Color.fromARGB(255, 255, 215, 55).withOpacity(0.7),
+            color: amberOpaq,
             blurRadius: 20.0,
             offset: const Offset(3.0, 2.0),
           )
         ],
       ),
       child: Card(
-        color: Colors.white,
+        color: justWhite,
         child: ListTile(
           title: Text(
             quote.author,
@@ -37,14 +38,14 @@ class QuoteTile extends StatelessWidget {
           trailing: IconButton(
             onPressed: () => deleteQuote(quote.id),
             icon: const Icon(Icons.bookmark_remove_outlined),
-            color: Colors.amber.shade900,
+            color: amber900,
           ),
           subtitle: Text(quote.quote),
           shape: RoundedRectangleBorder(
-            side: BorderSide(color: Colors.amber.shade900, width: 1),
+            side: BorderSide(color: amber900, width: 1),
             borderRadius: BorderRadius.circular(11),
           ),
-          tileColor: Colors.amber.shade50,
+          tileColor: amber50,
           contentPadding: const EdgeInsets.symmetric(horizontal: 11.0),
           onTap: () => itemTapped(quote),
         ),

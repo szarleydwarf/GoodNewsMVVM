@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:good_news_app/helpers/user_manager.dart';
+import 'package:good_news_app/misc/palet.dart';
 import 'package:good_news_app/networking/pdf_viewer.dart';
 
 import '../misc/constants.dart';
 import '../models/user_model.dart';
+import '../screen_elements/lines.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen(
@@ -33,7 +35,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title,
-            style: TextStyle(fontSize: 24, color: Colors.amber.shade100)),
+            style: TextStyle(fontSize: 24, color: amber50)),
         automaticallyImplyLeading: true,
       ),
       body: Center(
@@ -43,22 +45,18 @@ class _SettingsScreenState extends State<SettingsScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               getUserLabel(),
-              const Divider(
-                color: Colors.amber,
-              ),
+              drawLine(),
               displayPP(),
               showAppInfoScreen(),
               const Spacer(
                 flex: 1,
               ),
-              Divider(
-                color: Colors.red.shade900,
-              ),
+              drawDangerZoneLine(),
               Text(
                 dangerzoneLabelText,
                 style: TextStyle(
                     fontSize: 28,
-                    color: Colors.red.shade900,
+                    color: red900,
                     fontWeight: FontWeight.w900),
               ),
               getDeleteUSerButton(),
@@ -136,8 +134,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ),
             style: ElevatedButton.styleFrom(
               textStyle: const TextStyle(fontSize: 20),
-              backgroundColor: Colors.amber.shade300,
-              foregroundColor: Colors.black,
+              backgroundColor: amber200,
+              foregroundColor: justBlack,
             ),
             child: const Text(
               ppPageTitle,
@@ -152,12 +150,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   Widget getDeleteUSerButton() {
     return ElevatedButton(
-      onPressed: user.isExisting ? () => {showAlert()}
-      : null,
+      onPressed: user.isExisting ? () => {showAlert()} : null,
       style: ElevatedButton.styleFrom(
         textStyle: const TextStyle(fontSize: 20),
-        backgroundColor: Colors.red.shade900,
-        foregroundColor: Colors.white,
+        backgroundColor: red900,
+        foregroundColor: justWhite,
       ),
       child: const Text(deleteUserButton),
     );
@@ -170,8 +167,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
         onPressed: () => {showAlert()},
         style: ElevatedButton.styleFrom(
           textStyle: const TextStyle(fontSize: 20),
-          backgroundColor: Colors.amber.shade300,
-          foregroundColor: Colors.black87,
+          backgroundColor: amber200,
+          foregroundColor: justBlack,
         ),
         child: const Text(infoButton),
       )
@@ -183,7 +180,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     setState(() {
       userName = (user.name != emptyString) ? user.name : friend;
       // userExist = user.isExisting;
-      // iconColor = userExist ? Colors.amber.shade900 : Colors.amber.shade200;
+      // iconColor = userExist ? amber900 : amber200;
     });
   }
 }
