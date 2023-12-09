@@ -5,6 +5,7 @@ import 'package:good_news_app/networking/pdf_viewer.dart';
 
 import '../misc/constants.dart';
 import '../models/user_model.dart';
+import '../screen_elements/app_bar_buttons.dart';
 import '../screen_elements/lines.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -37,6 +38,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
         title: Text(widget.title,
             style: TextStyle(fontSize: 24, color: amber50)),
         automaticallyImplyLeading: true,
+        actions: <Widget>[
+          showInfoIcon(context),
+        ],
       ),
       body: Center(
         child: Padding(

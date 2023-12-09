@@ -4,6 +4,7 @@ import 'package:good_news_app/models/quote_model.dart';
 
 import '../misc/constants.dart';
 import '../misc/palet.dart';
+import '../screen_elements/app_bar_buttons.dart';
 import '../screen_elements/lines.dart';
 
 class QuoteDetails extends StatefulWidget {
@@ -35,6 +36,9 @@ class _QuoteDetails extends State<QuoteDetails> {
         title: Text(detailScreen,
             style: TextStyle(fontSize: 24, color: amber200)),
         automaticallyImplyLeading: true,
+        actions: <Widget>[
+          showInfoIcon(context),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

@@ -10,6 +10,7 @@ import '../models/user_model.dart';
 import '../networking/network_manager.dart';
 
 import '../misc/constants.dart';
+import '../screen_elements/app_bar_buttons.dart';
 import '../screen_elements/lines.dart';
 import 'settings_screen.dart';
 
@@ -51,27 +52,11 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(appTitle,
-            style: TextStyle(fontSize: 24, color: amber50)),
+        title: Text(appTitle, style: TextStyle(fontSize: 24, color: amber50)),
         automaticallyImplyLeading: false,
         actions: <Widget>[
-          IconButton(
-            icon: Icon(
-              Icons.settings,
-              color: amber50,
-            ),
-            onPressed: () {
-              // do something
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => SettingsScreen(
-                          title: settingsPageTitle,
-                          userManager: userManager,
-                        )),
-              );
-            },
-          )
+          showInfoIcon(context),
+          showSettingsIcon(context, userManager),
         ],
       ),
       body: Center(

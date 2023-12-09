@@ -6,6 +6,7 @@ import 'package:good_news_app/screens/qoute_details.dart';
 
 import '../helpers/quote_manager.dart';
 import '../misc/constants.dart';
+import '../screen_elements/app_bar_buttons.dart';
 
 class QuotesScreen extends StatefulWidget {
   const QuotesScreen({super.key});
@@ -32,6 +33,9 @@ class _QuotesScreenState extends State<QuotesScreen> {
         title: Text(quotesScreen,
             style: TextStyle(fontSize: 24, color: amber50)),
         automaticallyImplyLeading: true,
+        actions: <Widget>[
+          showInfoIcon(context),
+        ],
       ),
       body: Column(
         children: [
