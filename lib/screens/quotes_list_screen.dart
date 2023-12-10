@@ -34,7 +34,7 @@ class _QuotesScreenState extends State<QuotesScreen> {
             style: TextStyle(fontSize: 24, color: amber50)),
         automaticallyImplyLeading: true,
         actions: <Widget>[
-          showInfoIcon(context),
+          showInfoIcon(context, ScreenName.list),
         ],
       ),
       body: Column(
@@ -79,7 +79,6 @@ class _QuotesScreenState extends State<QuotesScreen> {
   }
 
   void _onTap(Quote quote) {
-    print("TAPPED: ${quote.comment}");
     Navigator.push(
       context,
       MaterialPageRoute(

@@ -37,7 +37,7 @@ class _QuoteDetails extends State<QuoteDetails> {
             style: TextStyle(fontSize: 24, color: amber200)),
         automaticallyImplyLeading: true,
         actions: <Widget>[
-          showInfoIcon(context),
+          showInfoIcon(context, ScreenName.details),
         ],
       ),
       body: Padding(

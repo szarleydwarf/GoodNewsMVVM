@@ -12,7 +12,6 @@ import '../networking/network_manager.dart';
 import '../misc/constants.dart';
 import '../screen_elements/app_bar_buttons.dart';
 import '../screen_elements/lines.dart';
-import 'settings_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key, required this.title});
@@ -55,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text(appTitle, style: TextStyle(fontSize: 24, color: amber50)),
         automaticallyImplyLeading: false,
         actions: <Widget>[
-          showInfoIcon(context),
+          showInfoIcon(context, ScreenName.home),
           showSettingsIcon(context, userManager),
         ],
       ),

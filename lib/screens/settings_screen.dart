@@ -39,7 +39,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             style: TextStyle(fontSize: 24, color: amber50)),
         automaticallyImplyLeading: true,
         actions: <Widget>[
-          showInfoIcon(context),
+          showInfoIcon(context, ScreenName.settings),
         ],
       ),
       body: Center(
@@ -168,7 +168,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
       const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
       ElevatedButton(
-        onPressed: () => {showAlert()},
+        onPressed: () => {showInfoIcon(context, ScreenName.settings)},
         style: ElevatedButton.styleFrom(
           textStyle: const TextStyle(fontSize: 20),
           backgroundColor: amber200,

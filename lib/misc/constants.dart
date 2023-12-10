@@ -1,4 +1,4 @@
-// Screen Names
+// Screen Titles
 const String appTitle = 'Good News App';
 const String homePageTitle = "Get A Good News Every Day";
 const String settingsPageTitle = "Settings";
@@ -6,8 +6,13 @@ const String ppPageTitle = "Privacy Policy";
 const String quotesScreen = "Your Quotes";
 const String detailScreen = "Saved qoute";
 
+// Screen Names
+enum ScreenName { home, settings, list, details }
+
 // Assets
 const String appSplashIcon = "assets/appstore.png";
+const String assets = "assets/";
+const String png = ".png";
 
 // Default & Pkaceholders
 const String friend = "My Friend.";

@@ -26,7 +26,7 @@ Widget showSettingsIcon(BuildContext context, UserManager userManager) {
     );
   }
 
-  Widget showInfoIcon(BuildContext context) {
+  Widget showInfoIcon(BuildContext context, ScreenName screenName) {
     return IconButton(
       icon: Icon(
         Icons.info_outline_rounded,
@@ -37,7 +37,7 @@ Widget showSettingsIcon(BuildContext context, UserManager userManager) {
         Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => InfoScreen()),
+              builder: (context) => InfoScreen(screenName: screenName,)),
         );
       },
     );
