@@ -31,6 +31,7 @@ class _QuoteDetails extends State<QuoteDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(detailScreen,
@@ -77,6 +78,7 @@ class _QuoteDetails extends State<QuoteDetails> {
           ))
         ]),
       ),
+      floatingActionButton: displaySaveButton(),
     );
   }
 
@@ -129,7 +131,7 @@ class _QuoteDetails extends State<QuoteDetails> {
           minLines: 1,
           maxLines: 3,
         ),
-        displaySaveButton(),
+        // displaySaveButton(),
       ]),
     );
   }
@@ -140,9 +142,9 @@ class _QuoteDetails extends State<QuoteDetails> {
       children: [
         Flexible(
           child: Wrap(
-            crossAxisAlignment: WrapCrossAlignment.center,
+            crossAxisAlignment: WrapCrossAlignment.end,
             alignment: WrapAlignment.spaceBetween,
-            spacing: 30,
+            spacing: 10,
             direction: Axis.horizontal,
             children: [
               Text(
@@ -163,7 +165,7 @@ class _QuoteDetails extends State<QuoteDetails> {
   }
 
   Widget displaySaveButton() {
-    return IconButton(
+    return FloatingActionButton(
         onPressed: () {
           if (textEditorController.text.isNotEmpty) {
             final tq = widget.quote;
@@ -177,7 +179,7 @@ class _QuoteDetails extends State<QuoteDetails> {
             });
           }
         },
-        icon: Icon(
+        child: Icon(
           Icons.save_alt_outlined,
           color: amber900,
         ));
