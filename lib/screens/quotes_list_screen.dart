@@ -30,8 +30,8 @@ class _QuotesScreenState extends State<QuotesScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(quotesScreen,
-            style: TextStyle(fontSize: 24, color: amber50)),
+        title:
+            Text(quotesScreen, style: TextStyle(fontSize: 24, color: amber50)),
         automaticallyImplyLeading: true,
         actions: <Widget>[
           showInfoIcon(context, ScreenName.list),
@@ -81,10 +81,10 @@ class _QuotesScreenState extends State<QuotesScreen> {
   void _onTap(Quote quote) {
     Navigator.push(
       context,
-      MaterialPageRoute(
-        builder: (context) => QuoteDetails( 
-          quote: quote 
-        )),
+      MaterialPageRoute(builder: (context) => QuoteDetails(quote: quote)),
     );
+    setState(() {
+      getQuoteList();
+    });
   }
 }

@@ -34,8 +34,8 @@ class _QuoteDetails extends State<QuoteDetails> {
       floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(detailScreen,
-            style: TextStyle(fontSize: 24, color: amber200)),
+        title:
+            Text(detailScreen, style: TextStyle(fontSize: 24, color: amber200)),
         automaticallyImplyLeading: true,
         actions: <Widget>[
           showInfoIcon(context, ScreenName.details),
@@ -44,17 +44,18 @@ class _QuoteDetails extends State<QuoteDetails> {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(children: [
-          Center(
-            child: Text(
-              widget.quote.author,
-              style: Theme.of(context).textTheme.headlineMedium,
-              textAlign: TextAlign.center,
-            ),
-          ),
+          displayAuthor(),
           drawLine(),
-          Expanded(
-            child: displayQuote(),
-          ),
+          // Expanded(
+            // child: 
+            Container(
+              constraints: const BoxConstraints(minHeight: 10, maxHeight: double.infinity),
+              child: SizedBox(
+                height: 160,
+                child: displayQuote(),
+                ),
+            ),
+          // ),
           Expanded(
               child: Center(
             child: Column(
@@ -79,6 +80,16 @@ class _QuoteDetails extends State<QuoteDetails> {
         ]),
       ),
       floatingActionButton: displaySaveButton(),
+    );
+  }
+
+  Widget displayAuthor() {
+    return Center(
+      child: Text(
+        widget.quote.author,
+        style: Theme.of(context).textTheme.headlineMedium,
+        textAlign: TextAlign.center,
+      ),
     );
   }
 
@@ -154,12 +165,22 @@ class _QuoteDetails extends State<QuoteDetails> {
             ],
           ),
         ),
-        IconButton(
-            onPressed: editComment,
-            icon: Icon(
-              Icons.edit_outlined,
-              color: amber900,
-            )),
+        Column(
+          children: [
+            IconButton(
+                onPressed: editComment,
+                icon: Icon(
+                  Icons.edit_outlined,
+                  color: amber900,
+                )),
+            IconButton(
+                onPressed: editComment,
+                icon: Icon(
+                  Icons.delete_outline_outlined,
+                  color: amber900,
+                )),
+          ],
+        ),
       ],
     );
   }
@@ -177,6 +198,7 @@ class _QuoteDetails extends State<QuoteDetails> {
               comment = qouteToSave.comment;
               commentNotEmpty = true;
             });
+            textEditorController.text = "";
           }
         },
         child: Icon(
