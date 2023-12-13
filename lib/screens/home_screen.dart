@@ -32,6 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
   late String userName = emptyString;
   late String userBarText;
   late Quote quote = Quote.empty();
+  bool _alreadyBookmarked = false;
 
   bool userExist = false;
   late Color iconColor;
@@ -83,6 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       futureQuote = NetworkManager().fetchQuote();
       futureImage = NetworkManager().fetchImage();
+      _alreadyBookmarked = false;
     });
   }
 
@@ -116,7 +118,11 @@ class _HomeScreenState extends State<HomeScreen> {
             return const CircularProgressIndicator();
           } else if (snapshot.hasData && snapshot.data != null) {
             quote = snapshot.data as Quote;
-            return getQuoteWidget(snapshot.data);
+            if (quote?.author == emptyString) {
+              quote =
+                  Quote(quote.id, unknownAuthor, quote.quote, quote.comment);
+            }
+            return getQuoteWidget(quote);
           } else if (snapshot.hasError) {
             // TODO: Implement so crash/error login system (???)
             print(snapshot.error);
@@ -127,10 +133,9 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget getQuoteWidget(Quote? data) {
-    var authorName = data?.author == emptyString ? unknownAuthor : data?.author;
     return Column(
       children: [
-        getAuthorRow(authorName ?? authorNamePlaceholder,
+        getAuthorRow(data?.author ?? unknownAuthor,
             Theme.of(context).textTheme.headlineMedium),
         drawLine(),
         getQuoteElement(data?.quote ?? quotePlaceholder,
@@ -173,11 +178,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget getBookmarkButton() {
     return IconButton(
-      onPressed: userExist
-          ? () {
-              QuoteManager.instance.insert(quote);
-            }
-          : () => {showAlert()},
+      onPressed: () => {actOnQoute()},
       icon: const Icon(Icons.bookmark_add_outlined),
       color: iconColor,
       iconSize: iconButtonSize,
@@ -324,5 +325,21 @@ class _HomeScreenState extends State<HomeScreen> {
       context,
       MaterialPageRoute(builder: (context) => const QuotesScreen()),
     );
+  }
+
+  actOnQoute() async {
+    if (userExist && !_alreadyBookmarked) {
+      final isBookmarked = await QuoteManager.instance.insert(quote);
+      setState(() {
+        _alreadyBookmarked = isBookmarked;
+        iconColor = amber50;
+      });
+    } else if (userExist && _alreadyBookmarked) {
+      setState(() {
+        iconColor = amber50;
+      });
+    } else {
+      showAlert();
+    }
   }
 }
