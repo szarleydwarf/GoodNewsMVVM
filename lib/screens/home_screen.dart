@@ -80,14 +80,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Future<void> _onRefreshTapped() async {
-    setState(() {
-      futureQuote = NetworkManager().fetchQuote();
-      futureImage = NetworkManager().fetchImage();
-      _alreadyBookmarked = false;
-    });
-  }
-
   Widget getImageElement() {
     NetworkManager().fetchImage;
     return Column(
@@ -101,7 +93,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 return getRoundedImage(snapshot.data as Image);
               } else if (snapshot.hasError) {
                 // TODO: Implement so crash/error login system (???)
-                print(snapshot.error);
                 return getRoundedImage(null);
               }
               return getRoundedImage(null);
@@ -118,14 +109,14 @@ class _HomeScreenState extends State<HomeScreen> {
             return const CircularProgressIndicator();
           } else if (snapshot.hasData && snapshot.data != null) {
             quote = snapshot.data as Quote;
-            if (quote?.author == emptyString) {
+            if (quote.author == emptyString) {
               quote =
                   Quote(quote.id, unknownAuthor, quote.quote, quote.comment);
             }
+            updateBookmarkIcon();
             return getQuoteWidget(quote);
           } else if (snapshot.hasError) {
             // TODO: Implement so crash/error login system (???)
-            print(snapshot.error);
             return getQuoteWidget(null);
           }
           return const CircularProgressIndicator();
@@ -178,9 +169,13 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget getBookmarkButton() {
     return IconButton(
-      onPressed: () => {actOnQoute()},
+      onPressed: userExist
+          ? () {
+              QuoteManager.instance.insert(quote);
+            }
+          : () => {showAlert()},
       icon: const Icon(Icons.bookmark_add_outlined),
-      color: iconColor,
+      color: _alreadyBookmarked ? amber200 : amber900,
       iconSize: iconButtonSize,
     );
   }
@@ -327,19 +322,20 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  actOnQoute() async {
-    if (userExist && !_alreadyBookmarked) {
-      final isBookmarked = await QuoteManager.instance.insert(quote);
+  Future<void> _onRefreshTapped() async {
+    setState(() {
+      futureQuote = NetworkManager().fetchQuote();
+      futureImage = NetworkManager().fetchImage();
+      _alreadyBookmarked = false;
+    });
+  }
+
+  void updateBookmarkIcon() async {
+    bool isExist = await QuoteManager.instance.checkIfExist(quote);
+    if (isExist) {
       setState(() {
-        _alreadyBookmarked = isBookmarked;
-        iconColor = amber50;
+        _alreadyBookmarked = true;
       });
-    } else if (userExist && _alreadyBookmarked) {
-      setState(() {
-        iconColor = amber50;
-      });
-    } else {
-      showAlert();
     }
   }
 }

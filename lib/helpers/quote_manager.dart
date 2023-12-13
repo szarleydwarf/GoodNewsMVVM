@@ -21,7 +21,7 @@ class QuoteManager {
     final dbFilePath = dbDirectory.path;
 
     String path = join(dbFilePath, databasePath);
-    print(dbFilePath);
+    // print(dbFilePath);
     database = openDatabase(
       path,
       onCreate: (db, version) {
@@ -33,7 +33,7 @@ class QuoteManager {
     );
   }
 
-  Future<bool> insert(Quote quote) async {
+  Future<void> insert(Quote quote) async {
     final db = await database;
     bool isExist = await checkIfExist(quote);
     if (!isExist) {
@@ -42,9 +42,7 @@ class QuoteManager {
         quote.toMap(),
         conflictAlgorithm: ConflictAlgorithm.replace,
       );
-      return true;
     }
-    return false;
   }
 
   Future<List<Quote>> getQuotes() async {

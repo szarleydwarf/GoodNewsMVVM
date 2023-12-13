@@ -11,8 +11,4 @@ class User {
   User(this.id, this.name, this.isExisting);
 
   User.empty() : this(emptyString, emptyString, false);
-
-  void printMyself() {
-    print("I am $name + $id + $isExisting");
-  }
 }

@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -11,8 +12,12 @@ class NetworkManager {
   Future<Quote> fetchQuote() async {
     final response = await http.get(Uri.parse(quotesAPI));
     if (response.statusCode == 200) {
-      String fixed = response.body.replaceAll(r"\'", "'").replaceAll("\"", "'").trim();
-      print("RESPONSE: ${response.body}");
+      String fixed =
+          response.body.replaceAll(r"\'", "'").trim();
+      if (kDebugMode) {
+        print("1.RESPONSE: ${response.body}");
+        print("2.RESPONSE: $fixed");
+      }
       return Quote.fromJSON(jsonDecode(fixed) as Map<String, dynamic>);
     } else {
       throw Exception("FETCHING FAILED WITH STATUS CODE $response.statusCode");
