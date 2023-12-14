@@ -43,41 +43,43 @@ class _QuoteDetails extends State<QuoteDetails> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(children: [
-          displayAuthor(),
-          drawLine(),
-          // Expanded(
-            // child: 
-            Container(
-              constraints: const BoxConstraints(minHeight: 10, maxHeight: double.infinity),
-              child: SizedBox(
-                height: 160,
-                child: displayQuote(),
-                ),
-            ),
-          // ),
-          Expanded(
-              child: Center(
-            child: Column(
-              children: [
-                drawLine(),
-                commentNotEmpty
-                    ? displayCommentSection()
-                    : Text(
-                        noComments,
-                        style: Theme.of(context).textTheme.bodyLarge,
-                      ),
-                drawLine(),
-                Text(
-                  commentInfo,
-                  style: Theme.of(context).textTheme.bodyLarge,
-                ),
-                drawLine(),
-                textFieldWidget(),
-              ],
-            ),
-          ))
-        ]),
+        child: SingleChildScrollView(
+          child: Column(children: [
+            displayAuthor(),
+            drawLine(),
+            // Expanded(
+              // child: 
+              Container(
+                constraints: const BoxConstraints(minHeight: 10, maxHeight: double.infinity),
+                child: SizedBox(
+                  height: 160,
+                  child: displayQuote(),
+                  ),
+              ),
+            // ),
+            Expanded(
+                child: Center(
+              child: Column(
+                children: [
+                  drawLine(),
+                  commentNotEmpty
+                      ? displayCommentSection()
+                      : Text(
+                          noComments,
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
+                  drawLine(),
+                  Text(
+                    commentInfo,
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  ),
+                  drawLine(),
+                  textFieldWidget(),
+                ],
+              ),
+            ))
+          ]),
+        ),
       ),
       floatingActionButton: displaySaveButton(),
     );
@@ -151,19 +153,17 @@ class _QuoteDetails extends State<QuoteDetails> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Flexible(
-          child: Wrap(
-            crossAxisAlignment: WrapCrossAlignment.end,
-            alignment: WrapAlignment.spaceBetween,
-            spacing: 10,
-            direction: Axis.horizontal,
-            children: [
-              Text(
-                comment,
-                style: Theme.of(context).textTheme.bodyLarge,
-              ),
-            ],
-          ),
+        Wrap(
+          crossAxisAlignment: WrapCrossAlignment.end,
+          alignment: WrapAlignment.spaceBetween,
+          spacing: 10,
+          direction: Axis.horizontal,
+          children: [
+            Text(
+              comment,
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+          ],
         ),
         Column(
           children: [

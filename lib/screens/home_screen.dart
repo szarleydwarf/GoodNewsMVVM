@@ -60,21 +60,30 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(wholeScreenPadding),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              getImageElement(),
-              drawLine(),
-              getFutureDataFrom(futureQuote),
-              const Spacer(
-                flex: 1,
+        child: Column(
+          children: [
+            Expanded(
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.all(wholeScreenPadding),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      getImageElement(),
+                      drawLine(),
+                      getFutureDataFrom(futureQuote),
+                    ],
+                  ),
+                ),
               ),
-              drawLine(),
-              getUserBar(Theme.of(context).textTheme.headlineMedium)
-            ],
-          ),
+            ),
+            Column(
+              children: [
+                drawLine(),
+                getUserBar(Theme.of(context).textTheme.headlineMedium),
+              ],
+            )
+          ],
         ),
       ),
     );
@@ -109,10 +118,10 @@ class _HomeScreenState extends State<HomeScreen> {
             return const CircularProgressIndicator();
           } else if (snapshot.hasData && snapshot.data != null) {
             quote = snapshot.data as Quote;
-            if (quote.author == emptyString) {
-              quote =
-                  Quote(quote.id, unknownAuthor, quote.quote, quote.comment);
-            }
+            final test = quotePlaceholder + quotePlaceholder + quotePlaceholder;
+            // if (quote.author == emptyString) {
+            quote = Quote(quote.id, unknownAuthor, test, quote.comment);
+            // }
             updateBookmarkIcon();
             return getQuoteWidget(quote);
           } else if (snapshot.hasError) {
