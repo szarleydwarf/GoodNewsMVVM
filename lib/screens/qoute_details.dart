@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:good_news_app/helpers/quote_manager.dart';
-import 'package:good_news_app/models/quote_model.dart';
+import '../models/quote_model.dart';
 
 import '../misc/constants.dart';
 import '../misc/palet.dart';
@@ -8,9 +8,9 @@ import '../screen_elements/app_bar_buttons.dart';
 import '../screen_elements/lines.dart';
 
 class QuoteDetails extends StatefulWidget {
-  const QuoteDetails({super.key, required this.quote});
+  QuoteDetails({super.key, required this.quote});
 
-  final Quote quote;
+  Quote quote;
 
   @override
   State<StatefulWidget> createState() => _QuoteDetails();
@@ -47,37 +47,24 @@ class _QuoteDetails extends State<QuoteDetails> {
           child: Column(children: [
             displayAuthor(),
             drawLine(),
-            // Expanded(
-              // child: 
-              Container(
-                constraints: const BoxConstraints(minHeight: 10, maxHeight: double.infinity),
-                child: SizedBox(
-                  height: 160,
-                  child: displayQuote(),
-                  ),
+            Container(
+              constraints: const BoxConstraints(
+                  minHeight: 10, maxHeight: double.infinity),
+              child: SizedBox(
+                height: 360,
+                child: displayQuote(),
               ),
-            // ),
-            Expanded(
-                child: Center(
+            ),
+            Center(
               child: Column(
                 children: [
                   drawLine(),
-                  commentNotEmpty
-                      ? displayCommentSection()
-                      : Text(
-                          noComments,
-                          style: Theme.of(context).textTheme.bodyLarge,
-                        ),
-                  drawLine(),
-                  Text(
-                    commentInfo,
-                    style: Theme.of(context).textTheme.bodyLarge,
-                  ),
+                  displayCommentSection(),
                   drawLine(),
                   textFieldWidget(),
                 ],
               ),
-            ))
+            )
           ]),
         ),
       ),
@@ -117,12 +104,6 @@ class _QuoteDetails extends State<QuoteDetails> {
     );
   }
 
-  void editComment() {
-    setState(() {
-      textEditorController.text = widget.quote.comment;
-    });
-  }
-
   Widget textFieldWidget() {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 11.0),
@@ -144,7 +125,6 @@ class _QuoteDetails extends State<QuoteDetails> {
           minLines: 1,
           maxLines: 3,
         ),
-        // displaySaveButton(),
       ]),
     );
   }
@@ -153,28 +133,37 @@ class _QuoteDetails extends State<QuoteDetails> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Wrap(
-          crossAxisAlignment: WrapCrossAlignment.end,
-          alignment: WrapAlignment.spaceBetween,
-          spacing: 10,
-          direction: Axis.horizontal,
-          children: [
-            Text(
-              comment,
-              style: Theme.of(context).textTheme.bodyLarge,
-            ),
-          ],
+        SizedBox(
+          width: MediaQuery.of(context).size.width -
+              100, //this is the total width of your screen
+          child: Wrap(
+            crossAxisAlignment: WrapCrossAlignment.end,
+            alignment: WrapAlignment.spaceBetween,
+            spacing: 10,
+            direction: Axis.horizontal,
+            children: [
+              commentNotEmpty
+                  ? Text(
+                      comment,
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    )
+                  : Text(
+                      commentInfo,
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+            ],
+          ),
         ),
         Column(
           children: [
             IconButton(
-                onPressed: editComment,
+                onPressed: _editComment,
                 icon: Icon(
                   Icons.edit_outlined,
                   color: amber900,
                 )),
             IconButton(
-                onPressed: editComment,
+                onPressed: _deleteComment,
                 icon: Icon(
                   Icons.delete_outline_outlined,
                   color: amber900,
@@ -189,21 +178,39 @@ class _QuoteDetails extends State<QuoteDetails> {
     return FloatingActionButton(
         onPressed: () {
           if (textEditorController.text.isNotEmpty) {
-            final tq = widget.quote;
-            var qouteToSave =
-                Quote(tq.id, tq.author, tq.quote, textEditorController.text);
-
-            QuoteManager.instance.updatequote(qouteToSave);
-            setState(() {
-              comment = qouteToSave.comment;
-              commentNotEmpty = true;
-            });
-            textEditorController.text = "";
+            _saveComment(textEditorController.text);
           }
         },
         child: Icon(
           Icons.save_alt_outlined,
           color: amber900,
         ));
+  }
+
+  void _editComment() {
+    setState(() {
+      textEditorController.text = widget.quote.comment;
+      // _saveComment(comment_)
+    });
+  }
+
+  void _deleteComment() {
+    _saveComment("");
+    setState(() {
+      commentNotEmpty = false;
+    });
+  }
+
+  void _saveComment(String comment_) {
+    final tq = widget.quote;
+    var qouteToSave = Quote(tq.id, tq.author, tq.quote, comment_);
+
+    QuoteManager.instance.updatequote(qouteToSave);
+    setState(() {
+      comment = qouteToSave.comment;
+      commentNotEmpty = true;
+      widget.quote = Quote(0, widget.quote.author, widget.quote.quote, comment);
+    });
+    textEditorController.text = "";
   }
 }

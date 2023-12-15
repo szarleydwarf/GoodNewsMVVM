@@ -82,9 +82,10 @@ class _QuotesScreenState extends State<QuotesScreen> {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => QuoteDetails(quote: quote)),
-    );
-    setState(() {
-      getQuoteList();
+    ).then((_) {
+      setState(() {
+        getQuoteList();
+      });
     });
   }
 }

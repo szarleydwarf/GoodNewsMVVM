@@ -118,10 +118,9 @@ class _HomeScreenState extends State<HomeScreen> {
             return const CircularProgressIndicator();
           } else if (snapshot.hasData && snapshot.data != null) {
             quote = snapshot.data as Quote;
-            final test = quotePlaceholder + quotePlaceholder + quotePlaceholder;
-            // if (quote.author == emptyString) {
-            quote = Quote(quote.id, unknownAuthor, test, quote.comment);
-            // }
+            if (quote.author == emptyString) {
+            quote = Quote(quote.id, unknownAuthor, quote.quote, quote.comment);
+            }
             updateBookmarkIcon();
             return getQuoteWidget(quote);
           } else if (snapshot.hasError) {
